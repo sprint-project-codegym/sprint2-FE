@@ -7,25 +7,19 @@ import {TicketsBookingComponent} from './account-management/tickets-booking/tick
 
 const routes: Routes = [
   {
-    path: 'member',
-    component: MemberPageComponent,
-    children: [
-      {
-        path: 'info',
-        component: AccountInfoComponent
-      },
-      {
-        path: 'history',
-        component: TransactionHistoryComponent
-      },
-      {
-        path: 'booking',
-        component: TicketsBookingComponent
-      },
-      {path: '', redirectTo: '', pathMatch: 'full'},
-      {path: '**', redirectTo: '', pathMatch: 'full'}
-    ]
-  }
+    path: 'info',
+    component: AccountInfoComponent
+  },
+  {
+    path: 'history',
+    component: TransactionHistoryComponent
+  },
+  {
+    path: 'booking',
+    component: TicketsBookingComponent
+  },
+  {path: '', redirectTo: '', pathMatch: 'full'},
+  {path: '**', redirectTo: '', pathMatch: 'full'}
 ];
 
 @NgModule({
