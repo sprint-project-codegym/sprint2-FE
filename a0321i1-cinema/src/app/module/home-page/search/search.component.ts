@@ -63,6 +63,7 @@ export class SearchComponent implements OnInit {
     this.showtimeService.getAllShowtimes().subscribe(data => {
       this.showTimes = data;
     })
+
   }
 
   search() {

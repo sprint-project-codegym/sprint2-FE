@@ -16,4 +16,6 @@ export class ShowtimeService {
   getAllShowtimes(): Observable<ShowTime[]> {
     return this.httpClient.get<ShowTime[]>(this.API_SHOWTIME_URL);
   }
+
+
 }
