@@ -1,9 +1,10 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
 import {ContentPageComponent} from './content-page/content-page.component';
 import {SearchComponent} from './search/search.component';
 import {DetailMovieComponent} from './detail-movie/detail-movie.component';
 import {ContentComponent} from './content/content.component';
+import {CommentComponent} from './comment/comment.component';
 
 
 const routes: Routes = [
