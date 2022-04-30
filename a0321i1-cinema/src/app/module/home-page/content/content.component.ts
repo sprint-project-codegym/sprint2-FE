@@ -25,7 +25,7 @@ export class ContentComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // (<HTMLInputElement>document.getElementById("header-search-input")).value = '';
+    (<HTMLInputElement>document.getElementById("header-search-input")).value = '';
     this.getPromotingMovies();
     this.getTop3BySales();
     this.getOnShowingMovies();

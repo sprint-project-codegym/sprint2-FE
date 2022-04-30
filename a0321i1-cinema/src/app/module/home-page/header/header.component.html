@@ -9,9 +9,9 @@
           <div class="input-group" style="padding: 0 30px 0 0;">
             <!--          Search-->
             <input type="text" class="input-search form-control" style="height: 32px" placeholder="Nhập từ khóa để tìm kiếm"
-                   tabindex id="header-search-input">
+                   tabindex #keySearch id="header-search-input" (keyup.enter)="search(keySearch.value)">
             <div class="input-group-btn">
-              <button class="btn btn-default" tabindex><i class="fas fa-search"></i>
+              <button class="btn btn-default" tabindex (click)="search(keySearch.value)"><i class="fas fa-search"></i>
               </button>
             </div>
           </div>

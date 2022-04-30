@@ -153,8 +153,18 @@ ng-template div {
   color: #000;
 }
 #btn-view:hover{
-  color: #fff;
+  color: #05386B;
 }
 #btn-search{
   color: #fff;
+}
+.btn.see{
+  font-size: 14px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #fff;
+  border: 1px solid #05386B;
+  padding: 15px 20px;
+  text-decoration: none;
+  line-height: 1;
 }
