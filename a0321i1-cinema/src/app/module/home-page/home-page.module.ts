@@ -12,7 +12,7 @@ import {TrailerComponent} from './trailer/trailer.component';
 import {CommentComponent} from './comment/comment.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import {RouterModule} from '@angular/router';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 
 @NgModule({
@@ -32,13 +32,16 @@ import {FormsModule} from '@angular/forms';
     MatDialogModule,
     RouterModule
   ],
-    imports: [
-        CommonModule,
-        HomePageRoutingModule,
-        MatDialogModule,
-        RouterModule,
-        FormsModule
-    ],
+  imports: [
+    CommonModule,
+    HomePageRoutingModule,
+    MatDialogModule,
+    RouterModule,
+    FormsModule,
+    ReactiveFormsModule
+  ],
   entryComponents: [CommentComponent]
+
 })
-export class HomePageModule { }
+export class HomePageModule {
+}

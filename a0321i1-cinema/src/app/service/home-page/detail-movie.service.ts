@@ -8,7 +8,7 @@ import {MovieCategory} from '../../entity/MovieCategory';
   providedIn: 'root'
 })
 export class DetailMovieService {
-  private API = 'http://localhost:8080/api/movie';
+  private API_MOVIE_DETAIL_URL = 'http://localhost:8080/api/movie';
 
   constructor(private httpClient: HttpClient) {
   }
@@ -22,6 +22,6 @@ export class DetailMovieService {
   };
 
   getDetailById(id: string): Observable<Movie> {
-    return this.httpClient.get<Movie>(this.API + '/detail/' + id, this.httpOptions);
+    return this.httpClient.get<Movie>(this.API_MOVIE_DETAIL_URL + '/detail/' + id, this.httpOptions);
   }
 }

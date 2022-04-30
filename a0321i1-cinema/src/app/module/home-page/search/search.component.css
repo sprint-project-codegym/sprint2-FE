@@ -1,0 +1,160 @@
+#home-contents {
+  background-image: url("https://fv9-5.failiem.lv/thumb_show.php?i=wrk7as557&view");
+  background-position: right bottom;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  z-index: -999;
+  padding-bottom: 80px;
+}
+
+.contents-page {
+  max-width: 1252px;
+  margin: 0 auto;
+  padding-top: 100px;
+}
+
+h3 {
+  font-size: 18px;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+h1, h2, h3, h4, h5, p {
+  line-height: 1.5;
+}
+
+h3::after {
+  display: block;
+  width: 100px;
+  height: 3px;
+  /* margin-top: 8px; */
+  content: '';
+  background-color: #f26b39;
+}
+
+.btn {
+  border-radius: 0;
+}
+
+.btn-advanced-search {
+  float: right;
+  font-size: 14px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #fff;
+  background-color: #05386B;
+  padding: 15px 20px;
+  text-decoration: none;
+  line-height: 1;
+  border: 1px solid #05386B;
+  width: 122px;
+  font-weight: bold;
+}
+
+.btn.secondary {
+  font-size: 14px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #fff;
+  border: 1px solid #05386B;
+  padding: 15px 20px;
+  text-decoration: none;
+  line-height: 1;
+  width: 122px;
+}
+
+.btn.secondary:hover {
+  color: #fff;
+  background-color: #05386B;
+  border-color: #05386B;
+}
+
+.btn-load-more {
+  float: right;
+}
+
+.movies-group {
+  margin: 30px 0 0;
+}
+
+.movies-group .movie-item {
+  padding: 0 15px;
+  margin: 10px 0;
+}
+
+.movies-group .movie-item .article-movie-home {
+  position: relative;
+  /*display: table;*/
+  width: 100%;
+  padding-top: 150%;
+}
+
+.article-movie-home img {
+  /*display: table-cell;*/
+  width: 100%;
+  height: 100%;
+  /*max-width: 248px;*/
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.movie-hover {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background: #000;
+  opacity: 0.9;
+  text-align: center;
+  width: 100%;
+  overflow: hidden;
+  transition: .5s ease;
+  height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.movie-hover .title-hover {
+  margin: 15px 0 0;
+  color: #fff;
+  text-transform: capitalize;
+  font-weight: 500;
+}
+
+.movie-hover .categories-hover {
+  color: #fff;
+  margin: auto 0;
+}
+
+.movie-hover .booking-btn {
+  margin-bottom: 20px;
+}
+
+.article-movie-home:hover .movie-hover {
+  height: 60%;
+}
+
+.movies-group .title-movie {
+  font-size: 16px;
+  line-height: 20px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  color: #43464b;
+  margin-top: 15px;
+  z-index: 100;
+}
+
+ng-template div {
+  font-size: 16px;
+}
+#btn-view{
+  color: #000;
+}
+#btn-view:hover{
+  color: #fff;
+}
+#btn-search{
+  color: #fff;
+}

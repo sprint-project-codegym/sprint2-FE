@@ -10,7 +10,7 @@
           <h3 style="font-size: 22px; font-weight: 500">{{movie.movieName}}</h3>
           <h3 style="color: #a0a3a7">{{movie.movieName}}</h3>
           <div class="fa fa-clock" style="padding: 10px 0">{{movie.movieLength}} <span>phút</span></div>
-          <div style="padding: 10px 0 5px 0" >Thể loại: <span *ngFor="let mv of movie.movieCategorySet">{{mv.movieCategoryId}}</span></div>
+          <div style="padding: 10px 0 5px 0" >Thể loại: <span *ngFor="let mv of movie.movieCategorySet">{{mv.category.categoryName}}</span></div>
           <div style="padding: 5px 0 5px 0">Đạo diễn: <span>{{movie.director}}</span></div>
           <div style="padding: 5px 0 5px 0">Nhà sản xuất: <span>{{movie.movieStudio}}</span></div>
           <div style="padding: 5px 0 5px 0">Diễn viên: <span>{{movie.actor}}</span></div>
