@@ -12,6 +12,7 @@ import {EmployeeModule} from './module/employee/employee.module';
 import {HomePageModule} from './module/home-page/home-page.module';
 import {MemberModule} from './module/member/member.module';
 import {SecurityModule} from './module/security/security.module';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import {SecurityModule} from './module/security/security.module';
     EmployeeModule,
     MemberModule,
     SecurityModule,
+    BrowserAnimationsModule
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent]
