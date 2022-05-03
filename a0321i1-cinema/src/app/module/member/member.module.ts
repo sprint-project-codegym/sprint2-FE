@@ -10,16 +10,21 @@ import {TicketsBookingComponent} from './account-management/tickets-booking/tick
 import {TransactionHistoryComponent} from './account-management/transaction-history/transaction-history.component';
 import {HttpClientModule} from '@angular/common/http';
 import {HomePageModule} from '../home-page/home-page.module';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 
 @NgModule({
   declarations: [MemberPageComponent, AccountInfoComponent, NavBarAccountManagerComponent, TicketCancelComponent, TicketsBookingComponent, TransactionHistoryComponent],
-  imports: [
-    CommonModule,
-    MemberRoutingModule,
-    HttpClientModule,
-    HomePageModule
-  ]
+    imports: [
+        CommonModule,
+        MemberRoutingModule,
+        HttpClientModule,
+        HomePageModule,
+        ReactiveFormsModule,
+        FormsModule,
+        NgxPaginationModule
+    ]
 })
 export class MemberModule {
 }

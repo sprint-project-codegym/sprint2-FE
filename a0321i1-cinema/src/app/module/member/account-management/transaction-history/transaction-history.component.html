@@ -1,1 +1,92 @@
-<p>transaction-history works!</p>
+<div class="container-fluid m-0">
+  <div class="row">
+    <div class="container-fluid col-lg-3 bg-light"
+         style="background-image: url('https://live.staticflickr.com/5224/5773057791_5c34be3d91_b.jpg')">
+      <app-nav-bar-account-manager></app-nav-bar-account-manager>
+    </div>
+    <div class="container-fluid col-lg-9 p-0">
+      <div class="card-title">LỊCH SỬ ĐIỂM TÍCH LŨY</div>
+      <div class="card-body p-lg-5">
+          <table class="table table-hover table-borderless">
+            <tbody>
+            <tr>
+              <td class="col-2">
+                <label for="startDate">Từ ngày</label>
+                <span style="color: red" class="asterisk-red">(*):</span>
+              </td>
+              <div class="form-group w-33 float-left">
+                <td>
+                  <input type="date" style="width: 600px" class="form-control" #start
+                         id="startDate"/>
+                  <!--                                    <p class="text-danger m-0">Ngày không được để trống. Vui lòng chọn!</p>-->
+                </td>
+              </div>
+            </tr>
+            <tr>
+              <td class="col-2">
+                <label for="endDate">Đến ngày</label>
+                <span style="color: red" class="asterisk-red">(*):</span>
+              </td>
+              <div class="form-group w-33 float-left">
+                <td>
+                  <input type="date" style="width: 600px" class="form-control" #end
+                         id="endDate"/>
+                  <!--                                    <p class="text-danger m-0">Ngày không được để trống. Vui lòng chọn!</p>-->
+                </td>
+              </div>
+            </tr>
+            <tr>
+              <td class="col-2">
+                <label for="endDate">Xem theo</label>
+                <span style="color: red" class="asterisk-red">(*):</span>
+              </td>
+              <td class="row">
+                <div class="col-lg-12">
+                               <span class="form-check-inline d-flex">
+                                  <label class="form-check-label">
+                                      <input type="radio" name="gender" checked class="form-check-input"
+                                             (click)="changeStatusTrue()"/>Lịch sử cộng
+                                    <label style="width: 130px"></label>
+                                  </label>
+                                   <label class="form-check-label">
+                                      <input type="radio" name="gender" class="form-check-input"
+                                             (click)="changeStatusFalse()"/>Lịch sử dùng
+                                   </label>
+                               </span>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td></td>
+              <td>
+                <button type="submit" class="btn btn-primary" (click)="onSubmit(status, start, end)">
+                  Xem lịch sử
+                </button>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+          <table class="table table-hover table-striped table-bordered">
+            <thead>
+            <tr>
+              <th>STT</th>
+              <th>Thời gian</th>
+              <th>Mô tả</th>
+              <th>Điểm</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let transaction of transactions | paginate: { itemsPerPage: 3, currentPage: p }, let i = index">
+              <td>{{i+1}}</td>
+              <td>{{transaction.transactionDate}}</td>
+              <td>{{transaction.description}}</td>
+              <td *ngIf="transaction.pointChange > 0">+{{transaction.pointChange}}</td>
+              <ng-template [ngIf]="transaction.pointChange < 0"><td>{{transaction.pointChange}}</td></ng-template>
+            </tr>
+            </tbody>
+          </table>
+          <pagination-controls class="text-right" (pageChange)="p = $event"></pagination-controls>
+      </div>
+    </div>
+  </div>
+</div>
