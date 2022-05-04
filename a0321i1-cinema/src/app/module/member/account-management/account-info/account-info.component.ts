@@ -4,7 +4,7 @@ import {User} from '../../../../entity/User';
 import {AccountManagementService} from '../../../../service/member/account-management.service';
 import {UserService} from '../../../../service/security/user.service';
 import {AbstractControl, FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {AccountDTO} from '../../../../AccountDTO';
+import {AccountDTO} from '../../../../dto/AccountDTO';
 import {ToastrService} from 'ngx-toastr';
 import {Router} from '@angular/router';
 

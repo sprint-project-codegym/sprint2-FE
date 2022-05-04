@@ -77,11 +77,11 @@
             </thead>
             <tbody>
             <tr *ngFor="let transaction of transactions | paginate: { itemsPerPage: 3, currentPage: p }, let i = index">
-              <td>{{i+1}}</td>
-              <td>{{transaction.transactionDate}}</td>
-              <td>{{transaction.description}}</td>
-              <td *ngIf="transaction.pointChange > 0">+{{transaction.pointChange}}</td>
-              <ng-template [ngIf]="transaction.pointChange < 0"><td>{{transaction.pointChange}}</td></ng-template>
+              <td width="10%">{{i+1}}</td>
+              <td width="20%">{{transaction.transactionDate}}</td>
+              <td width="55%">{{transaction.description}}</td>
+              <td width="15%" *ngIf="transaction.status == 1">+{{transaction.pointChange}}</td>
+              <ng-template width="15%" [ngIf]="transaction.status == 0"><td>-{{transaction.pointChange}}</td></ng-template>
             </tr>
             </tbody>
           </table>
