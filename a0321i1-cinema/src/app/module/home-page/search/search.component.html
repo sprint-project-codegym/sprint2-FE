@@ -4,32 +4,32 @@
       <div class="col-md-12 col-sm-12 col-xs-12">
         <div id="tab-movies">
           <div class="tabs-movie-line">
-            <div class="advance-search">
-              <form class="form-search row mx-0" [formGroup]="searchForm" (ngSubmit)=advancedSearch()>
-                <div class="col-md-6 col-sm-12 mb-3">
-                  <input class="form-control" name="movie" id="movieSearch" formControlName="keySearch"
-                         placeholder="Nhập tên phim bạn muốn tìm kiếm">
-                </div>
-                <div class="col-md-6 col-sm-12 mb-3">
-                  <select class="form-control" name="category" id="categorySearch" formControlName="category">
-                    <option value="">Chọn thể loại phim</option>
-                    <option *ngFor="let category of categories" [ngValue]="category">{{category.categoryName}}</option>
-                  </select>
-                </div>
-                <div class="col-md-6 col-sm-12 mb-3">
-                  <input class="form-control" name="date" id="dateSearch" type="date" formControlName="date">
-                </div>
-                <div class="col-md-6 col-sm-12 mb-3">
-                  <select class="form-control" name="time" id="timeSearch" formControlName="time">
-                    <option value="">Chọn suất chiếu</option>
-                    <option *ngFor="let showTime of showTimes" [ngValue]="showTime">{{showTime.showTime}}</option>
-                  </select>
-                </div>
-                <div class="w-100 pr-3">
-                  <button class="btn-advanced-search float-right">Tìm kiếm</button>
-                </div>
-              </form>
-            </div>
+<!--            <div class="advance-search">-->
+<!--              <form class="form-search row mx-0" [formGroup]="searchForm" (ngSubmit)=advancedSearch()>-->
+<!--                <div class="col-md-6 col-sm-12 mb-3">-->
+<!--                  <input class="form-control" name="movie" id="movieSearch" formControlName="keySearch"-->
+<!--                         placeholder="Nhập tên phim bạn muốn tìm kiếm">-->
+<!--                </div>-->
+<!--                <div class="col-md-6 col-sm-12 mb-3">-->
+<!--                  <select class="form-control" name="category" id="categorySearch" formControlName="category">-->
+<!--                    <option value="">Chọn thể loại phim</option>-->
+<!--                    <option *ngFor="let category of categories" [ngValue]="category">{{category.categoryName}}</option>-->
+<!--                  </select>-->
+<!--                </div>-->
+<!--                <div class="col-md-6 col-sm-12 mb-3">-->
+<!--                  <input class="form-control" name="date" id="dateSearch" type="date" formControlName="date">-->
+<!--                </div>-->
+<!--                <div class="col-md-6 col-sm-12 mb-3">-->
+<!--                  <select class="form-control" name="time" id="timeSearch" formControlName="time">-->
+<!--                    <option value="">Chọn suất chiếu</option>-->
+<!--                    <option *ngFor="let showTime of showTimes" [ngValue]="showTime">{{showTime.showTime}}</option>-->
+<!--                  </select>-->
+<!--                </div>-->
+<!--                <div class="w-100 pr-3">-->
+<!--                  <button class="btn-advanced-search float-right">Tìm kiếm</button>-->
+<!--                </div>-->
+<!--              </form>-->
+<!--            </div>-->
             <div class="search-result-wrapper col-md-12 col-xs-12 px-0 mt-5">
               <h3 class="pl-3">Kết quả tìm kiếm</h3>
               <div class="row movies-group" *ngIf="resultMovies.length > 0; else notFound">
