@@ -3,7 +3,7 @@ import {NgModule} from '@angular/core';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
-import {DatePipe} from '@angular/common';
+import {CommonModule, DatePipe} from '@angular/common';
 import {LoadingComponent} from './module/loading/loading.component';
 import {HttpClientModule} from '@angular/common/http';
 import {AdminModule} from './module/admin/admin.module';
@@ -12,6 +12,8 @@ import {EmployeeModule} from './module/employee/employee.module';
 import {HomePageModule} from './module/home-page/home-page.module';
 import {MemberModule} from './module/member/member.module';
 import {SecurityModule} from './module/security/security.module';
+import {ToastrModule} from 'ngx-toastr';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -28,6 +30,16 @@ import {SecurityModule} from './module/security/security.module';
     EmployeeModule,
     MemberModule,
     SecurityModule,
+    ReactiveFormsModule,
+    CommonModule,
+    FormsModule,
+    ToastrModule.forRoot(
+      {
+        timeOut: 2000,
+        progressBar: true,
+        progressAnimation: 'increasing'
+      }
+    ),
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent]
