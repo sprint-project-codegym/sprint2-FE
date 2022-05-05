@@ -14,6 +14,8 @@ import {MemberModule} from './module/member/member.module';
 import {SecurityModule} from './module/security/security.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ToastrModule} from 'ngx-toastr';
+import {AngularFireModule} from '@angular/fire';
+import {environment} from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -32,6 +34,7 @@ import {ToastrModule} from 'ngx-toastr';
     SecurityModule,
     BrowserAnimationsModule, // required animations module
     ToastrModule.forRoot(), // ToastrModule added
+    AngularFireModule.initializeApp(environment.firebaseConfig)
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent]

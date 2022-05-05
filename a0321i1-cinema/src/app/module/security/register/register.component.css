@@ -1,0 +1,126 @@
+/*@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700;800&display=swap');*/
+
+/** {*/
+/*  margin: 0;*/
+/*  padding: 0;*/
+/*  box-sizing: border-box;*/
+/*}*/
+
+*:not(i) {
+  font-family: 'Nunito Sans', sans-serif !important;
+}
+
+.login {
+  margin-top: 80px;
+  margin-bottom: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: auto;
+}
+
+.background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url("../../../../assets/img/bg-movie.png") center no-repeat;
+  background-size: cover;
+  filter: blur(5px);
+  z-index: -999;
+}
+
+.form-input {
+  background-color: #fff;
+  z-index: 1;
+  padding: 12px 30px;
+}
+
+.heading {
+  font-size: 30px;
+  color: white;
+  font-weight: 600;
+  margin: 0;
+  padding: 4px;
+}
+
+
+.social-button span {
+  margin-left: 16px;
+}
+
+.normal-input input {
+  width: auto;
+  padding: 8px;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  background-color: #fff;
+  color: #000;
+}
+
+.normal-input [type=radio] {
+  width: auto;
+}
+
+.normal-input [type=file] {
+  border: none !important;
+}
+
+.normal-input input, .input-group-text, select {
+  border: 1px solid #a8d7e8 !important;
+}
+
+.normal-input.has-error input {
+  border: 1px solid #ff4a22;
+}
+
+.btn-confirm {
+  border: none;
+  padding: 12px 0;
+  width: 100%;
+  font-weight: 600;
+  color: #fff;
+  border-radius: 5px;
+  font-size: 18px;
+  background: #05386B;
+}
+
+.btn btn-primary{
+  width: 100%;
+}
+
+.error {
+  color: red;
+  font-size: 16px;
+}
+
+input:focus, input:active, select:focus, select:active {
+  box-shadow: none !important;
+}
+
+.heading-wrap {
+  margin: -15px -30px 0;
+  display: none;
+  background-color: #05386B;
+}
+
+#image-preview {
+  width: 100px;
+  min-height: 100px;
+  border: 2px solid #dddddd;
+  margin-top: 15px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.image-preview__image {
+  display: none;
+  width: 100%;
+}
+
+
