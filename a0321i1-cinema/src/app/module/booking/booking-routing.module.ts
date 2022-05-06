@@ -9,10 +9,10 @@ import {BookingInformationComponent} from './booking-information/booking-informa
 
 
 const routes: Routes = [
-  {
-    path: '',
-    component: MainBookingComponent,
-    children: [
+  // {
+  //   path: '',
+  //   component: MainBookingComponent,
+  //   children: [
       {
         path: 'movie',
         component: MovieSelectionComponent
@@ -35,8 +35,8 @@ const routes: Routes = [
       },
       {path: '', redirectTo: '', pathMatch: 'full'},
       {path: '**', redirectTo: '', pathMatch: 'full'}
-    ]
-  }
+  //   ]
+  // }
 ];
 
 @NgModule({
