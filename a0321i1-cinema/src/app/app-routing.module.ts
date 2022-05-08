@@ -5,6 +5,7 @@ import {LogoutComponent} from './module/security/logout/logout.component';
 import {RegisterComponent} from './module/security/register/register.component';
 import {ConfirmEmailComponent} from './module/security/confirm-email/confirm-email.component';
 import {LoginGoogleComponent} from './module/security/login-google/login-google.component';
+import {ActiveAccountComponent} from "./module/security/active-account/active-account.component";
 
 const routes: Routes = [
   {
@@ -45,6 +46,7 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'logout', component: LogoutComponent},
   {path: 'register', component: RegisterComponent},
+  {path: 'verification', component: ActiveAccountComponent},
   {path: 'register/confirmEmail/:username/:email', component: ConfirmEmailComponent},
   {path: 'loginGoogle', component: LoginGoogleComponent},
   {path: 'home', redirectTo: '/'},

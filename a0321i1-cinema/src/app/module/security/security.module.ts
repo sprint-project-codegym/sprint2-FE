@@ -7,13 +7,16 @@ import {LogoutComponent} from './logout/logout.component';
 import {RegisterComponent} from './register/register.component';
 import {HttpClientModule} from '@angular/common/http';
 import {ReactiveFormsModule} from '@angular/forms';
+import { ActiveAccountComponent } from './active-account/active-account.component';
+import {RouterModule} from "@angular/router";
 
 @NgModule({
-  declarations: [ConfirmEmailComponent, LoginGoogleComponent, LoginComponent, LogoutComponent, RegisterComponent],
+  declarations: [ConfirmEmailComponent, LoginGoogleComponent, LoginComponent, LogoutComponent, RegisterComponent, ActiveAccountComponent],
     imports: [
         CommonModule,
         HttpClientModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        RouterModule
     ]
 })
 export class SecurityModule {

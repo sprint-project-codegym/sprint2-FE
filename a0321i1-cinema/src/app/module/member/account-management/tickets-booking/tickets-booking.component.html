@@ -11,18 +11,18 @@
           <table class="table table-hover table-striped table-bordered">
             <thead>
             <tr>
-              <th>Tên phim</th>
-              <th>Ngày đặt</th>
-              <th>Tổng tiền</th>
-              <th>Trạng thái</th>
+              <th class="text-center">Tên phim</th>
+              <th class="text-center">Ngày đặt</th>
+              <th class="text-center">Tổng tiền</th>
+              <th class="text-center">Trạng thái</th>
             </tr>
             </thead>
             <tbody>
             <tr *ngFor="let ticket of ticketBooking">
-              <td>{{ticket.movieTicket.movie.movieName}}</td>
-              <td>{{ticket.timeCreate | date:'dd/MM/yyyy'}}</td>
-              <td>{{ticket.movieTicket.ticketPrice}}</td>
-              <td>{{ticket.ticketStatus}}</td>
+              <td width="40%">{{ticket.movieTicket.movie.movieName}}</td>
+              <td width="20%">{{ticket.createTime | date:'dd/MM/yyyy'}}</td>
+              <td width="20%" class="text-right">{{ticket.movieTicket.ticketPrice}}</td>
+              <td width="20%">{{ticket.ticketStatus}}</td>
             </tr>
             </tbody>
           </table>

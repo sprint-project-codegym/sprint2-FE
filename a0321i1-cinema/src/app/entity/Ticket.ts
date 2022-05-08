@@ -7,7 +7,7 @@ export class Ticket {
   // tslint:disable-next-line:variable-name
   private _ticketId: number;
   // tslint:disable-next-line:variable-name
-  private _timeCreate: string;
+  private _createTime: string;
   // tslint:disable-next-line:variable-name
   private _user: User;
   // tslint:disable-next-line:variable-name
@@ -31,11 +31,11 @@ export class Ticket {
   }
 
   get timeCreate(): string {
-    return this._timeCreate;
+    return this._createTime;
   }
 
   set timeCreate(value: string) {
-    this._timeCreate = value;
+    this._createTime = value;
   }
 
   get user(): User {

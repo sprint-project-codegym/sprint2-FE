@@ -27,7 +27,7 @@ export class RegisterComponent implements OnInit {
   listError: any = '';
   userDto: UserDTO;
   inputImage: any;
-  filePath = '../../../assets/img/avatar.jpg';
+  filePath = '../../../assets/img/avatar.png';
   // defaultAvatar: string = 'https://firebasestorage.googleapis.com/v0/b/c1120g1.appspot.com' +
   //   '/o/SPRINT_02%2Fusers%2Favatar.png?alt=media&token=b54ffd5e-9a20-4110-a2e2-de839d8915a7';
   private defaultAvatar: 'bc.com';
@@ -56,99 +56,78 @@ export class RegisterComponent implements OnInit {
         email: ['', [Validators.required, Validators.email]],
         birthday: ['', [Validators.required]],
         gender: ['1'],
-        idCard: ['', [Validators.required]],
-        // idCard: ['', [Validators.required, Validators.pattern('(^\\\\d{9}$)|(^\\\\d{12}$)')]],
+        idCard: ['', [Validators.required, Validators.pattern('(^\\d{9}$)|(^\\d{12}$)')]],
         phone: ['', [Validators.required, Validators.pattern('^(0?)(3[2-9]|5[6|8|9]|7[0|6-9]|8[0-6|8|9]|9[0-4|6-9])[0-9]{7}$')]],
         ward: ['', [Validators.required]],
         district: ['', [Validators.required]],
         province: ['', [Validators.required]],
-        // address: ['', [Validators.required]],
         avatarUrl: [this.filePath],
       }
     );
   }
 
-  // onSubmit() {
-  //   if (this.form.invalid) {
-  //     this.toastr.error(
-  //       'Không thể tạo tài khoản!',
-  //       'Có lỗi xảy ra',
-  //       {timeOut: 1000, extendedTimeOut: 1500}
-  //     );
-  //   } else {
-  //     this.securityService.getUserByUsername(this.form.value.username).subscribe(
-  //       data => {
-  //         this.user = data;
-  //         if (this.user != null) {
-  //           this.username.nativeElement.focus();
-  //           this.toastr.error(
-  //             'Tên tài khoản đã tồn tại!',
-  //             'Có lỗi xảy ra',
-  //             {timeOut: 1000, extendedTimeOut: 1500}
-  //           );
-  //         } else {
-  //           this.submitForm();
-  //         }
-  //       },
-  //       error => {
-  //         this.toastr.error(
-  //           'Không thể tạo mặt bằng!',
-  //           'Có lỗi xảy ra',
-  //           {timeOut: 1000, extendedTimeOut: 1500}
-  //         );
-  //       }
-  //     );
-  //   }
-  // }
+  saveUser(){
+    this.securityService.createUserConfirmMail(this.form.value).subscribe(data => {
+        this.router.navigateByUrl('/login');
+        this.toastr.success(
+          'Xác nhận email để kích hoạt tài khoản.',
+          'Thông báo!',
+          {timeOut: 2000, extendedTimeOut: 1500}
+        );
+      },
+      error => {
+        console.log(error);
+        const errorsMessage = [];
+        if (error.error.existAccount){errorsMessage.push(error.error.existAccount)}
+        console.log(12)
+        if (error.error.existIdCard){errorsMessage.push(error.error.existIdCard)}
+        console.log(34)
+        if (error.error.existEmail){errorsMessage.push(error.error.existEmail)}
+
+        console.log(56)
+        errorsMessage.forEach(errors =>
+          this.toastr.error(
+            errors,
+            'Có lỗi xảy ra',
+            {timeOut: 5000, extendedTimeOut: 1500}
+          )
+        );
+      }
+    );
+  }
 
   submitForm() {
+    console.log(11111)
     if (this.form.valid) {
-      this.uploading = true;
-      const imageName = this.getCurrentDateTime() + this.inputImage.name;
-      const fileRef = this.storage.ref(imageName);
-      this.storage.upload(imageName, this.inputImage).snapshotChanges().pipe(
-        finalize(() => {
-          fileRef.getDownloadURL().subscribe((url) => {
-            this.form.patchValue({avatarUrl: url});
-            this.userDto = new UserDTO(this.form.value.avatarUrl, this.form.value.birthday, this.form.value.email,
-              this.form.value.gender, this.form.value.idCard, this.form.value.name, this.form.value.phone,
-              this.form.value.username, this.form.value.ward, this.form.value.password);
-            // console.log(this.form.value);
-            this.securityService.createUserConfirmMail(this.form.value).subscribe(data => {
-                this.router.navigateByUrl('/login');
-                this.toastr.success(
-                  'Xác nhận email để kích hoạt tài khoản.',
-                  'Thông báo!',
-                  {timeOut: 1000, extendedTimeOut: 1500}
-                );
-              },
-              error => {
-                this.toastr.error(
-                  'Không thể tạo tài khoản!',
-                  'Có lỗi xảy ra',
-                  {timeOut: 1000, extendedTimeOut: 1500}
-                );
-                // tslint:disable-next-line:no-conditional-assignment
-                if (error.status = 409){
-                  console.log(111);
-                  // console.log(error.error);
-                  // this.listError = error.error;
-                  this.toastr.error(
-                    'Đã tồn tại!',
-                    'Có lỗi xảy ra',
-                    {timeOut: 1000, extendedTimeOut: 1500}
-                  );
-                }
-              }
-            );
+      if(this.uploading) {
+        const imageName = this.getCurrentDateTime() + this.inputImage.name;
+        const fileRef = this.storage.ref(imageName);
+        this.storage.upload(imageName, this.inputImage).snapshotChanges().pipe(
+          finalize(() => {
+            fileRef.getDownloadURL().subscribe((url) => {
+              this.form.patchValue({avatarUrl: url});
+              this.userDto = new UserDTO(this.form.value.avatarUrl, this.form.value.birthday, this.form.value.email,
+                this.form.value.gender, this.form.value.idCard, this.form.value.name, this.form.value.phone,
+                this.form.value.username, this.form.value.ward, this.form.value.password);
+              // console.log(this.form.value);
+              console.log(2222222)
+                this.saveUser();
+            });
+          })
+        ).subscribe();
+      }
+      else {
+        console.log(3333333)
+        this.userDto = new UserDTO(this.form.value.avatarUrl, this.form.value.birthday, this.form.value.email,
+          this.form.value.gender, this.form.value.idCard, this.form.value.name, this.form.value.phone,
+          this.form.value.username, this.form.value.ward, this.form.value.password);
+        this.saveUser();
+      }
 
-          });
-        })
-      ).subscribe();
     }
-    else {
-      console.log('err');
-    }
+    // else {
+    //   console.log('err');
+    // }
   }
 
   getCurrentDateTime(): string {
@@ -201,5 +180,6 @@ export class RegisterComponent implements OnInit {
       this.filePath = reader.result as string;
     };
     reader.readAsDataURL(this.inputImage);
+    this.uploading=true;
   }
 }

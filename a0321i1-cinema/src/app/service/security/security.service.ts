@@ -28,6 +28,10 @@ export class SecurityService {
     return this.httpClient.post<User>(API_URL + 'register', user);
   }
 
+  verifyAccount(code:string):  Observable<any>{
+    return this.httpClient.get(API_URL + "verify-account?code=" + code, this.httpOptions);
+  }
+
   sendEmailConfirm(email: string): Observable<any>{
     return this.httpClient.get(API_URL + "emailConfirm?email=" + email);
   }

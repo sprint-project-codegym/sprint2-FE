@@ -27,7 +27,7 @@
                   *ngIf="form.controls.username.touched && form.controls.username.errors?.minlength">Tên tài khoản phải ít nhất 6 kí tự.</span>
             <span class="text-danger"
                   *ngIf="form.controls.username.touched && form.controls.username.errors?.maxlength">Tên tài khoản quá dài.</span>
-<!--            <span class="text-danger"*ngIf="listError.existAccount">{{listError.existAccount}}</span>-->
+            <span class="text-danger"*ngIf="listError.existAccount">{{listError.existAccount}}</span>
           </div>
         </div>
 
@@ -83,16 +83,14 @@
           <div class="row">
             <div class="form-check" style="margin-left: 15px">
               <input checked class="form-check-input" id="flexRadioDefault1"
-                     name="flexRadioDefault"
-                     type="radio">
+                   type="radio" value="1" formControlName="gender">
               <label class="form-check-label" for="flexRadioDefault1">
                 Nam
               </label>
             </div>
             <div class="form-check ml-4">
               <input class="form-check-input" id="flexRadioDefault2"
-                     name="flexRadioDefault"
-                     type="radio">
+                      type="radio" value="2" formControlName="gender">
               <label class="form-check-label" for="flexRadioDefault2">
                 Nữ
               </label>
@@ -111,7 +109,7 @@
               <input type="text" class="form-control form-control-custom" id="idCard" formControlName="idCard"/>
             </div>
             <span class="text-danger" *ngIf="form.controls.idCard.touched && form.controls.idCard.errors?.required">Số CMND không được để trống. Vui lòng nhập!</span>
-<!--            <span class="text-danger" *ngIf="form.controls.idCard.touched && form.controls.idCard.errors?.pattern">Số CMND phải là 9 hoặc 12 số. Vui lòng nhập lại!</span>-->
+            <span class="text-danger" *ngIf="form.controls.idCard.touched && form.controls.idCard.errors?.pattern">Số CMND phải là 9 hoặc 12 số. Vui lòng nhập lại!</span>
             <!--            <div class="invalid-feedback" *ngIf="form.controls.idCard.touched">-->
             <!--              <span *ngIf="form.controls.idCard.errors?.required">Số CMND không được để trống. Vui lòng nhập!</span>&nbsp;-->
             <!--              <span *ngIf="form.controls.idCard.errors?.pattern">Số CMND phải là 9 hoặc 12 số. Vui lòng nhập lại!</span>&nbsp;-->
