@@ -1,1 +1,42 @@
-<p>detail-movie works!</p>
+<div class="container-fluid" >
+  <div class="row" style="width: 100%; margin-top: 100px">
+    <div class="col-3">
+      <img src="https://image.winudf.com/v2/image1/Y29tLmZiODhnYW1lLmZiODhub3dfc2NyZWVuXzBfMTYxMDA2NzY0NV8wMzA/screen-0.jpg?fakeurl=1&type=.webp" height="100%" width="80%">
+    </div>
+    <div class="col-6" style="border: 3px solid #f26b38; padding: 30px">
+      <div class="row">
+        <div class="col-4">
+          <img src="{{movie?.posterMovie}}" width="254" height="382" alt="poster">
+        </div>
+        <div class="col-8 noi_dung_detail">
+          <h3 style="font-size: 22px; font-weight: 500">{{movie?.movieName}}</h3>
+          <h3 style="color: #a0a3a7">{{movie.movieName}}</h3>
+          <div class="fa fa-clock" style="padding: 10px 0">{{movie?.movieLength}} <span>phút</span></div>
+          <div style="padding: 10px 0 5px 0" >Thể loại: <span *ngFor="let mv of movie?.movieCategorySet">{{mv.category.categoryName}}</span></div>
+          <div style="padding: 5px 0 5px 0">Đạo diễn: <span>{{movie?.director}}</span></div>
+          <div style="padding: 5px 0 5px 0">Nhà sản xuất: <span>{{movie?.movieStudio}}</span></div>
+          <div style="padding: 5px 0 5px 0">Diễn viên: <span>{{movie?.actor}}</span></div>
+        </div>
+      </div>
+      <div class="noi_dung" style="padding-top: 40px">
+        <h3>Nội dung phim</h3>
+        <p style="font-size: 15px; text-align: justify">
+          {{movie?.description}}</p>
+      </div>
+<!--      <div>-->
+<!--        <button class="btn btn-warning mr-3" (click)="openDialog()">Đánh giá</button>-->
+<!--      </div>-->
+<!--      <div style="width: 100%">-->
+<!--        <div></div>-->
+<!--        <div>Nguyễn Văn A</div>-->
+<!--        <div>Thích lắm aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</div>-->
+<!--      </div>-->
+    </div>
+    <div class="col-3" style="text-align: end; margin: 0; padding: 0">
+      <img src="https://i.pinimg.com/originals/c6/c6/1a/c6c61af17c61fdd4a37e4290c14f0e51.jpg" height="100%" width="80%" >
+    </div>
+  </div>
+</div>
+
+
+
