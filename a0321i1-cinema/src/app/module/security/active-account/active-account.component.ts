@@ -24,7 +24,7 @@ export class ActiveAccountComponent implements OnInit {
         this.securityService.verifyAccount(param.code).subscribe(
           ()=>console.log("account actived"),
           error => {
-            console.log(error);
+            this.router.navigateByUrl("/")
           }
         )
       }

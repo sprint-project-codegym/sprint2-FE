@@ -1,4 +1,4 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import {Component, ElementRef, Inject, OnInit, ViewChild} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {User} from '../../../entity/User';
 import {Ward} from '../../../entity/Ward';
@@ -18,7 +18,6 @@ import {finalize} from 'rxjs/operators';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  textType = false;
   form: FormGroup;
   user: User[];
   wards: Ward[];
@@ -28,11 +27,9 @@ export class RegisterComponent implements OnInit {
   userDto: UserDTO;
   inputImage: any;
   filePath = '../../../assets/img/avatar.png';
-  // defaultAvatar: string = 'https://firebasestorage.googleapis.com/v0/b/c1120g1.appspot.com' +
-  //   '/o/SPRINT_02%2Fusers%2Favatar.png?alt=media&token=b54ffd5e-9a20-4110-a2e2-de839d8915a7';
-  private defaultAvatar: 'bc.com';
   private uploading: boolean;
   private username: any;
+  @ViewChild('buttonRegister',{read: ElementRef}) buttonRegister: ElementRef;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -44,6 +41,7 @@ export class RegisterComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
     this.securityService.getAllProvince().subscribe(
       data => {
         this.provinces = data;
@@ -68,7 +66,9 @@ export class RegisterComponent implements OnInit {
 
   saveUser(){
     this.securityService.createUserConfirmMail(this.form.value).subscribe(data => {
-        this.router.navigateByUrl('/login');
+        this.buttonRegister.nativeElement.classList.remove('spinner-border');
+        this.buttonRegister.nativeElement.textContent= 'Đăng ký';
+      this.router.navigateByUrl('/login');
         this.toastr.success(
           'Xác nhận email để kích hoạt tài khoản.',
           'Thông báo!',
@@ -76,15 +76,13 @@ export class RegisterComponent implements OnInit {
         );
       },
       error => {
-        console.log(error);
+        this.buttonRegister.nativeElement.classList.remove('spinner-border');
+        this.buttonRegister.nativeElement.textContent= 'Đăng ký';
         const errorsMessage = [];
         if (error.error.existAccount){errorsMessage.push(error.error.existAccount)}
-        console.log(12)
         if (error.error.existIdCard){errorsMessage.push(error.error.existIdCard)}
-        console.log(34)
         if (error.error.existEmail){errorsMessage.push(error.error.existEmail)}
 
-        console.log(56)
         errorsMessage.forEach(errors =>
           this.toastr.error(
             errors,
@@ -97,8 +95,9 @@ export class RegisterComponent implements OnInit {
   }
 
   submitForm() {
-    console.log(11111)
     if (this.form.valid) {
+      this.buttonRegister.nativeElement.classList.add('spinner-border');
+      this.buttonRegister.nativeElement.textContent= '';
       if(this.uploading) {
         const imageName = this.getCurrentDateTime() + this.inputImage.name;
         const fileRef = this.storage.ref(imageName);
@@ -109,15 +108,12 @@ export class RegisterComponent implements OnInit {
               this.userDto = new UserDTO(this.form.value.avatarUrl, this.form.value.birthday, this.form.value.email,
                 this.form.value.gender, this.form.value.idCard, this.form.value.name, this.form.value.phone,
                 this.form.value.username, this.form.value.ward, this.form.value.password);
-              // console.log(this.form.value);
-              console.log(2222222)
                 this.saveUser();
             });
           })
         ).subscribe();
       }
       else {
-        console.log(3333333)
         this.userDto = new UserDTO(this.form.value.avatarUrl, this.form.value.birthday, this.form.value.email,
           this.form.value.gender, this.form.value.idCard, this.form.value.name, this.form.value.phone,
           this.form.value.username, this.form.value.ward, this.form.value.password);

@@ -22,7 +22,13 @@ font{
   border: 1px solid #ccc;
   background-color: #f1f1f1;
 }
-
+.page-item.active .page-link{
+  background-color: #05386B;
+  border-color: #05386B;
+}
+.page-link{
+  color: #05386B;
+}
 /* Style the buttons inside the tab */
 .tab button {
   background-color: inherit;
