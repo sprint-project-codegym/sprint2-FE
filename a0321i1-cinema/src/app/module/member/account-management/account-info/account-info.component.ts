@@ -7,6 +7,7 @@ import {AbstractControl, FormBuilder, FormGroup, Validators} from '@angular/form
 import {AccountDTO} from '../../../../dto/AccountDTO';
 import {ToastrService} from 'ngx-toastr';
 import {Router} from '@angular/router';
+import {NgxSpinnerService} from 'ngx-spinner';
 
 @Component({
   selector: 'app-account-info',
@@ -27,7 +28,8 @@ export class AccountInfoComponent implements OnInit {
     private userService: UserService,
     private fb: FormBuilder,
     private toastr: ToastrService,
-    private router: Router
+    private router: Router,
+    private spinner: NgxSpinnerService,
   ) {
   }
 
@@ -104,7 +106,7 @@ export class AccountInfoComponent implements OnInit {
         this.toastr.error('Mật khẩu cũ không khớp!', 'Thông báo!');
       });
     } else {
-      console.log('form sai');
+      console.log('invalid form');
     }
   }
 }

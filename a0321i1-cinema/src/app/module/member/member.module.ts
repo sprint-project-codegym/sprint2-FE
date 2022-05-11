@@ -12,6 +12,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {HomePageModule} from '../home-page/home-page.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {NgxPaginationModule} from 'ngx-pagination';
+import {NgxSpinnerModule} from 'ngx-spinner';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import {NgxPaginationModule} from 'ngx-pagination';
         HomePageModule,
         ReactiveFormsModule,
         FormsModule,
-        NgxPaginationModule
+        NgxPaginationModule,
+        NgxSpinnerModule
     ]
 })
 export class MemberModule {
