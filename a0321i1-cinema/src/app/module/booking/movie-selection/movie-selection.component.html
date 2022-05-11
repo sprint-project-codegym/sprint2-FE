@@ -1,1 +1,104 @@
-<p>movie-selection works!</p>
+<div class="container" id="fluid">
+  <div id="follow-div" class="row p-0">
+    <div class="follow col col-lg-3 col-md-3">
+      <p class="follow-title" id="active">chọn phim</p>
+    </div>
+    <div class="follow col col-lg-3 col-md-3">
+      <p class="follow-title">chọn ghế</p>
+    </div>
+    <div class="follow col col-lg-3 col-md-3">
+      <p class="follow-title">xác nhận đặt vé</p>
+    </div>
+    <div class="follow col col-lg-3 col-md-3">
+      <p class="follow-title">thông tin đặt vé</p>
+    </div>
+  </div>
+
+  <!--  <hr class="d-inline-block"-->
+  <!--      style="width: 99%; height: 1px; background-color: lightgray">-->
+
+  <div id="pick-div" class="row p-0">
+    <div class="pick col col-lg-4">
+      <table class="table table-hover table-bordered" id="pick-movie">
+        <thead class="tb-head">
+        <tr>
+          <td colspan="2" class="m-0">Chọn phim</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr class="disabled-hover" *ngFor="let movie of listMovie">
+          <td style="display: inline-flex; width: 100%" class="movie-list" (click)="getDateTimeList(movie.movieId)"
+              [class.chooseFilm]="activeId && activeId === movie.movieId"
+              [id]="movie.movieId">
+            <img class="img" [src]="movie.posterMovie"
+                 alt="img" width="80" height="60">
+            <span class="movie-title">{{movie.movieName}}</span>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="pick col-lg-4 col-sm-6 pick-day">
+      <table class="table table-hover table-bordered">
+        <thead class="tb-head">
+        <tr>
+          <td class="pick-title m-0">Chọn ngày chiếu</td>
+        </tr>
+        </thead>
+        <tbody *ngIf="!listDateTime">
+        <tr class="disabled-hover">
+          <td class="m-0">
+            <span class="datetime">Vui lòng chọn ngày chiếu</span>
+          </td>
+        </tr>
+        </tbody>
+        <tbody *ngIf="listDateTime">
+        <tr>
+          <select class="form-control bg-white"
+                  (change)="getShowTimeList($event.target.value)">
+            <option value="" selected disabled>Vui lòng chọn ngày chiếu</option>
+            <option *ngFor="let date of listDateTime" [ngValue]="date">
+              <td>{{date}}</td>
+            </option>
+          </select>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="pick col-lg-4 col-sm-6 pick-day">
+      <table class="table table-hover table-bordered">
+        <thead class="tb-head">
+        <tr>
+          <td class="pick-title m-0" colspan="2">Chọn suất chiếu</td>
+        </tr>
+        </thead>
+        <tbody *ngIf="!listShowtime">
+        <tr class="disabled-hover">
+          <td>
+            <span class="theater">Chưa có suất chiếu</span>
+          </td>
+        </tr>
+        </tbody>
+        <tbody *ngIf="listShowtime">
+        <tr>
+          <select class="form-control bg-white" [(ngModel)]="showTimeId">
+            <option value="" selected disabled>Vui lòng chọn suất chiếu</option>
+            <option *ngFor="let show of listShowtime" [value]="show.showTimeId">
+              <td>{{show.showTime}}</td>
+            </option>
+          </select>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div id="btnContinue" class="text-center mb-4">
+    <button class="btn button-submit rounded-pill" type="button" (click)="getMovieTicket()">
+        <span class="arrow">
+          <i class="fas fa-2x fa-arrow-right"></i>
+        </span>
+    </button>
+  </div>
+</div>
+

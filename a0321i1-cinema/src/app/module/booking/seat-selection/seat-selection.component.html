@@ -1,1 +1,132 @@
-<p>seat-selection works!</p>
+<div class="container" id="fluid">
+  <div id="follow-div" class="row p-0">
+    <div class="follow col-lg-3 col-md-3">
+      <p class="follow-title">Chọn phim</p>
+    </div>
+    <div class="follow col-lg-3 col-md-3">
+      <p class="follow-title" id="active">Chọn ghế</p>
+    </div>
+    <div class="follow col-lg-3 col-md-3">
+      <p class="follow-title">Xác nhận đặt vé</p>
+    </div>
+    <div class="follow col-lg-3 col-md-3">
+      <p class="follow-title">Thông tin đặt vé</p>
+    </div>
+  </div>
+
+  <p id="movie-picked-title">Bạn đã chọn</p>
+  <div id="movie-picked-content" class="row m-0 p-0">
+    <p>Phim : <span>{{movieTicket.movie.movieName}}</span></p>
+    <p>Ngày chiếu : <span>{{movieTicket.showDate | date:'dd-MM-yyyy'}}</span></p>
+    <p>Suất chiếu : <span>{{movieTicket.showTime.showTime}}</span></p>
+  </div>
+
+  <div class="container-fluid justify-content-center align-items-center">
+    <!--      choose seat-->
+    <div id="seat-show" class="row m-0 p-0">
+      <div class="col-lg-2 space-div"></div>
+      <div class="col-lg-8 col-md-12" id="seat">
+        <!--    screen-->
+        <p class="pick-title" style="height: 2.5rem; width: 100%" alt="bg">SCREEN</p>
+
+        <table class="table table-borderless">
+          <tbody class="text-center justify-content-center align-items-center">
+          <tr *ngFor="let index of listRow">
+            <td *ngFor="let roomSeat of listSeat | slice:(index-1)*10:(index)*10">
+              <div *ngIf="roomSeat.seat.row.rowId == index"
+                   class="text-center td-seat align-items-center"
+                   [id]="roomSeat.seat.row.rowName+roomSeat.seat.column.columnName"
+                   (click)="chooseSeat(roomSeat)"
+                   [ngClass]="((roomSeat.seatStatus.seatStatusId == 2) ?
+                      'ordered-seat' :
+                       ((roomSeat.seat.seatType.seatTypeId == 2) ? ' vip-seat' : ' empty-seat'))"
+                   style="padding-top: 0.3125rem">
+                {{roomSeat.seat.row.rowName}}{{roomSeat.seat.column.columnName}}
+              </div>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="col-lg-2 space-div"></div>
+    </div>
+    <div *ngIf="listChoseSeat.length != 0 else elseBlock"
+         class="row text-center justify-content-center">
+      <div class="col-lg-3 col-md-3 col-sm-3"></div>
+      <div class="col-lg-6 col-md-6 col-sm-6">
+        <table class="table table-borderless table-choose-seat">
+          <tbody>
+          <tr>
+            <td>
+              Bạn đã chọn
+            </td>
+            <td>
+              <strong> 0{{listChoseSeat.length}} vé</strong>
+            </td>
+          </tr>
+          <tr *ngFor="let roomSeat of listChoseSeat; let i = index">
+            <td>
+              {{roomSeat.seat.row.rowName}}{{roomSeat.seat.column.columnName}}
+            </td>
+            <td>
+              <p *ngIf="roomSeat.seat.seatType.seatTypeId == 1">{{movieTicket.ticketPrice | number}} VND</p>
+              <p *ngIf="roomSeat.seat.seatType.seatTypeId == 2">{{movieTicket.ticketPrice * (4 / 3) | number}} VND</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Tổng tiền
+            </td>
+            <td>
+              {{totalMoney | number}} VND
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="col-lg-3 col-md-3 col-sm-3"></div>
+    </div>
+
+    <ng-template #elseBlock>
+
+    </ng-template>
+
+    <!--      instructor-->
+    <div id="instructor" class="row m-0 p-0 mb-3 justify-content-center">
+      <div class="row m-1 p-0 align-items-center">
+        <div class="td-seat empty-seat"></div>
+        <span class="instructor-label mr-lg-3 ml-1">Ghế trống</span>
+      </div>
+      <div class="row m-1 p-0 align-items-center">
+        <div class="td-seat selecting-seat"></div>
+        <span class="instructor-label mr-lg-3 ml-1">Ghế đang chọn</span>
+      </div>
+      <div class="row m-1 p-0 align-items-center">
+        <div class="td-seat ordered-seat"></div>
+        <span class="instructor-label mr-lg-3 ml-1">Ghế đã có người đặt</span>
+      </div>
+      <div class="row m-1 p-0 align-items-center">
+        <div class="td-seat vip-seat"></div>
+        <span class="instructor-label mr-lg-0 ml-1">Ghế VIP</span>
+      </div>
+    </div>
+
+    <div id="btnContinue" class="text-center mb-4">
+      <a routerLink="/booking/movie">
+        <button class="btn button-submit rounded-pill" type="button">
+        <span class="arrow">
+          <i class="fas fa-2x fa-arrow-left"></i>
+        </span>
+        </button>
+      </a>
+      <button class="btn button-submit rounded-pill" type="button" (click)="continue()"
+              [disabled]="listChoseSeat.length == 0">
+        <span class="arrow">
+          <i class="fas fa-2x fa-arrow-right"></i>
+        </span>
+      </button>
+    </div>
+
+  </div>
+</div>
+

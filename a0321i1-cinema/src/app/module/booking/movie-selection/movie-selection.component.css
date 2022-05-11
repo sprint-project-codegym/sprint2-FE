@@ -1,0 +1,230 @@
+:root {
+  --color: #05386B;
+  --font: 'Open Sans', sans-serif
+}
+
+@media screen and (max-width: 905px) {
+
+  .follow-title {
+    display: none;
+  }
+
+  #active {
+    display: block;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  #pick-div {
+    justify-content: center;
+    display: block;
+  }
+}
+
+#fluid {
+  margin-top: 3rem;
+  font-family: var(--font);
+  font-size: 0.9rem;
+}
+
+#follow-div {
+  font-size: 1.2rem;
+}
+
+.follow {
+  width: fit-content;
+}
+
+.follow-title:hover {
+  cursor: pointer;
+}
+
+.follow-title {
+  padding-top: 0.375rem;
+  margin-bottom: 0;
+  height: 2.3rem;
+  text-transform: uppercase;
+  text-align: center;
+  border-bottom: 2px solid var(--color);
+}
+
+#active {
+  background-color: var(--color);
+  color: white;
+}
+
+hr {
+  margin-top: 0;
+}
+
+#pick-div {
+  margin-top: 2rem;
+}
+
+#pick-div td {
+  cursor: pointer;
+}
+
+#pick-movie {
+  padding: 0 0.9rem;
+}
+
+#pick-movie {
+  width: 100%;
+}
+
+td {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+#pick-movie tbody {
+  height: 20rem;
+  width: 100%;
+  display: block;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+#pick-movie tbody::-webkit-scrollbar {
+  width: 10px;
+}
+#pick-movie tbody::-webkit-scrollbar-track-piece {
+  background: #eee;
+}
+#pick-movie tbody::-webkit-scrollbar-thumb {
+  background: var(--color);
+}
+
+#pick-movie tr {
+  width: 100%;
+  display: block;
+}
+
+#pick-movie td {
+  width: 100%;
+  display: block;
+  border: none;
+}
+
+.movie-selected {
+  background-color: #B4D5FA;
+}
+
+.tb-head {
+  background-color: var(--color);
+  color: white;
+  text-transform: uppercase;
+  text-align: center;
+  align-items: center;
+  font-size: 1.1rem;
+}
+
+.movie-title {
+  margin-left: 0.8rem;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  color: var(--color);
+}
+
+.upper-text {
+  margin-left: 0.8rem;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  color: #a0a3a7
+}
+
+.img {
+  transition: all 0.25s ease-in 0.1s;
+}
+
+.img:hover {
+  transform: scale(1.25);
+  transition: all 0.3s ease-out;
+}
+
+.datetime, .showtime {
+  color: #383838;
+  font-size: 0.95rem;
+  text-transform: capitalize;
+  margin-left: 0.5rem;
+}
+
+.disabled-hover:hover {
+  background-color: #B4D5FA;
+  cursor: default;
+}
+
+.arrow {
+  margin-left: 0.5rem;
+}
+
+#btnContinue {
+  margin-top: 1rem;
+}
+
+.fa-arrow-right {
+  width: 5rem;
+}
+
+.chooseFilm {
+  background-color: #B4D5FA !important;
+}
+
+.button-submit {
+  border-color: var(--color);
+  color: var(--color);
+}
+
+.button-submit:hover {
+  color: #fff;
+  background-color: var(--color);
+  border-color: var(--color);
+}
+
+.movie-list:hover {
+  background-color: #B4D5FA;
+}
+
+.pick ul {
+  padding: 0 !important;
+}
+.pick li {
+  list-style: none;
+  border: 1px solid #ddd !important;
+  height: 50px;
+  text-align: center;
+
+  font-size: 0.95rem;
+  vertical-align: middle;
+}
+
+.pick-ul > li {
+  display:flex;
+  align-items:center;
+  padding: 0px 5px;
+  color: #0a547c;
+  text-align:center;
+}
+
+.pick li:hover {
+  cursor: pointer;
+  background-color: #f26b38;
+}
+
+.pick-ul>li>span{
+  vertical-align:middle;
+  display:block;
+  width:100%;
+}
+
+.pick-title {
+  display: -webkit-flex;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color);
+  color: white;
+  font-size: 1.1rem;
+  height: 50px;
+}
