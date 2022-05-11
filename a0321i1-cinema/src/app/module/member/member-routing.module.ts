@@ -6,10 +6,10 @@ import {TransactionHistoryComponent} from './account-management/transaction-hist
 import {TicketsBookingComponent} from './account-management/tickets-booking/tickets-booking.component';
 
 const routes: Routes = [
-  {
-    path: 'member',
-    component: MemberPageComponent,
-    children: [
+  // {
+  //   path: 'member',
+  //   component: MemberPageComponent,
+  //   children: [
       {
         path: 'info',
         component: AccountInfoComponent
@@ -24,8 +24,8 @@ const routes: Routes = [
       },
       {path: '', redirectTo: '', pathMatch: 'full'},
       {path: '**', redirectTo: '', pathMatch: 'full'}
-    ]
-  }
+  //   ]
+  // }
 ];
 
 @NgModule({
