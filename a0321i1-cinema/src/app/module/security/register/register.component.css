@@ -108,7 +108,7 @@ input:focus, input:active, select:focus, select:active {
 
 #image-preview {
   width: 100px;
-  min-height: 100px;
+  height: 100px;
   border: 2px solid #dddddd;
   margin-top: 15px;
 
