@@ -14,7 +14,7 @@ export class UserService {
   constructor(private httpClient: HttpClient) {
     this.httpOptions = {
       headers: new HttpHeaders({
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json', 'charset': 'utf-8'
       }),
       'Access-Control-Allow-Origin': 'http://localhost:4200/',
       'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
@@ -27,6 +27,7 @@ export class UserService {
   }
 
   editUser(user: User): Observable<User> {
-    return this.httpClient.put<User>(this.API_URL_USER + '/editUser/', user);
+    return this.httpClient.put<User>(this.API_URL_USER + '/editUser/', JSON.stringify(user));
+
   }
 }

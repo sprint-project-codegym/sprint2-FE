@@ -8,6 +8,7 @@ import {AccountDTO} from '../../../../dto/AccountDTO';
 import {ToastrService} from 'ngx-toastr';
 import {Router} from '@angular/router';
 import {NgxSpinnerService} from 'ngx-spinner';
+import {TokenStorageService} from '../../../../service/security/token-storage.service';
 
 @Component({
   selector: 'app-account-info',
@@ -30,6 +31,7 @@ export class AccountInfoComponent implements OnInit {
     private toastr: ToastrService,
     private router: Router,
     private spinner: NgxSpinnerService,
+    private tokenStorageService: TokenStorageService
   ) {
   }
 
@@ -41,13 +43,14 @@ export class AccountInfoComponent implements OnInit {
   }
 
   getAccount() {
-    this.accountService.getAccountByUsername('luan123').subscribe(data => {
+    this.accountService.getAccountByUsername(this.tokenStorageService.getUser().user.account.username).subscribe(data => {
       this.account = data;
     });
+
   }
 
   getUser() {
-    this.userService.getUserByUsername('luan123').subscribe(data => {
+    this.userService.getUserByUsername(this.tokenStorageService.getUser().user.account.username).subscribe(data => {
       this.user = data;
       this.rfEditForm.patchValue(data);
     });
@@ -65,13 +68,14 @@ export class AccountInfoComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.rfEditForm.value);
+    // console.log(this.rfEditForm.value);
     this.user.name = this.rfEditForm.value.name;
     this.user.birthday = this.rfEditForm.value.birthday;
     this.user.gender = this.rfEditForm.value.gender;
     this.user.email = this.rfEditForm.value.email;
     this.user.idCard = this.rfEditForm.value.idCard;
     this.user.phone = this.rfEditForm.value.phone;
+    console.log(this.user);
     this.userService.editUser(this.user).subscribe(data => {
       this.user = data;
       this.router.navigateByUrl('/member/info').then(
@@ -98,7 +102,7 @@ export class AccountInfoComponent implements OnInit {
 
   onSubmitPass() {
     if (this.rfPasswordForm.valid) {
-      this.accountDTO = new AccountDTO('luan123', this.rfPasswordForm.value.oldPassword, this.rfPasswordForm.value.newPassword);
+      this.accountDTO = new AccountDTO(this.tokenStorageService.getUser().user.account.username, this.rfPasswordForm.value.oldPassword, this.rfPasswordForm.value.newPassword);
       console.log(this.accountDTO);
       this.accountService.setNewPassword(this.accountDTO).subscribe(data => {
         this.toastr.success('Đổi mật khẩu thành công!', 'Thông báo!');

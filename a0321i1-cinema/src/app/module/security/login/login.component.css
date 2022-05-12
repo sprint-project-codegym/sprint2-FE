@@ -1,0 +1,228 @@
+.login {
+  /* margin-top: 80px; */
+  /* margin-bottom: 80px; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+.background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url("../../../../assets/img/bg-movie.png") center no-repeat;
+  background-size: cover;
+  filter: blur(5px);
+  z-index: -999;
+}
+*.form-input {
+  background-color: #fff;
+  z-index: 1;
+  padding: 12px 30px 20px;
+}
+
+.heading {
+  font-size: 30px;
+  color: white;
+  font-weight: 600;
+  margin: 0;
+  padding: 4px;
+}
+
+.social-button span {
+  margin-left: 16px;
+}
+
+.normal-input input {
+  width: auto;
+  padding: 8px;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  background-color: #fff;
+  color: #000;
+}
+.normal-input [type=radio], .normal-input [type=checkbox] {
+  width: auto;
+}
+.normal-input input, .input-group-text, select {
+  border: 1px solid #a8d7e8 !important;
+}
+
+.normal-input.has-error input {
+  border: 1px solid #ff4a22;
+}
+
+.btn-login {
+  border: none;
+  padding: 12px 0;
+  width: 100%;
+  font-weight: 600;
+  color: #fff;
+  border-radius: 5px;
+  font-size: 18px;
+  background: #05386B;
+}
+
+.error {
+  color: red;
+  font-size: 16px;
+}
+
+input:focus, input:active, select:focus, select:active {
+  box-shadow: none !important;
+}
+
+.heading-wrap {
+  margin: -15px -30px 0;
+  display: none;
+  background-color: #05386B;
+}
+
+.error-message {
+  color: red;
+}
+
+.google-btn {
+  width: 184px;
+  height: 42px;
+  background-color: #4285f4;
+  border-radius: 2px;
+  box-shadow: 0 3px 4px 0 rgba(0,0,0,.25);
+}
+.google-btn .google-icon-wrapper {
+  position: absolute;
+  margin-top: 1px;
+  margin-left: 1px;
+  width: 40px;
+  height: 40px;
+  border-radius: 2px;
+  background-color: #fff;
+}
+.google-icon {
+  position: absolute;
+  margin-top: 11px;
+  margin-left: 11px;
+  width: 18px;
+  height: 18px;
+}
+.btn-text {
+  float: right;
+  margin: 11px 11px 0 0;
+  color: #fff;
+  font-size: 14px;
+  letter-spacing: 0.2px;
+  font-family: "Roboto";
+}
+.btn-text:hover {
+  box-shadow: 0 0 6px #4285f4;
+}
+.btn-text:active {
+  /* background: #1669F2; */
+}
+a, a:hover {
+  text-decoration: none;
+}
+.social-button {
+  background-position: 25px 0px;
+  box-sizing: border-box;
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+  display: inline-block;
+  height: 50px;
+  line-height: 50px;
+  text-align: left;
+  text-decoration: none;
+  vertical-align: middle;
+  width: 100%;
+  border-radius: 3px;
+  margin: 8px auto;
+  outline: rgb(255, 255, 255) none 0px;
+  padding-left: 20%;
+  transition: all 0.2s cubic-bezier(0.72, 0.01, 0.56, 1) 0s;
+  -webkit-transition: all .3s ease;
+  -moz-transition: all .3s ease;
+  -ms-transition: all .3s ease;
+  -o-transition: all .3s ease;
+  transition: all .3s ease;
+}
+
+#facebook-connect {
+  background: rgb(255, 255, 255) url('https://raw.githubusercontent.com/eswarasai/social-login/master/img/facebook.svg?sanitize=true') no-repeat scroll 5px 0px / 30px 50px padding-box border-box;
+  border: 1px solid rgb(60, 90, 154);
+}
+#facebook-connect:hover {
+  border-color: rgb(60, 90, 154);
+  background: rgb(60, 90, 154) url('https://raw.githubusercontent.com/eswarasai/social-login/master/img/facebook-white.svg?sanitize=true') no-repeat scroll 5px 0px / 30px 50px padding-box border-box;
+  -webkit-transition: all .8s ease-out;
+  -moz-transition: all .3s ease;
+  -ms-transition: all .3s ease;
+  -o-transition: all .3s ease;
+  transition: all .3s ease-out;
+}
+
+#facebook-connect span {
+  font-size: 18px;
+  box-sizing: border-box;
+  color: rgb(60, 90, 154);
+  cursor: pointer;
+  text-align: center;
+  border: 0px none rgb(255, 255, 255);
+  outline: rgb(255, 255, 255) none 0px;
+  -webkit-transition: all .3s ease;
+  -moz-transition: all .3s ease;
+  -ms-transition: all .3s ease;
+  -o-transition: all .3s ease;
+  transition: all .3s ease;
+}
+#facebook-connect:hover span {
+  font-size: 20px;
+  color: #FFF;
+  -webkit-transition: all .3s ease;
+  -moz-transition: all .3s ease;
+  -ms-transition: all .3s ease;
+  -o-transition: all .3s ease;
+  transition: all .3s ease;
+}
+
+#google-connect {
+  background: rgb(255, 255, 255) url('https://raw.githubusercontent.com/eswarasai/social-login/master/img/google-plus.png') no-repeat scroll 5px 0px / 50px 50px padding-box border-box;
+  border: 1px solid rgb(220, 74, 61);
+}
+
+#google-connect:hover {
+  border-color: rgb(220, 74, 61);
+  background: rgb(220, 74, 61) url('https://raw.githubusercontent.com/eswarasai/social-login/master/img/google-plus-white.png') no-repeat scroll 5px 0px / 50px 50px padding-box border-box;
+  -webkit-transition: all .8s ease-out;
+  -moz-transition: all .3s ease;
+  -ms-transition: all .3s ease;
+  -o-transition: all .3s ease;
+  transition: all .3s ease-out;
+}
+
+#google-connect span {
+  font-size: 18px;
+  box-sizing: border-box;
+  color: rgb(220, 74, 61);
+  cursor: pointer;
+  text-align: center;
+  border: 0px none rgb(220, 74, 61);
+  outline: rgb(255, 255, 255) none 0px;
+  -webkit-transition: all .3s ease;
+  -moz-transition: all .3s ease;
+  -ms-transition: all .3s ease;
+  -o-transition: all .3s ease;
+  transition: all .3s ease;
+}
+
+#google-connect:hover span {
+  font-size: 20px;
+  color: #FFF;
+  -webkit-transition: all .3s ease;
+  -moz-transition: all .3s ease;
+  -ms-transition: all .3s ease;
+  -o-transition: all .3s ease;
+  transition: all .3s ease;
+}
