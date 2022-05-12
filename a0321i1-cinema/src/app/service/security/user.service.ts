@@ -27,7 +27,6 @@ export class UserService {
   }
 
   editUser(user: User): Observable<User> {
-    return this.httpClient.put<User>(this.API_URL_USER + '/editUser/', JSON.stringify(user));
-
+    return this.httpClient.put<User>(this.API_URL_USER + '/editUser/', user);
   }
 }

@@ -30,11 +30,15 @@ export class AccountManagementService {
     return this.httpClient.put<any>(this.API_URL_ACCOUNT + '/setPass', accountDTO, this.httpOptions);
   }
 
-  getTransactionHistory(username: string, status: boolean, start: string, end: string): Observable<any> {
-    return this.httpClient.get<any>(this.API_URL_ACCOUNT + '/transaction?username=' + username + '&status=' + status + '&startDate=' + start + '&endDate=' + end, this.httpOptions);
-  }
-
-  getAllTransaction(username: string): Observable<any> {
-    return this.httpClient.get<any>(this.API_URL_ACCOUNT + '/transaction-list?username=' + username, this.httpOptions);
+  getTransactionHistory(username: string, status: boolean, start: string, end: string, page: any): Observable<any> {
+    if (status == null) {
+      return this.httpClient.get<any>(this.API_URL_ACCOUNT + '/transaction-list?username=' + username + '&page=' + page, this.httpOptions);
+    }
+    if (start == null && end == null) {
+      return this.httpClient.get<any>(this.API_URL_ACCOUNT + '/transaction-status?username=' + username + '&status=' + status + '&page=' + page, this.httpOptions);
+    }
+    else {
+      return this.httpClient.get<any>(this.API_URL_ACCOUNT + '/transaction?username=' + username + '&status=' + status + '&startDate=' + start + '&endDate=' + end + '&page=' + page, this.httpOptions);
+    }
   }
 }

@@ -30,7 +30,6 @@
               <td>
                 <input type="date" style="width: 600px" class="form-control" #end
                        id="endDate"/>
-                <!--                                    <p class="text-danger m-0">Ngày không được để trống. Vui lòng chọn!</p>-->
               </td>
             </div>
           </tr>
@@ -58,7 +57,7 @@
           <tr>
             <td></td>
             <td>
-              <button type="submit" class="btn btn-primary" (click)="onSubmit(status, start, end)">
+              <button type="submit" class="btn btn-primary" (click)="onSubmit(status, start, end, page)">
                 Xem lịch sử
               </button>
             </td>
@@ -75,7 +74,7 @@
           </tr>
           </thead>
           <tbody>
-          <tr *ngFor="let transaction of transactions | paginate: { itemsPerPage: 3, currentPage: p }, let i = index">
+          <tr *ngFor="let transaction of transactions, let i = index">
             <td width="10%">{{i + 1}}</td>
             <td width="20%">{{transaction.transactionDate | date:'dd/MM/yyyy'}}</td>
             <td width="55%">{{transaction.description}}</td>
@@ -86,8 +85,46 @@
           </tr>
           </tbody>
         </table>
-        <pagination-controls class="text-right" (pageChange)="p = $event"></pagination-controls>
       </div>
     </div>
   </div>
+<!--    Pagination-->
+    <div class="row">
+      <div class="col col-12 px-lg-5 pb-lg-0">
+        <nav aria-label="Page navigation example" class="float-right">
+          <ul class="pagination">
+            <div *ngIf="pageClicked==0; else show1"></div>
+            <ng-template #show1>
+              <li class="page-item" (click)="onFirst(status, start, end)" [ngClass]="pageClicked==0?'disabled':''">
+                <a class="page-link">Đầu</a>
+              </li>
+              <li class="page-item" (click)="onPrevious(status, start, end)" [ngClass]="pageClicked==0?'disabled':''">
+                <a class="page-link"><<</a>
+              </li>
+            </ng-template>
+            <li *ngIf="pageClicked != 0" class="page-item" (click)="onSubmit(status, start, end ,pages[pageClicked-1])">
+              <a class="page-link">{{pageClicked}}</a>
+            </li>
+            <li [ngClass]="(pageClicked == pages[pageClicked]) ? 'active' : ''" class="page-item"
+                (click)="onSubmit(status, start, end ,pages[pageClicked])">
+              <a class="page-link">{{pageClicked + 1}}</a>
+            </li>
+            <li *ngIf="pageClicked < pages.length -1" class="page-item" (click)="onSubmit(status, start, end ,pages[pageClicked-1])">
+              <a class="page-link">{{pageClicked + 2}}</a>
+            </li>
+            <li *ngIf="pageClicked < pages.length-2" class="page-item" (click)="onLast(status, start, end)">
+              <a class="page-link">{{pages[pages.length - 1] + 1}}</a>
+            </li>
+            <div *ngIf="pageClicked===totalPage-1; else show2"></div>
+            <ng-template #show2>
+              <li class="page-item" (click)="onNext(status, start, end)" [ngClass]="pageClicked==totalPage-1?'disabled':''">
+                <a class="page-link">>></a>
+              </li>
+              <li class="page-item" (click)="onLast(status, start, end)" [ngClass]="pageClicked==totalPage-1?'disabled':''"><a
+                class="page-link">Cuối</a></li>
+            </ng-template>
+          </ul>
+        </nav>
+      </div>
+    </div>
 </div>
