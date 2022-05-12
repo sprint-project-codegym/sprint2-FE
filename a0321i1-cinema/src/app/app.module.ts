@@ -3,7 +3,6 @@ import {NgModule} from '@angular/core';
 import {FacebookLoginProvider, GoogleLoginProvider, SocialAuthServiceConfig, SocialLoginModule} from 'angularx-social-login';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
-import {APP_BASE_HREF, DatePipe} from '@angular/common';
 import {LoadingComponent} from './module/loading/loading.component';
 import {HttpClientModule} from '@angular/common/http';
 import {AdminModule} from './module/admin/admin.module';
@@ -12,14 +11,13 @@ import {EmployeeModule} from './module/employee/employee.module';
 import {HomePageModule} from './module/home-page/home-page.module';
 import {MemberModule} from './module/member/member.module';
 import {SecurityModule} from './module/security/security.module';
+import {BottomSheetNotifyComponent} from './util/bottom-sheet-notify/bottom-sheet-notify.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {ToastrModule} from 'ngx-toastr';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {NgxPaginationModule} from 'ngx-pagination';
 import {NgxSpinnerModule} from 'ngx-spinner';
-import {authInterceptorProviders} from './helpers/auth.interceptor';
-import {JWT_OPTIONS, JwtHelperService} from '@auth0/angular-jwt';
-import { BottomSheetNotifyComponent } from './util/bottom-sheet-notify/bottom-sheet-notify.component';
+import {ToastrModule} from 'ngx-toastr';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+
 
 @NgModule({
   declarations: [
