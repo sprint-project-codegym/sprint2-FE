@@ -10,16 +10,18 @@ import {MovieSelectionComponent} from './movie-selection/movie-selection.compone
 import {SeatSelectionComponent} from './seat-selection/seat-selection.component';
 import {HttpClientModule} from '@angular/common/http';
 import {HomePageModule} from '../home-page/home-page.module';
+import {FormsModule} from "@angular/forms";
 
 
 @NgModule({
   declarations: [BookingInformationComponent, ConfirmBookingComponent, MainBookingComponent, MovieSelectedComponent, MovieSelectionComponent, SeatSelectionComponent],
-  imports: [
-    CommonModule,
-    BookingRoutingModule,
-    HttpClientModule,
-    HomePageModule,
-  ]
+    imports: [
+        CommonModule,
+        BookingRoutingModule,
+        HttpClientModule,
+        HomePageModule,
+        FormsModule,
+    ]
 })
 export class BookingModule {
 }
