@@ -1,8 +1,16 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
-import {FacebookLoginProvider, GoogleLoginProvider, SocialAuthServiceConfig, SocialLoginModule} from 'angularx-social-login';
+import {
+  FacebookLoginProvider,
+  GoogleLoginProvider,
+  SocialAuthServiceConfig,
+  SocialLoginModule
+} from 'angularx-social-login';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
+
+import {CommonModule, DatePipe} from '@angular/common';
+
 import {LoadingComponent} from './module/loading/loading.component';
 import {HttpClientModule} from '@angular/common/http';
 import {AdminModule} from './module/admin/admin.module';
@@ -41,7 +49,19 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     MemberModule,
     SecurityModule,
     ReactiveFormsModule,
+
+    CommonModule,
+    FormsModule,
+    ToastrModule.forRoot(
+      {
+        timeOut: 2000,
+        progressBar: true,
+        progressAnimation: 'increasing'
+      }
+    ),
+
     FormsModule
+
   ],
   providers: [{
     provide: 'SocialAuthServiceConfig',
