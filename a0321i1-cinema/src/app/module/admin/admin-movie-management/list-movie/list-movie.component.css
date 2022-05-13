@@ -61,3 +61,27 @@ th {
 .pagination {
   cursor:pointer;
 }
+.page-item.active .page-link{
+  background-color: #05386B;
+  border-color: #05386B;
+}
+.page-link{
+  color: #05386B;
+}
+.title-text{
+  color: #05386B;
+}
+.btn.primary {
+  display: inline-block;
+  font-size: 14px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #ffffff;
+  background-color: #05386b;
+  padding: 15px;
+  text-decoration: none;
+  line-height: 1;
+}
+.btn.primary:hover{
+  background-color: rgba(5, 56, 107, 0.88);
+}

@@ -12,6 +12,10 @@ export class DeleteMovieComponent implements OnInit {
 
   @Input()
   deleteId: string;
+  @Input()
+  deleteName: string;
+  @Input()
+  deleteStartDate: string;
 
   @Output()
   deleteComplete = new EventEmitter<boolean>();
@@ -22,6 +26,7 @@ export class DeleteMovieComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    console.log('Delete work!');
   }
 
   deleteMovie() {

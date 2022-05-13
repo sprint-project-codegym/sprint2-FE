@@ -1,9 +1,9 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {Movie} from '../../../../entity/Movie';
-import {MovieService} from '../../../../service/home-page/movie.service';
 import {Router} from '@angular/router';
 import {ToastrService} from 'ngx-toastr';
 import {MovieManagementService} from '../../../../service/admin/movie-management.service';
+
 
 @Component({
   selector: 'app-list-movie',
@@ -11,7 +11,7 @@ import {MovieManagementService} from '../../../../service/admin/movie-management
   styleUrls: ['./list-movie.component.css']
 })
 export class ListMovieComponent implements OnInit {
-  movies: Movie[];
+  movies: Movie[] = [];
   size = 10;
   pageClicked = 0;
   totalPages = 1;
@@ -20,6 +20,8 @@ export class ListMovieComponent implements OnInit {
   nameInput = '';
   studioInput = '';
   deleteId: number;
+  deleteName: string;
+  deleteStartDate: string;
 
   @Output()
   deleteComplete = new EventEmitter<boolean>();

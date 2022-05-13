@@ -7,9 +7,10 @@ import {EditMovieComponent} from './edit-movie/edit-movie.component';
 import {ListMovieComponent} from './list-movie/list-movie.component';
 import {HttpClientModule} from '@angular/common/http';
 import { DeleteMovieComponent } from './delete-movie/delete-movie.component';
+import { SafePipe } from './safe.pipe';
 
 @NgModule({
-  declarations: [AddMovieComponent, EditMovieComponent, ListMovieComponent, DeleteMovieComponent],
+  declarations: [AddMovieComponent, EditMovieComponent, ListMovieComponent, DeleteMovieComponent, SafePipe],
   exports: [
     ListMovieComponent,
     EditMovieComponent,
