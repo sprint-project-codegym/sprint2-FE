@@ -1,3 +1,5 @@
+import {PaypalDTO} from '../../dto/PaypalDTO';
+import {tick} from "@angular/core/testing";
 import {Injectable} from '@angular/core';
 import {MovieTicket} from "../../entity/MovieTicket";
 import {RoomSeat} from "../../entity/RoomSeat";
@@ -16,12 +18,9 @@ const API_USER: string = 'http://localhost:8080/api/user';
   providedIn: 'root'
 })
 export class BookTicketsService {
-  API_URL_TICKET: string = 'http://localhost:8080/api/ticket';
+  private API_INF = 'http://localhost:8080/api/movie_ticket';
+  private API_PAY = 'http://localhost:8080/api/payment';
   httpOptions: any;
-
-  movieTicket: MovieTicket;
-  listChoseSeat: RoomSeat[] = [];
-
 
   constructor(private httpClient: HttpClient) {
     this.httpOptions = {
@@ -33,6 +32,27 @@ export class BookTicketsService {
       'Access-Control-Allow-Credentials': 'true'
     };
   }
+
+  getDetailMovie(id: string): Observable<any> {
+    return this.httpClient.get(this.API_INF + '/' + 'information' + '/' + id, this.httpOptions);
+  }
+
+  payViaPaypal(price: any): Observable<any>{
+    return this.httpClient.post<PaypalDTO>(this.API_PAY + '/' + 'pay', {"price" : price}, this.httpOptions);
+  }
+
+  sendMailSuccessful(ticketInfo: any) {
+    return this.httpClient.post(this.API_PAY + '/successful', ticketInfo, this.httpOptions);
+  }
+
+  API_URL_TICKET: string = 'http://localhost:8080/api/ticket';
+
+
+  movieTicket: MovieTicket;
+  listChoseSeat: RoomSeat[] = [];
+
+
+
 
   findAll(username: string, page: number): Observable<any> {
     console.log(username);

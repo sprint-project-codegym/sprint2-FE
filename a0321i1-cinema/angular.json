@@ -126,6 +126,7 @@
   },
   "defaultProject": "a0321i1-cinema",
   "cli": {
-    "analytics": false
+    "analytics": "cdacb717-862a-47ab-bd09-d3366133fd7e"
   }
 }
+
