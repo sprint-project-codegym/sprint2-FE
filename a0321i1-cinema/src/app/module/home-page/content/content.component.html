@@ -1,1 +1,188 @@
-<p>content works!</p>
+<div id="home-contents" (keydown.escape)="closeTrailer()">
+  <!--Carousel-->
+  <div id="main-carousel" class="carousel slide carousel-fade" data-ride="carousel" data-interval="3000">
+    <ol class="carousel-indicators">
+      <li data-target="#main-carousel" *ngFor="let movie of promotingMovies; let i = index" data-slide-to="i"
+          [ngClass]="i == 0? 'active': ''"></li>
+    </ol>
+    <div class="carousel-inner" role="listbox">
+      <div *ngFor="let movie of promotingMovies; let i = index" class="carousel-item" role="option"
+           [ngClass]="i == 0? 'active': ''">
+        <a [routerLink]="['/detail-movie', movie.movieId]">
+          <img [src]="movie.banner" alt="">
+        </a>
+        <div class="container content-wrap">
+          <div class="play-bt trailer-bt-banner" (click)="openTrailer(movie.trailer)">
+            <button class="btn primary animated fadeInUp c11-trailer" (click)="openTrailer(movie.trailer)"></button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <a href="#main-carousel" class="left carousel-control-prev" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a href="#main-carousel" class="right carousel-control-next" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+  <div class="top-list" *ngIf="top3Movies.length >= 3">
+    <div class="top-sale">
+      <div class="top-sale-header">
+        <div class="title">
+          <i class="fal fa-star mx-1"></i>
+          <i class="fal fa-star mx-1"></i>
+          <i class="fal fa-star mx-1"></i>
+          <p class="mx-1">TOP 3 DOANH THU </p>
+          <i class="fal fa-star mx-1"></i>
+          <i class="fal fa-star mx-1"></i>
+          <i class="fal fa-star mx-1"></i>
+        </div>
+      </div>
+      <div class="top-movies">
+        <div class="row m-0 h-100">
+          <div class="col h-100 px-2">
+            <div class="last top-2">
+              <a [routerLink]="['/detail-movie', top3Movies[1].movieId]">
+                <img [src]="top3Movies[1].posterMovie" alt="">
+                <img class="tag" src="../../../../assets/img/top-2.png" alt="top-2">
+                <div class="movie-hover">
+                  <p class="title-hover">{{top3Movies[1].movieName}}</p>
+                  <p class="categories-hover">Thể loại: {{top3Movies[1].categories}}<br>
+                    Khởi chiếu: {{top3Movies[1].startDate}}
+                  </p>
+                  <div class="booking-btn">
+                    <a [routerLink]="['/booking/movie', this.top3Movies[1].movieId]" class="btn secondary text-center">ĐẶT VÉ</a>
+                    <!--                    <a [routerLink]="['/booking/movie', top3Movies[1].movieId]" class="btn secondary text-center">ĐẶT-->
+                    <!--                      VÉ</a>-->
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="col h-100 px-2">
+            <div class="last top-1">
+              <a [routerLink]="['/detail-movie', top3Movies[0].movieId]">
+                <img [src]="top3Movies[0].posterMovie" alt="">
+                <img class="tag" src="../../../../assets/img/top-1.png" alt="top-1">
+                <div class="movie-hover">
+                  <p class="title-hover">{{top3Movies[0].movieName}}</p>
+                  <p class="categories-hover">Thể loại: {{top3Movies[0].categories}}<br>
+                    Khởi chiếu: {{top3Movies[0].startDate}}
+                  </p>
+                  <div class="booking-btn">
+                    <a [routerLink]="['/booking/movie', this.top3Movies[0].movieId]" class="btn secondary text-center">ĐẶT VÉ</a>
+                    <!--                    <a [routerLink]="['/booking/movie', top3Movies[0].movieId]" class="btn secondary text-center">ĐẶT-->
+                    <!--                      VÉ</a>-->
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="col h-100 px-2">
+            <div class="last top-3">
+              <a [routerLink]="['/detail-movie', top3Movies[2].movieId]">
+                <img [src]="top3Movies[2].posterMovie" alt="">
+                <img class="tag" src="../../../../assets/img/top-3.png" alt="top-3">
+                <div class="movie-hover">
+                  <p class="title-hover">{{top3Movies[2].movieName}}</p>
+                  <p class="categories-hover">Thể loại: {{top3Movies[2].categories}}<br>
+                    Khởi chiếu: {{top3Movies[2].startDate}}
+                  </p>
+                  <div class="booking-btn">
+                    <a [routerLink]="['/booking/movie', this.top3Movies[2].movieId]" class="btn secondary text-center">ĐẶT VÉ</a>
+                    <!--                    <a [routerLink]="['/booking/movie', top3Movies[2].movieId]" class="btn secondary text-center">ĐẶT-->
+                    <!--                      VÉ</a>-->
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="contents-page">
+    <div class="movie-wrapper row mx-0">
+      <div class="col-md-12 col-sm-12 col-xs-12">
+        <div id="tab-movies">
+          <div class="tabs-movie-line">
+            <ul class="nav nav-tabs movie-home">
+              <li>
+                <a href="#tab_onshowing" data-toggle="tab" aria-expanded="true" class="active"
+                   (click)="getOnShowingMovies()">Phim đang chiếu</a>
+              </li>
+              <li>
+                <a href="#tab_upcoming" data-toggle="tab" aria-expanded="false" (click)="getUpComingMovies()">Phim sắp
+                  chiếu</a>
+              </li>
+            </ul>
+            <div class="tab-content">
+              <div class="tab-pane active" id="tab_onshowing">
+                <div class="row movies-group">
+                  <div class="col-xs-6 col-sm-4 col-md-3 movie-item" *ngFor="let movie of onShowingMovies">
+                    <div class="article-movie-home">
+                      <a [routerLink]="['/detail-movie', movie.movieId]">
+                        <img [src]="movie.posterMovie">
+                        <div class="movie-hover">
+                          <p class="title-hover">{{movie.movieName}}</p>
+                          <p class="categories-hover">Thể loại: {{movie.categories}}<br>
+                            Khởi chiếu: {{movie.startDate}}
+                          </p>
+                          <div class="booking-btn">
+                            <a [routerLink]="['/booking/movie', movie.movieId]" class="btn secondary text-center">ĐẶT VÉ</a>
+                          </div>
+                        </div>
+                      </a>
+                    </div>
+                    <h4 class="title-movie text-uppercase">{{movie.movieName}}</h4>
+                  </div>
+                </div>
+                <div class="row mx-0" *ngIf="displayLoadMore">
+                  <div class="col-md-12 col-sm-12 col-xs-12 px-0">
+                    <button class="btn secondary btn-load-more shadow-none" id="btn-view" (click)="loadMoreOnShowing()">Xem thêm
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="tab-pane" id="tab_upcoming">
+                <div class="row movies-group">
+                  <div class="col-xs-6 col-sm-4 col-md-3 movie-item" *ngFor="let movie of upComingMovies">
+                    <div class="article-movie-home">
+                      <a [routerLink]="['/detail-movie', movie.movieId]">
+                        <img [src]="movie.posterMovie">
+                        <div class="movie-hover">
+                          <p class="title-hover">{{movie.movieName}}</p>
+                          <p class="categories-hover">Thể loại: {{movie.categories}}<br>
+                            Khởi chiếu: {{movie.startDate}}
+                          </p>
+                          <div class="booking-btn">
+                            <a [routerLink]="['/booking/movie', movie.movieId]" class="btn secondary text-center">ĐẶT VÉ</a>
+                            <!--                            <a [routerLink]="['/booking/movie', movie.movieId]" class="btn secondary text-center">ĐẶT-->
+                            <!--                              VÉ</a>-->
+                          </div>
+                        </div>
+                      </a>
+                    </div>
+                    <h4 class="title-movie text-uppercase">{{movie.movieName}}</h4>
+                  </div>
+                </div>
+                <div class="row mx-0" *ngIf="displayLoadMore">
+                  <div class="col-md-12 col-sm-12 col-xs-12">
+                    <button class="btn secondary btn-load-more shadow-none" id="btn-view-up" (click)="loadMoreUpComing()">Xem thêm
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="m-0 p-0" *ngIf="displayTrailer">
+    <app-trailer (closed)="closeTrailer()" [url]="trailer">
+    </app-trailer>
+  </div>
+</div>
