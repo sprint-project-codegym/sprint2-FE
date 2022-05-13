@@ -5,6 +5,8 @@ import {LogoutComponent} from './module/security/logout/logout.component';
 import {RegisterComponent} from './module/security/register/register.component';
 import {ConfirmEmailComponent} from './module/security/confirm-email/confirm-email.component';
 import {LoginGoogleComponent} from './module/security/login-google/login-google.component';
+import {RequestResetPasswordComponent} from './module/security/request-reset-password/request-reset-password.component';
+import {DoResetPasswordComponent} from './module/security/do-reset-password/do-reset-password.component';
 
 const routes: Routes = [
   {
@@ -44,6 +46,7 @@ const routes: Routes = [
   },
   {path: 'login', component: LoginComponent},
   {path: 'logout', component: LogoutComponent},
+  {path: 'request-to-reset-password', component: RequestResetPasswordComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'register/confirmEmail/:username/:email', component: ConfirmEmailComponent},
   {path: 'loginGoogle', component: LoginGoogleComponent},

@@ -10,7 +10,7 @@ import {MovieService} from "../../../service/home-page/movie.service";
 export class ContentComponent implements OnInit {
 
   page: number = 0;
-  size: number = 10;
+  size: number = 8;
 
   onShowingMovies: Movie[] = [];
   upComingMovies: Movie[] = [];
@@ -25,7 +25,7 @@ export class ContentComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // (<HTMLInputElement>document.getElementById("header-search-input")).value = '';
+    (<HTMLInputElement>document.getElementById("header-search-input")).value = '';
     this.getPromotingMovies();
     this.getTop3BySales();
     this.getOnShowingMovies();

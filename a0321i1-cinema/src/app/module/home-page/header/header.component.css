@@ -26,14 +26,14 @@
   background-color: #05386B;
   /* 	background-image: linear-gradient(to bottom, #0003, transparent); */
   border-bottom: 2px solid #05386B;
-//box-shadow: 0 0 32px #0003;
+  /*box-shadow: 0 0 32 px #0003;*/
   font-size: 1.1em;
   /* 	font-weight: 300; */
   position: static;
 }
 
 .links > a {
-//padding: .75em;
+  /*padding: 0.75em;*/
   text-align: center;
   text-decoration: none;
   transition: all .5s;
@@ -117,3 +117,44 @@
 .links > a:last-of-type:hover ~ .line {
   --index: var(--items);
 }
+
+@media only screen and (max-width: 1470px) {
+  div .col-6 a {
+    font-size: 14px;
+    font-weight: 600;
+  }
+}
+
+@media only screen and (max-width: 1302px) {
+  div .col-6 a {
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  .container-fluid #header .row .col-6 {
+    padding: 0 -100px;
+  }
+
+  .sign .col-7{
+    font-size: 13px;
+    font-weight: 500;
+  }
+}
+
+@media only screen and (max-width: 1302px) {
+  div .col-6 a {
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  .container-fluid #header .row .col-6 {
+    padding: 0 -100px;
+  }
+
+  .sign .col-7{
+    font-size: 13px;
+    font-weight: 500;
+  }
+}
+
+

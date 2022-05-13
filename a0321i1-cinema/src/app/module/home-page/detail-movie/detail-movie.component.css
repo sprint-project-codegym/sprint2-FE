@@ -1,14 +1,15 @@
-a{
+a {
   color: black;
   font-size: 17px;
 }
 
-a:hover{
+a:hover {
   color: #f26b38;
   text-decoration: none;
   font-weight: bold;
 }
-div{
+
+div {
   font-size: 17px;
 }
 
@@ -19,4 +20,10 @@ div{
   margin-top: 8px;
   content: '';
   background-color: #f26b38;
+}
+
+@media only screen and (max-width: 1470px) {
+  .noi_dung_detail {
+    padding-left: 100px;
+  }
 }

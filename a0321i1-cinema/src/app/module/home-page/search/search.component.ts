@@ -16,7 +16,7 @@ import {ActivatedRoute} from "@angular/router";
 export class SearchComponent implements OnInit {
 
   page: number = 0;
-  size: number = 10;
+  size: number = 8;
 
   isAdvancedSearch: boolean = false;
   displayLoadMore: boolean = true;
@@ -37,7 +37,7 @@ export class SearchComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // (<HTMLInputElement>document.getElementById("header-search-input")).value = '';
+    (<HTMLInputElement>document.getElementById("header-search-input")).value = '';
     let key = this.activatedRoute.snapshot.queryParams['q'];
     if (key) {
       this.keySearch = key;

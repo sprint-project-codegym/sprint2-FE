@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {User} from '../../../../entity/User';
+import {AccountManagementService} from '../../../../service/member/account-management.service';
+import {Account} from '../../../../entity/Account';
+import {UserService} from '../../../../service/security/user.service';
 
 @Component({
   selector: 'app-nav-bar-account-manager',
@@ -7,9 +11,31 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavBarAccountManagerComponent implements OnInit {
 
-  constructor() { }
+  username: string;
+  account: Account;
+  user: User;
 
-  ngOnInit(): void {
+  constructor(
+    private accountService: AccountManagementService,
+    private userService: UserService
+  ) {
   }
 
+  ngOnInit(): void {
+    this.getAccount();
+    this.getUser();
+  }
+
+  getAccount() {
+    this.accountService.getAccountByUsername('luan123').subscribe(data => {
+      this.account = data;
+    });
+  }
+
+  getUser() {
+    this.userService.getUserByUsername('luan123').subscribe(data => {
+      this.user = data;
+    });
+  }
 }
+
