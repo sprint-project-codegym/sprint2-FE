@@ -12,23 +12,25 @@ import {EmployeeModule} from './module/employee/employee.module';
 import {HomePageModule} from './module/home-page/home-page.module';
 import {MemberModule} from './module/member/member.module';
 import {SecurityModule} from './module/security/security.module';
+import {AdminStatisticalManagementModule} from './module/admin/admin-statistical-management/admin-statistical-management.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoadingComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    HomePageModule,
-    AdminModule,
-    BookingModule,
-    EmployeeModule,
-    MemberModule,
-    SecurityModule,
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule,
+        HomePageModule,
+        AdminModule,
+        BookingModule,
+        EmployeeModule,
+        MemberModule,
+        SecurityModule,
+        AdminStatisticalManagementModule,
+    ],
   providers: [DatePipe],
   bootstrap: [AppComponent]
 })
