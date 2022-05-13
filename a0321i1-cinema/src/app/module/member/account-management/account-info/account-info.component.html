@@ -1,10 +1,11 @@
+<app-header></app-header>
 <div class="container-fluid m-0">
   <div class="row">
     <div class="container-fluid col-lg-3 bg-light"
          style="background-image: url('https://live.staticflickr.com/5224/5773057791_5c34be3d91_b.jpg')">
       <app-nav-bar-account-manager></app-nav-bar-account-manager>
     </div>
-    <div class="container-fluid col-lg-9 p-0">
+    <div class="container-fluid col-lg-9 p-5">
       <div class="card-title">THÔNG TIN TÀI KHOẢN</div>
       <div class="card-body p-lg-5">
         <form [formGroup]="rfEditForm" (ngSubmit)="onSubmit()">
@@ -15,8 +16,8 @@
                 <label for="fullName">Họ tên</label>
                 <span style="color: red" class="asterisk-red">(*):</span>
               </td>
-              <td class="col-7">
-                <input type="text" class="form-control" formControlName="name" id="fullName"/>
+              <td>
+                <input type="text" class="form-control input-acc" formControlName="name" id="fullName"/>
                 <p class="text-danger" *ngIf="rfEditForm.controls.name.errors?.required &&
                   rfEditForm.controls.name.touched">Tên không được để trống. Vui lòng nhập!</p>
               </td>
@@ -28,7 +29,7 @@
               </td>
               <div class="form-group w-33 float-left">
                 <td>
-                  <input type="date" style="width: 600px" class="form-control" formControlName="birthday"
+                  <input type="date" class="form-control input-acc" formControlName="birthday"
                          id="birthday"/>
                   <p class="text-danger" *ngIf="rfEditForm.controls.birthday.errors?.required &&
                   rfEditForm.controls.birthday.touched">Ngày sinh không được để trống. Vui lòng nhập!</p>
@@ -62,7 +63,7 @@
                 <span style="color: red" class="asterisk-red">(*):</span>
               </td>
               <td class="col-7">
-                <input type="email" class="form-control" formControlName="email" id="email"/>
+                <input type="email" class="form-control input-acc" formControlName="email" id="email"/>
                 <p class="text-danger" *ngIf="rfEditForm.controls.email.errors?.required &&
                   rfEditForm.controls.email.touched">Email không được để trống. Vui lòng nhập!</p>
                 <p class="text-danger" *ngIf="rfEditForm.controls.email.errors?.email &&
@@ -74,7 +75,7 @@
                 <span style="color: red" class="asterisk-red">(*):</span>
               </td>
               <td class="col-7">
-                <input type="text" class="form-control" formControlName="idCard" id="idCard"/>
+                <input type="text" class="form-control input-acc" formControlName="idCard" id="idCard"/>
                 <p class="text-danger" *ngIf="rfEditForm.controls.idCard.errors?.required &&
                   rfEditForm.controls.idCard.touched">CMND không được để trống. Vui lòng nhập!</p>
                 <p class="text-danger" *ngIf="rfEditForm.controls.idCard.errors?.pattern &&
@@ -87,7 +88,7 @@
                 <span style="color: red" class="asterisk-red">(*):</span>
               </td>
               <td class="col-7">
-                <input type="text" class="form-control" formControlName="phone" id="phone"/>
+                <input type="text" class="form-control input-acc" formControlName="phone" id="phone"/>
                 <p class="text-danger" *ngIf="rfEditForm.controls.phone.errors?.required &&
                   rfEditForm.controls.phone.touched">SĐT không được để trống. Vui lòng nhập!</p>
                 <p class="text-danger" *ngIf="rfEditForm.controls.phone.errors?.pattern &&
@@ -115,7 +116,7 @@
                 <span style="color: red" class="asterisk-red">(*):</span>
               </td>
               <td class="col-7">
-                <input type="password" class="form-control"
+                <input type="password" class="form-control input-acc"
                        formControlName="oldPassword"
                        id="passwordOld"/>
                 <p *ngIf="rfPasswordForm.controls.oldPassword.touched" class="text-danger">
@@ -129,11 +130,12 @@
                 <span style="color: red" class="asterisk-red">(*):</span>
               </td>
               <td class="col-7">
-                <input type="password" class="form-control"
+                <input type="password" class="form-control input-acc"
                        formControlName="newPassword"
                        id="passwordNew"/>
                 <p *ngIf="rfPasswordForm.controls.newPassword.touched" class="text-danger">
                   <span *ngIf="rfPasswordForm.controls.newPassword.errors?.required">Bạn chưa nhập mật khẩu. Vui lòng nhập lại.</span>
+                  <span *ngIf="rfPasswordForm.controls.newPassword.errors?.minlength">Mật khẩu phải ít nhất 6 kí tự.</span>
                 </p>
               </td>
             </tr>
@@ -143,18 +145,19 @@
                 <span style="color: red" class="asterisk-red">(*):</span>
               </td>
               <td class="col-7">
-                <input type="password" class="form-control"
+                <input type="password" class="form-control input-acc"
                        formControlName="confirmNewPassword"
                        id="confirmPassword"/>
                 <p *ngIf="rfPasswordForm.controls.confirmNewPassword.touched" class="text-danger">
                   <span *ngIf="rfPasswordForm.controls.confirmNewPassword.errors?.required">Bạn chưa nhập mật khẩu. Vui lòng nhập lại.</span>
+                  <span *ngIf="rfPasswordForm.controls.confirmNewPassword.errors?.minlength">Mật khẩu phải ít nhất 6 kí tự.</span>
                 </p>
               </td>
             </tr>
             <tr>
               <td></td>
               <td>
-                <button type="submit" class="btn btn-primary" [disabled]="rfPasswordForm.invalid">Đổi mật khẩu</button>
+                <button type="submit" class="btn btn-primary">Đổi mật khẩu</button>
               </td>
             </tr>
             </tbody>
@@ -165,3 +168,4 @@
     </div>
   </div>
 </div>
+<app-footer></app-footer>
