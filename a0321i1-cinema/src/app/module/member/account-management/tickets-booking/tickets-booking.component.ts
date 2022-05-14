@@ -40,37 +40,6 @@ export class TicketsBookingComponent implements OnInit {
     // );
   }
 
-
-
-
-  // onFirst() {
-  //   this.pageClicked = 0;
-  //   // @ts-ignore
-  //   this.search(this.pageClicked);
-  // }
-  //
-  // onPrevious() {
-  //   if (this.pageClicked > 0) {
-  //     this.pageClicked--;
-  //     // @ts-ignore
-  //     this.search(this.pageClicked);
-  //   }
-  //
-  //   onNext(){
-  //     if (this.pageClicked < this.totalPages - 1) {
-  //       this.pageClicked++;
-  //       // @ts-ignore
-  //       this.search(this.pageClicked);
-  //     }
-  //   }
-  //
-  //   onLast(){
-  //     this.pageClicked = this.totalPages - 1;
-  //     // @ts-ignore
-  //     this.search(this.pageClicked);
-  //   }
-  // }
-
   onSubmit(page: any) {
     this.bookTicketsService.findAllBookedTicket(this.username, page).subscribe(
       data => {
