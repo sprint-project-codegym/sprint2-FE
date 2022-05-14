@@ -26,7 +26,7 @@ export class RegisterComponent implements OnInit {
   listError: any = '';
   userDto: UserDTO;
   inputImage: any;
-  filePath = '../../../assets/img/avatar.png';
+  filePath = 'https://firebasestorage.googleapis.com/v0/b/a0321cinema.appspot.com/o/14-05-2022061301PMavatar.png?alt=media&token=590abb58-573c-4263-91d3-010eb0f0417b';
   private uploading: boolean;
   private username: any;
   @ViewChild('buttonRegister',{read: ElementRef}) buttonRegister: ElementRef;
