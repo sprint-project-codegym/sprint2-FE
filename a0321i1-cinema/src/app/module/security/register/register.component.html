@@ -1,1 +1,244 @@
-<p>register works!</p>
+<div class="background"></div>
+<div class="login w-100 d-flex align-items-center justify-content-center px-2 px-lg-0">
+  <div class="form-input col col-md-6 col-lg-4">
+    <form class="d-flex flex-column" [formGroup]="form" (ngSubmit)="submitForm()">
+      <!--    <form class="d-flex flex-column" [formGroup]="form" (ngSubmit)="onSubmit()">-->
+      <div class="row d-flex justify-content-center py-2 heading-wrap">
+        <h1 class="heading text-center text">Đăng ký tài khoản</h1>
+      </div>
+      <div class="normal-input  row"> <!-- has-error -->
+        <div class="col-12 col-lg-12 my-1">
+          <div class="input-wrap">
+            <label for="taiKhoan">Tên tài khoản<span style="color: red"> (*)</span>:</label>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <div class="input-group-text"><i class="fas fa-user"></i></div>
+              </div>
+              <input class="form-control" id="taiKhoan" type="text" formControlName="username"/>
+              <!--              <div class="invalid-feedback" *ngIf="form.controls.username.touched">-->
+              <!--                <span *ngIf="form.controls.username.errors?.pattern">&nbsp;Tên tài khoản không hợp lệ.</span>-->
+              <!--              </div>-->
+              <!--              <div class="invalid-feedback" *ngIf="listError.existAccount">-->
+              <!--                <span>&nbsp;{{listError.existAccount}}</span>-->
+              <!--              </div>-->
+            </div>
+            <span class="text-danger" *ngIf="form.controls.username.touched && form.controls.username.errors?.required">Tên tài khoản không được để trống. Vui lòng nhập!</span>
+            <span class="text-danger"
+                  *ngIf="form.controls.username.touched && form.controls.username.errors?.minlength">Tên tài khoản phải ít nhất 6 kí tự.</span>
+            <span class="text-danger"
+                  *ngIf="form.controls.username.touched && form.controls.username.errors?.maxlength">Tên tài khoản quá dài.</span>
+            <span class="text-danger"*ngIf="listError.existAccount">{{listError.existAccount}}</span>
+          </div>
+        </div>
+
+        <div class="col-12 col-lg-12 my-1">
+          <div class="input-wrap">
+            <label for="password">Mật khẩu<span style="color: red"> (*)</span>:</label>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <div class="input-group-text"><i class="fas fa-key"></i></div>
+              </div>
+              <!--                                          <input class="form-control" id="password" placeholder="Mật khẩu" type="password">-->
+              <input class="form-control form-control-custom input-password" id="password" type="password"
+                     formControlName="password">
+            </div>
+            <span class="text-danger" *ngIf="form.controls.password.touched && form.controls.password.errors?.required">Mật khẩu không được để trống. Vui lòng nhập!</span>
+            <span class="text-danger"
+                  *ngIf="form.controls.password.touched && form.controls.password.errors?.minlength">Mật khẩu phải ít nhất 6 kí tự.</span>
+            <span class="text-danger"
+                  *ngIf="form.controls.password.touched && form.controls.password.errors?.maxlength">Mật khẩu quá dài.</span>
+          </div>
+        </div>
+
+        <div class="col-12 col-lg-12 my-1">
+          <div class="input-wrap">
+            <label for="name">Họ tên<span style="color: red"> (*)</span>:</label>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <div class="input-group-text"><i class="fas fa-pen"></i></div>
+              </div>
+              <!--                            <input class="form-control" id="name" placeholder="Họ tên" type="text">-->
+              <input type="text" class="form-control form-control-custom" id="name" formControlName="name">
+            </div>
+            <span class="text-danger" *ngIf="form.controls.name.touched && form.controls.name.errors?.required">Họ tên không được để trống. Vui lòng nhập!</span>
+          </div>
+        </div>
+
+        <div class="col-12 col-lg-12 my-1">
+          <div class="input-wrap">
+            <label for="birthday">Ngày sinh<span style="color: red"> (*)</span>:</label>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <div class="input-group-text"><i class="fas fa-birthday-cake"></i></div>
+              </div>
+              <!--              <input class="form-control" id="birthday" type="date">-->
+              <input type="date" class="form-control form-control-custom" id="birthday" formControlName="birthday"/>
+            </div>
+            <span class="text-danger" *ngIf="form.controls.birthday.touched &&form.controls.birthday.errors?.required">&nbsp;Ngày sinh không được để trống. Vui lòng chọn!</span>
+          </div>
+        </div>
+
+        <div class="col-12 col-lg-12 my-1">
+          <label>Giới tính:</label>
+          <div class="row">
+            <div class="form-check" style="margin-left: 15px">
+              <input checked class="form-check-input" id="flexRadioDefault1"
+                     type="radio" value="1" formControlName="gender">
+              <label class="form-check-label" for="flexRadioDefault1">
+                Nam
+              </label>
+            </div>
+            <div class="form-check ml-4">
+              <input class="form-check-input" id="flexRadioDefault2"
+                     type="radio" value="2" formControlName="gender">
+              <label class="form-check-label" for="flexRadioDefault2">
+                Nữ
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 col-lg-12 my-1">
+          <div class="input-wrap">
+            <label for="idCard">CMND<span style="color: red"> (*)</span>:</label>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <div class="input-group-text"><i class="fas fa-id-card"></i></div>
+              </div>
+              <!--                            <input class="form-control" id="idCard" placeholder="CMND" type="text">-->
+              <input type="text" class="form-control form-control-custom" id="idCard" formControlName="idCard"/>
+            </div>
+            <span class="text-danger" *ngIf="form.controls.idCard.touched && form.controls.idCard.errors?.required">Số CMND không được để trống. Vui lòng nhập!</span>
+            <span class="text-danger" *ngIf="form.controls.idCard.touched && form.controls.idCard.errors?.pattern">Số CMND phải là 9 hoặc 12 số. Vui lòng nhập lại!</span>
+            <!--            <div class="invalid-feedback" *ngIf="form.controls.idCard.touched">-->
+            <!--              <span *ngIf="form.controls.idCard.errors?.required">Số CMND không được để trống. Vui lòng nhập!</span>&nbsp;-->
+            <!--              <span *ngIf="form.controls.idCard.errors?.pattern">Số CMND phải là 9 hoặc 12 số. Vui lòng nhập lại!</span>&nbsp;-->
+            <!--              <span *ngIf="listError.existIdCard">&nbsp;{{listError.existIdCard}}</span>-->
+            <!--            </div>-->
+            <!--            <div class="invalid-feedback" *ngIf="listError.existIdCard">-->
+            <!--              <span>&nbsp;{{listError.existIdCard}}</span>-->
+            <!--            </div>-->
+          </div>
+        </div>
+
+        <div class="col-12 col-lg-12 my-1">
+          <div class="input-wrap">
+            <label for="email">Email<span style="color: red"> (*)</span>:</label>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <div class="input-group-text"><i class="fas fa-envelope"></i></div>
+              </div>
+              <!--              <input class="form-control" id="email" placeholder="email@gmail.com" type="email">-->
+              <input type="email" class="form-control form-control-custom" id="email" formControlName="email"/>
+            </div>
+            <span class="text-danger" *ngIf="form.controls.email.touched && form.controls.email.errors?.required">Email không được để trống. Vui lòng nhập!</span>
+            <span class="text-danger" *ngIf="form.controls.email.touched && form.controls.email.errors?.email">Email không đúng định dạng. Vui lòng nhập lại!</span>
+            <!--            <div class="invalid-feedback" *ngIf="listError.existEmail">-->
+            <!--              <span>&nbsp;{{listError.existEmail}}</span>-->
+            <!--            </div>-->
+          </div>
+          <!--          <span class="mb-0 error">Email đã được đăng ký. Vui lòng chọn email khác.</span>-->
+        </div>
+
+        <div class="col-12 col-lg-12 my-1">
+          <div class="input-wrap">
+            <label>Tỉnh (TP)<span style="color: red"> (*)</span>:</label>
+            <select [compareWith]="compareProvince" class="form-control form-control-custom mb-1"
+                    formControlName="province"
+                    (change)="onChangeProvince($event.target.value)">
+              <option value="" selected disabled>Chọn tỉnh thành</option>
+              <option *ngFor="let province of provinces" [ngValue]="province">{{province.provinceName}}</option>
+            </select>
+            <span class="text-danger" *ngIf="form.controls.province.touched && form.controls.province.errors?.required">Tỉnh (TP) không được để trống. Vui lòng chọn!</span>
+          </div>
+        </div>
+
+        <div class="col-12 col-lg-12 my-1">
+          <div class="input-wrap">
+            <label>Huyện (Quận)<span style="color: red"> (*)</span>:</label>
+            <select [compareWith]="compareDistrict" class="form-control form-control-custom mb-1"
+                    formControlName="district"
+                    (change)="onChangeDistrict($event.target.value)">
+              <option value="" selected disabled>Chọn quận/huyện</option>
+              <option *ngFor="let district of districts" [ngValue]="district">{{district.districtName}}</option>
+            </select>
+            <span class="text-danger" *ngIf="form.controls.district.touched && form.controls.district.errors?.required">Huyện (Quận) không được để trống. Vui lòng chọn!</span>
+          </div>
+        </div>
+
+        <div class="col-12 col-lg-12 my-1">
+          <div class="input-wrap">
+            <label>Xã (Phường)<span style="color: red"> (*)</span>:</label>
+            <select [compareWith]="compareWard" class="form-control form-control-custom"
+                    formControlName="ward">
+              <option value="" selected disabled>Chọn xã/phường</option>
+              <option *ngFor="let ward of wards" [ngValue]="ward">{{ward.wardName}}</option>
+            </select>
+            <span class="text-danger" *ngIf="form.controls.ward.touched && form.controls.ward.errors?.required">Xã (Phường) không được để trống. Vui lòng chọn!</span>
+          </div>
+        </div>
+
+        <div class="col-12 col-lg-12 my-1">
+          <div class="input-wrap">
+            <label for="phone">Số điện thoại<span style="color: red"> (*)</span>:</label>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <div class="input-group-text"><i class="fas fa-phone"></i></div>
+              </div>
+              <input type="text" class="form-control form-control-custom" id="phone" formControlName="phone"/>
+            </div>
+            <span class="text-danger" *ngIf="form.controls.phone.touched && form.controls.phone.errors?.required">Số điện thoại không được để trống. Vui lòng nhập!</span>
+            <span class="text-danger" *ngIf="form.controls.phone.touched && form.controls.phone.errors?.pattern">Số điện thoại không đúng định dạng. Vui lòng nhập lại!</span>
+          </div>
+        </div>
+
+        <div class="col-12 col-lg-12 my-1">
+          <label>Hình ảnh:</label><br>
+          <label for="image-picker">
+            <img class="img-fluid rounded" id="image-preview" [src]="filePath"/>
+          </label>
+          <input id="image-picker" (change)="selectImage($event)" type="file"
+                 accept=".jpg,.jpeg,.png"/>
+        </div>
+
+      </div>
+      <div class="row my-2">
+        <div class="col-12">
+          <div>
+            <button type="submit" class="btn btn-confirm" [disabled] ="form.invalid">
+              <span #buttonRegister>Đăng ký</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<!--<script>-->
+<!--  const inpFile = document.getElementById("inpFile");-->
+<!--  const previewContainer = document.getElementById("imagePreview");-->
+<!--  const previewImage = previewContainer.querySelector(".image-preview__image");-->
+<!--  const previewDefaultText = previewContainer.querySelector(".image-preview__default-text");-->
+
+<!--  inpFile.addEventListener("change", function () {-->
+<!--    const file = this.files[0];-->
+
+<!--    if (file) {-->
+<!--      const reader = new FileReader();-->
+
+<!--      previewDefaultText.style.display = "none";-->
+<!--      previewImage.style.display = "block";-->
+
+<!--      reader.addEventListener("load", function () {-->
+<!--        previewImage.setAttribute("src", this.result);-->
+
+<!--      });-->
+<!--      reader.readAsDataURL(file);-->
+<!--    } else {-->
+<!--      previewDefaultText.style.display = null;-->
+<!--      previewImage.style.display = null;-->
+<!--      previewImage.setAttribute("src", "");-->
+<!--    }-->
+
+<!--  })-->
+<!--</script>-->

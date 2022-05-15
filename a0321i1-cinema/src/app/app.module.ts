@@ -15,12 +15,18 @@ import {SecurityModule} from './module/security/security.module';
 import {authInterceptorProviders} from './helpers/auth.interceptor';
 import {JWT_OPTIONS, JwtHelperService} from '@auth0/angular-jwt';
 import { BottomSheetNotifyComponent } from './util/bottom-sheet-notify/bottom-sheet-notify.component';
+import { PageNotFoundComponent } from './module/page-not-found/page-not-found.component';
+import { PageNotAllowAccessComponent } from './module/page-not-allow-access/page-not-allow-access.component';
+import {AngularFireModule} from '@angular/fire';
+import {environment} from '../environments/environment';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoadingComponent,
-    BottomSheetNotifyComponent
+    BottomSheetNotifyComponent,
+    PageNotFoundComponent,
+    PageNotAllowAccessComponent,
   ],
   imports: [
     BrowserModule,
@@ -33,6 +39,7 @@ import { BottomSheetNotifyComponent } from './util/bottom-sheet-notify/bottom-sh
     EmployeeModule,
     MemberModule,
     SecurityModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig)
   ],
   providers: [{
     provide: 'SocialAuthServiceConfig',

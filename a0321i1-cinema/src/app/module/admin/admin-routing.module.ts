@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {AdminPageComponent} from './admin-page/admin-page.component';
+import {AuthGuard} from '../../auth.guard';
 
 
 const routes: Routes = [
@@ -16,7 +17,10 @@ const routes: Routes = [
         path: 'statistical',
         loadChildren: () => import('./admin-statistical-management/admin-statistical-management.module').then(module => module.AdminStatisticalManagementModule)
       },
-      {path: '', redirectTo: '', pathMatch: 'full'},
+      {path: '', redirectTo: '', pathMatch: 'full', canActivate: [AuthGuard],
+        data: {
+          roles: ['ROLE_ADMIN']
+        }},
       {path: '**', redirectTo: '', pathMatch: 'full'}
     ]
   }
