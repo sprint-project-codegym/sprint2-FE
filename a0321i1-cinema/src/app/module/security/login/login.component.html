@@ -1,0 +1,83 @@
+<div class="background"></div>
+<div class="login w-100 d-flex align-items-center justify-content-center px-2 px-lg-0">
+  <div class="form-input col col-md-6 col-lg-4">
+    <form class="d-flex flex-column" [formGroup]="userForm" (ngSubmit)="onSubmit()">
+      <div class="row d-flex justify-content-center py-2 heading-wrap">
+        <h1 class="heading text-center text">Đăng nhập tài khoản</h1>
+      </div>
+
+      <div class="social-login row">
+        <div class="col col-12">
+          <div class="login-box mt-2">
+            <span href="#" class="social-button" id="facebook-connect" (click)="signInWithFB()"> <span>Đăng nhập bằng Facebook</span></span>
+            <span class="social-button" id="google-connect" (click)="signInWithGoogle()"> <span>Đăng nhập bằng Google</span></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col col-12 d-flex align-items-center justify-content-center">
+          <span>-HOẶC-</span>
+        </div>
+      </div>
+
+      <div class="normal-input row"> <!-- has-error -->
+        <div class="col-12 col-lg-12 my-1">
+          <div class="input-wrap mt-1">
+            <label for="taiKhoan">Tên tài khoản:</label>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <div class="input-group-text"><i class="fas fa-user"></i></div>
+              </div>
+              <input class="form-control" formControlName="username" id="taiKhoan" type="text"/>
+            </div>
+          </div>
+        </div>
+
+        <div class="col col-lg-12 my-1">
+          <div class="input-wrap mt-1">
+            <label for="password">Mật khẩu:</label>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <div class="input-group-text"><i class="fas fa-key"></i></div>
+              </div>
+              <input class="form-control" formControlName="password" id="password" type="password">
+            </div>
+          </div>
+        </div>
+
+        <div class="col col-12 my-1 mt-2">
+          <div class="row">
+            <div class="col col-6">
+              <input type="checkbox" formControlName="remember" id="chbk1"><label for="chbk1" class="ml-2">Nhớ mật khẩu</label>
+            </div>
+            <div class="col col-6 d-flex justify-content-end">
+              <span class="text-primary" routerLink="/request-to-reset-password">Quên mật khẩu?</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="col col-12 error-message">
+          <span>Tên đăng nhập hoặc mật khẩu không đúng</span>
+        </div>
+
+      </div>
+      <div class="row my-2">
+        <div class="col-12">
+          <div class="d-flex align-items-center justify-content-center">
+            <button type="submit" class="btn-login">Đăng nhập</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="row my-2">
+        <div class="col-12">
+          <div class="d-flex align-items-center justify-content-center">
+            <span>Bạn chưa có tài khoản ? <a href=""> Đăng ký ngay</a></span>
+          </div>
+        </div>
+      </div>
+
+    </form>
+  </div>
+</div>

@@ -1,0 +1,173 @@
+.ticket-wrapper {
+  width: 100%;
+}
+.ticket-wrapper .booking-bg {
+  background-color: #05386B;
+  margin-bottom: 10px;
+}
+.ticket-wrapper .booking-ticket {
+  clear: both;
+  min-height: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 10px;
+  width: 100%;
+  display: inline-block;
+}
+.ticket-wrapper .booking-ticket .booking-title {
+  font-size: 24px;
+  text-transform: uppercase;
+  color: #ffffff;
+  margin-bottom: 20px;
+}
+.pay-wrapper {
+  background-color: #ffffff;
+  padding: 30px;
+}
+.pay-wrapper .control-label {
+  font-size: 14px;
+  padding-top: 20px;
+}
+.btn-select {
+  position: relative;
+  padding: 0;
+  width: 100%;
+  border-radius: 0;
+  margin-bottom: 15px;
+}
+.btn-select.login {
+  border: 1px solid #ced0da;
+  height: 40px;
+}
+.pay-wrapper .location {
+  margin: 10px 0;
+}
+.btn-select.login.location {
+  color: #43464b;
+  text-align: left;
+  position: relative;
+}
+.btn-select.login .btn-select-value {
+  padding: 9px 12px;
+}
+.btn-select .btn-select-value {
+  padding: 9px 12px;
+  display: block;
+  position: absolute;
+  left: 0;
+  right: 34px;
+  text-align: left;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  border-top: none !important;
+  border-bottom: none !important;
+  border-left: none !important;
+}
+.pay-wrapper .input-booking {
+  margin: 10px 0;
+}
+input.login {
+  width: 100%;
+  max-width: 100%;
+  display: block;
+  position: relative;
+  height: 40px;
+  box-sizing: border-box;
+  font-size: 14px;
+  border: 1px solid #ced0da;
+  color: #43464b;
+  padding: 10px;
+  margin: 14px 0;
+}
+.pay-wrapper .notice-infopayment {
+  margin: 10px -15px 20px -15px;
+  font-size: 12px;
+}
+.btn.primary {
+  display: inline-block;
+  font-size: 14px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #ffffff;
+  background-color: #05386B;
+  padding: 10px;
+  text-decoration: none;
+  line-height: 1;
+}
+.btn.primary:hover{
+  background-color: #f26b38;
+}
+.btn.primary.input {
+  width: 100%;
+}
+.pay-wrapper .pay-bt:last-child {
+  margin-right: 0;
+}
+.pay-wrapper .pay-notice {
+  font-size: 14px;
+  margin-top: 30px;
+}
+.pay-wrapper .notice-infopayment span a {
+  font-weight: 700;
+  color: #43464b;
+  text-decoration: none;
+}
+.pay-wrapper .notice-infopayment span a:hover{
+  color: #f26b38;
+}
+.content-text {
+  text-align: justify;
+  font-size: 15px;
+}
+.ticket-header {
+  width: 100%;
+  background-color: #f1f1f1;
+  padding: 10px;
+  margin-bottom: 15px;
+}
+.ticket-feature {
+  clear: both;
+  min-height: 0;
+  box-sizing: border-box;
+  margin: 0;
+  width: 100%;
+  display: inline-block;
+}
+.upper-text {
+  text-transform: uppercase!important;
+}
+.ticket-detail .ticket-title {
+  font-size: 14px;
+  line-height: 20px;
+  color: #43464b;
+  font-weight: bold;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.ticket-detail .ticket-title.vn {
+  color: #a0a3a7;
+}
+.ticket-detail .ticket-icon {
+  margin: 10px 0;
+}
+.ticket-detail .ticket-icon i {
+  vertical-align: middle;
+}
+.icon-c13 {
+  width: 28px;
+  height: 22px;
+  display: inline-block;
+  background: url(https://www.galaxycine.vn/website/images/ic-c13.png) no-repeat;
+  background-size: cover;
+}
+span.notice {
+  color: red;
+  padding-left: 5px;
+  font-size: 11px;
+}
+.ticket-detail .ticket-info {
+  font-size: 13px;
+  color: #43464b;
+}
+

@@ -1,0 +1,171 @@
+<app-header></app-header>
+<div class="container-fluid m-0">
+  <div class="row">
+    <div class="container-fluid col-lg-3 bg-light"
+         style="background-image: url('https://live.staticflickr.com/5224/5773057791_5c34be3d91_b.jpg')">
+      <app-nav-bar-account-manager></app-nav-bar-account-manager>
+    </div>
+    <div class="container-fluid col-lg-9 p-5">
+      <div class="card-title">THÔNG TIN TÀI KHOẢN</div>
+      <div class="card-body p-lg-5">
+        <form [formGroup]="rfEditForm" (ngSubmit)="onSubmit()">
+          <table class="table table-hover table-borderless">
+            <tbody>
+            <tr>
+              <td class="col-2">
+                <label for="fullName">Họ tên</label>
+                <span style="color: red" class="asterisk-red">(*):</span>
+              </td>
+              <td>
+                <input type="text" class="form-control input-acc" formControlName="name" id="fullName"/>
+                <p class="text-danger" *ngIf="rfEditForm.controls.name.errors?.required &&
+                  rfEditForm.controls.name.touched">Tên không được để trống. Vui lòng nhập!</p>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-2">
+                <label for="birthday">Ngày sinh</label>
+                <span style="color: red" class="asterisk-red">(*):</span>
+              </td>
+              <div class="form-group w-33 float-left">
+                <td>
+                  <input type="date" class="form-control input-acc" formControlName="birthday"
+                         id="birthday"/>
+                  <p class="text-danger" *ngIf="rfEditForm.controls.birthday.errors?.required &&
+                  rfEditForm.controls.birthday.touched">Ngày sinh không được để trống. Vui lòng nhập!</p>
+                </td>
+              </div>
+            </tr>
+            <tr>
+              <td class="col-2">
+                <label>Giới tính</label>
+                <span style="color: red" class="asterisk-red">(*):</span>
+              </td>
+              <td class="row">
+                <div class="col-lg-12">
+                               <span class="form-check-inline d-flex">
+                                  <label class="form-check-label">
+                                      <input type="radio" name="gender" formControlName="gender" [value]="1"
+                                             class="form-check-input"/>Nam
+                                    <label style="width: 50px"></label>
+                                  </label>
+                                   <label class="form-check-label">
+                                      <input type="radio" name="gender" formControlName="gender" [value]="0"
+                                             class="form-check-input"/>Nữ
+                                   </label>
+                               </span>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-2">
+                <label for="email">Email</label>
+                <span style="color: red" class="asterisk-red">(*):</span>
+              </td>
+              <td class="col-7">
+                <input type="email" class="form-control input-acc" formControlName="email" id="email"/>
+                <p class="text-danger" *ngIf="rfEditForm.controls.email.errors?.required &&
+                  rfEditForm.controls.email.touched">Email không được để trống. Vui lòng nhập!</p>
+                <p class="text-danger" *ngIf="rfEditForm.controls.email.errors?.email &&
+                  rfEditForm.controls.email.touched">Email không đúng định dạng. Vui lòng nhập lại!</p>
+            </tr>
+            <tr>
+              <td class="col-2">
+                <label for="idCard">CMND</label>
+                <span style="color: red" class="asterisk-red">(*):</span>
+              </td>
+              <td class="col-7">
+                <input type="text" class="form-control input-acc" formControlName="idCard" id="idCard"/>
+                <p class="text-danger" *ngIf="rfEditForm.controls.idCard.errors?.required &&
+                  rfEditForm.controls.idCard.touched">CMND không được để trống. Vui lòng nhập!</p>
+                <p class="text-danger" *ngIf="rfEditForm.controls.idCard.errors?.pattern &&
+                  rfEditForm.controls.idCard.touched">CMND không đúng định dạng. Vui lòng nhập lại!</p>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-2">
+                <label for="phone">Số điện thoại</label>
+                <span style="color: red" class="asterisk-red">(*):</span>
+              </td>
+              <td class="col-7">
+                <input type="text" class="form-control input-acc" formControlName="phone" id="phone"/>
+                <p class="text-danger" *ngIf="rfEditForm.controls.phone.errors?.required &&
+                  rfEditForm.controls.phone.touched">SĐT không được để trống. Vui lòng nhập!</p>
+                <p class="text-danger" *ngIf="rfEditForm.controls.phone.errors?.pattern &&
+                  rfEditForm.controls.phone.touched">SĐT không đúng định dạng. Vui lòng nhập lại!</p>
+              </td>
+            </tr>
+            <tr>
+              <td></td>
+              <td>
+                <button type="submit" class="btn btn-primary" [disabled]="rfEditForm.invalid">Cập nhật</button>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </form>
+      </div>
+      <div class="card-title mt-lg-5"> THÔNG TIN ĐĂNG NHẬP</div>
+      <div class="card-body p-lg-5">
+        <form [formGroup]="rfPasswordForm" (ngSubmit)="onSubmitPass()">
+          <table class="table table-hover table-borderless">
+            <tbody>
+            <tr>
+              <td class="col-2">
+                <label for="passwordOld">Mật khẩu cũ</label>
+                <span style="color: red" class="asterisk-red">(*):</span>
+              </td>
+              <td class="col-7">
+                <input type="password" class="form-control input-acc"
+                       formControlName="oldPassword"
+                       id="passwordOld"/>
+                <p *ngIf="rfPasswordForm.controls.oldPassword.touched" class="text-danger">
+                  <span *ngIf="rfPasswordForm.controls.oldPassword.errors?.required">Bạn chưa nhập mật khẩu. Vui lòng nhập lại.</span>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-2">
+                <label for="passwordNew">Mật khẩu mới</label>
+                <span style="color: red" class="asterisk-red">(*):</span>
+              </td>
+              <td class="col-7">
+                <input type="password" class="form-control input-acc"
+                       formControlName="newPassword"
+                       id="passwordNew"/>
+                <p *ngIf="rfPasswordForm.controls.newPassword.touched" class="text-danger">
+                  <span *ngIf="rfPasswordForm.controls.newPassword.errors?.required">Bạn chưa nhập mật khẩu. Vui lòng nhập lại.</span>
+                  <span *ngIf="rfPasswordForm.controls.newPassword.errors?.minlength">Mật khẩu phải ít nhất 6 kí tự.</span>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-2">
+                <label for="confirmPassword">Xác nhận mật khẩu</label>
+                <span style="color: red" class="asterisk-red">(*):</span>
+              </td>
+              <td class="col-7">
+                <input type="password" class="form-control input-acc"
+                       formControlName="confirmNewPassword"
+                       id="confirmPassword"/>
+                <p *ngIf="rfPasswordForm.controls.confirmNewPassword.touched" class="text-danger">
+                  <span *ngIf="rfPasswordForm.controls.confirmNewPassword.errors?.required">Bạn chưa nhập mật khẩu. Vui lòng nhập lại.</span>
+                  <span *ngIf="rfPasswordForm.controls.confirmNewPassword.errors?.minlength">Mật khẩu phải ít nhất 6 kí tự.</span>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td></td>
+              <td>
+                <button type="submit" class="btn btn-primary">Đổi mật khẩu</button>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </form>
+        <ngx-spinner type="ball-scale-multiple"></ngx-spinner>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>
