@@ -1,4 +1,5 @@
 import {Ward} from './Ward';
+import {Account} from "./Account";
 
 export interface User {
   userId: number;

@@ -30,6 +30,7 @@
     "@angular/router": "~9.1.13",
     "ngx-pagination": "^5.1.1",
     "ngx-toastr": "^11.3.3",
+    "ngx-spinner": "^9.0.1",
     "rxjs": "~6.5.4",
     "safe-pipe": "^2.0.2",
     "tslib": "^1.10.0",
