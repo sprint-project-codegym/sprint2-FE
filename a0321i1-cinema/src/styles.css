@@ -1,4 +1,18 @@
-/* You can add global styles to this file, and also import other style files */
+/*HauLC custom size spinner bootstrap*/
+.spinner-border {
+  height: 20px !important;
+  width: 20px !important;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --color: #05386B;
+  --font: 'Open Sans', sans-serif
+}
+
 html, body {
   height: 100%;
 }
@@ -6,8 +20,5 @@ html, body {
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
-  font-size: 16px;
 }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

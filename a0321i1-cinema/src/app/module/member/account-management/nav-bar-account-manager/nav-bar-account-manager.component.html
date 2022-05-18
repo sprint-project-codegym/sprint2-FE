@@ -1,1 +1,35 @@
-<p>nav-bar-account-manager works!</p>
+<div class="card-body pt-lg-5">
+  <div class="row">
+    <div class="col-lg-12 text-center">
+      <img class="avatar"
+           [src]="user?.avatarUrl"
+           alt="avatar">
+    </div>
+    <div class="col-lg-12 text-center">
+      <h5 class="m-0">{{user?.name}}</h5>
+      <p>Điểm tích lũy: {{account?.point}}</p>
+      <button type="submit" class="btn btn-secondary" routerLink="/logout">Đăng xuất</button>
+    </div>
+  </div>
+</div>
+<div class="col-lg-12">
+  <a routerLink="/member/info">
+    <button class="w3-button border-0 bg-transparent w-100 text-left p-lg-2"><i
+      class="fas fa-user"></i> THÔNG TIN TÀI KHOẢN
+    </button>
+  </a>
+</div>
+<div class="col-lg-12">
+  <a routerLink="/member/history">
+    <button class="w3-button border-0 bg-transparent w-100 text-left p-lg-2"><i
+      class="fas fa-history"></i> LỊCH SỬ
+    </button>
+  </a>
+</div>
+<div class="col-lg-12">
+  <a routerLink="/member/booking">
+    <button class=" w3-button border-0 bg-transparent w-100 text-left p-lg-2"><i
+      class="fas fa-ticket-alt"></i> QUẢN LÝ ĐẶT VÉ
+    </button>
+  </a>
+</div>

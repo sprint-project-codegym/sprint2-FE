@@ -4,10 +4,6 @@ import {EmployeePageComponent} from './employee-page/employee-page.component';
 
 
 const routes: Routes = [
-  {
-    path: '',
-    component: EmployeePageComponent,
-    children: [
       {
         path: 'book/tickets',
         loadChildren: () => import('./employee-book-tickets-management/employee-book-tickets-management.module').then(module => module.EmployeeBookTicketsManagementModule)
@@ -18,8 +14,7 @@ const routes: Routes = [
       },
       {path: '', redirectTo: 'sale/tickets', pathMatch: 'full'},
       {path: '**', redirectTo: 'sale/tickets', pathMatch: 'full'}
-    ]
-  }
+
 ];
 
 @NgModule({
