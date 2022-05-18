@@ -1,11 +1,13 @@
 import {BrowserModule} from '@angular/platform-browser';
-import {NgModule} from '@angular/core';
+// @ts-ignore
 import {
   FacebookLoginProvider,
   GoogleLoginProvider,
   SocialAuthServiceConfig,
   SocialLoginModule
 } from 'angularx-social-login';
+import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
+
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 
@@ -21,11 +23,13 @@ import {MemberModule} from './module/member/member.module';
 import {SecurityModule} from './module/security/security.module';
 import {BottomSheetNotifyComponent} from './util/bottom-sheet-notify/bottom-sheet-notify.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+// @ts-ignore
 import {NgxPaginationModule} from 'ngx-pagination';
 import {NgxSpinnerModule} from 'ngx-spinner';
 import {ToastrModule} from 'ngx-toastr';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-
+import {AngularFireModule} from "@angular/fire";
+import {environment} from "../environments/environment";
 
 @NgModule({
   declarations: [
@@ -59,10 +63,10 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
         progressAnimation: 'increasing'
       }
     ),
-
-    FormsModule
-
+    NgxSpinnerModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig)
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [{
     provide: 'SocialAuthServiceConfig',
     useValue: {
