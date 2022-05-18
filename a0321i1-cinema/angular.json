@@ -120,6 +120,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "a0321i1-cinema"
+    }
+  },
+  "defaultProject": "a0321i1-cinema",
+  "cli": {
+    "analytics": false
+  }
 }

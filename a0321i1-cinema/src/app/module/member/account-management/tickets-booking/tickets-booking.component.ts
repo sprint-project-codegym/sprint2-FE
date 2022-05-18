@@ -4,6 +4,7 @@ import {BookTicketsService} from '../../../../service/booking/book-tickets.servi
 import {ToastrService} from 'ngx-toastr';
 import {TokenStorageService} from '../../../../service/security/token-storage.service';
 import {Ticket} from '../../../../entity/Ticket';
+import {SecurityService} from "../../../../service/security/security.service";
 
 @Component({
   selector: 'app-tickets-booking',
@@ -18,58 +19,25 @@ export class TicketsBookingComponent implements OnInit {
   totalPage = 1;
   pages = [];
   constructor(
+    private securityService: SecurityService,
     private bookTicketsService: BookTicketsService,
     private router: Router,
-    // private toast: ToastrService,
     private tokenStore: TokenStorageService) {
-    // this.username = this.tokenStore.getUser().user.account.username;
   }
 
   ngOnInit(): void {
+    if (this.tokenStore.getToken()) {
+      const user = this.tokenStore.getUser();
+      console.log(user.user.account.username);
+      this.username = user.user.account.username;
+    }
     this.onSubmit(0)
-    // this.bookTicketsService.findAllBookedTicket(this.username, this.page).subscribe(
-    //   data => {
-    //     if (data == null){
-    //       this.ticketBooking = [];
-    //     }else {
-    //     this.ticketBooking = data;
-    //     this.ticketBooking = data['content'];
-    //     this.totalPage = data['totalPages'];
-    //     }
-    //   }
-    // );
   }
 
-
-
-
-  // onFirst() {
-  //   this.pageClicked = 0;
-  //   // @ts-ignore
-  //   this.search(this.pageClicked);
-  // }
-  //
-  // onPrevious() {
-  //   if (this.pageClicked > 0) {
-  //     this.pageClicked--;
-  //     // @ts-ignore
-  //     this.search(this.pageClicked);
-  //   }
-  //
-  //   onNext(){
-  //     if (this.pageClicked < this.totalPages - 1) {
-  //       this.pageClicked++;
-  //       // @ts-ignore
-  //       this.search(this.pageClicked);
-  //     }
-  //   }
-  //
-  //   onLast(){
-  //     this.pageClicked = this.totalPages - 1;
-  //     // @ts-ignore
-  //     this.search(this.pageClicked);
-  //   }
-  // }
+  logout() {
+    this.tokenStore.signOut();
+    this.router.navigateByUrl("/login");
+  }
 
   onSubmit(page: any) {
     this.bookTicketsService.findAllBookedTicket(this.username, page).subscribe(

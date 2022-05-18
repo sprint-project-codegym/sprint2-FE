@@ -26,10 +26,13 @@ export class RegisterComponent implements OnInit {
   listError: any = '';
   userDto: UserDTO;
   inputImage: any;
-  filePath = '../../../assets/img/avatar.png';
-  private uploading: boolean;
+  filePath = 'https://firebasestorage.googleapis.com/v0/b/a0321cinema.appspot.com/o/14-05-2022061301PMavatar.png?alt=media&token=590abb58-573c-4263-91d3-010eb0f0417b';
+   uploading: boolean;
   private username: any;
   @ViewChild('buttonRegister',{read: ElementRef}) buttonRegister: ElementRef;
+  // public imagePoster = null;
+  // public selectedImage: any = null;
+  // private messageImageError: string;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -178,4 +181,32 @@ export class RegisterComponent implements OnInit {
     reader.readAsDataURL(this.inputImage);
     this.uploading=true;
   }
+
+  //
+  // showImage(image) {
+  //   if (image.target.files && image.target.files[0]) {
+  //     const file = image.target.files[0].name;
+  //     const path = file.substring(file.length - 3).toLowerCase();
+  //     if (path === 'png' || path === 'jpg') {
+  //       const reader = new FileReader();
+  //       reader.onload = (e: any) => this.imagePoster = e.target.result;
+  //       reader.readAsDataURL(image.target.files[0]);
+  //       this.selectedImage = image.target.files[0];
+  //       this.messageImageError = '';
+  //     } else {
+  //       this.imagePoster = null;
+  //       this.messageImageError = '*Tệp ảnh bạn chọn không hợp lệ!';
+  //       this.selectedImage = null;
+  //     }
+  //   } else {
+  //     this.selectedImage = null;
+  //     this.messageImageError = '*Không được bỏ trống ảnh';
+  //   }
+  // }
+  //
+  // removeImage() {
+  //   this.filePath = 'https://firebasestorage.googleapis.com/v0/b/a0321cinema.appspot.com/o/14-05-2022061301PMavatar.png?alt=media&token=590abb58-573c-4263-91d3-010eb0f0417b';
+  //
+  //   // this.selectedImage = null;
+  // }
 }

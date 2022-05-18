@@ -24,6 +24,6 @@ export class BookTicketsService {
   findAllBookedTicket(username: string, page: number): Observable<any> {
     console.log(username);
     console.log(this.API_URL_TICKET + '?page=' + page + '&&username=' + username);
-    return this.httpClient.get<any>(this.API_URL_TICKET + '/?page=' + page + '&&username=' + username );
+    return this.httpClient.get<any>(this.API_URL_TICKET+'/'+username + '/?page=' + page);
   }
 }

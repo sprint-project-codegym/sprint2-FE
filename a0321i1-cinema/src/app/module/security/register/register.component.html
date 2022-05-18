@@ -110,14 +110,6 @@
             </div>
             <span class="text-danger" *ngIf="form.controls.idCard.touched && form.controls.idCard.errors?.required">Số CMND không được để trống. Vui lòng nhập!</span>
             <span class="text-danger" *ngIf="form.controls.idCard.touched && form.controls.idCard.errors?.pattern">Số CMND phải là 9 hoặc 12 số. Vui lòng nhập lại!</span>
-            <!--            <div class="invalid-feedback" *ngIf="form.controls.idCard.touched">-->
-            <!--              <span *ngIf="form.controls.idCard.errors?.required">Số CMND không được để trống. Vui lòng nhập!</span>&nbsp;-->
-            <!--              <span *ngIf="form.controls.idCard.errors?.pattern">Số CMND phải là 9 hoặc 12 số. Vui lòng nhập lại!</span>&nbsp;-->
-            <!--              <span *ngIf="listError.existIdCard">&nbsp;{{listError.existIdCard}}</span>-->
-            <!--            </div>-->
-            <!--            <div class="invalid-feedback" *ngIf="listError.existIdCard">-->
-            <!--              <span>&nbsp;{{listError.existIdCard}}</span>-->
-            <!--            </div>-->
           </div>
         </div>
 
@@ -199,7 +191,38 @@
           </label>
           <input id="image-picker" (change)="selectImage($event)" type="file"
                  accept=".jpg,.jpeg,.png"/>
+
+<!--          <div *ngIf="uploading == true">-->
+<!--&lt;!&ndash;            <img [src]="filePath" class="img-fluid rounded" id="image-preview1" >&ndash;&gt;-->
+<!--            <div class="icon-hide">-->
+<!--              <i (click)="removeImage()" class="fa fa-times-circle"></i>-->
+<!--            </div>-->
+<!--          </div>-->
+
+<!--          <div class="form-group">-->
+<!--            <label class="control-label">Hình ảnh:</label><br>-->
+<!--            <label for="file">-->
+<!--                          <img class="img-fluid rounded" id="image-preview" [src]="filePath"/>-->
+<!--                        </label>-->
+<!--            <div class="form-inline">-->
+<!--              <input (change)="showImage($event)" name="posterMovie" id="file" class="form-control"-->
+<!--                     formControlName="posterMovie" style="display:none" type="file">-->
+<!--&lt;!&ndash;                        <input id="image-picker" (change)="selectImage($event)" type="file"&ndash;&gt;-->
+<!--&lt;!&ndash;                               accept=".jpg,.jpeg,.png"/>&ndash;&gt;-->
+<!--              <label *ngIf="imagePoster === null" id="input-image" for="file" class="label"><i-->
+<!--                class="fas fa-images"-->
+<!--                style="padding-right:15px"></i>Chọn ảnh-->
+<!--              </label>-->
+<!--              <div *ngIf="imagePoster !== null">-->
+<!--                <img [src]="imagePoster" class="border border-dark" style="width: 174px; height: 110px">-->
+<!--                <div class="icon-hide">-->
+<!--                  <i (click)="removeImage()" class="fa fa-times-circle"></i>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
         </div>
+
 
       </div>
       <div class="row my-2">
@@ -214,31 +237,3 @@
     </form>
   </div>
 </div>
-<!--<script>-->
-<!--  const inpFile = document.getElementById("inpFile");-->
-<!--  const previewContainer = document.getElementById("imagePreview");-->
-<!--  const previewImage = previewContainer.querySelector(".image-preview__image");-->
-<!--  const previewDefaultText = previewContainer.querySelector(".image-preview__default-text");-->
-
-<!--  inpFile.addEventListener("change", function () {-->
-<!--    const file = this.files[0];-->
-
-<!--    if (file) {-->
-<!--      const reader = new FileReader();-->
-
-<!--      previewDefaultText.style.display = "none";-->
-<!--      previewImage.style.display = "block";-->
-
-<!--      reader.addEventListener("load", function () {-->
-<!--        previewImage.setAttribute("src", this.result);-->
-
-<!--      });-->
-<!--      reader.readAsDataURL(file);-->
-<!--    } else {-->
-<!--      previewDefaultText.style.display = null;-->
-<!--      previewImage.style.display = null;-->
-<!--      previewImage.setAttribute("src", "");-->
-<!--    }-->
-
-<!--  })-->
-<!--</script>-->

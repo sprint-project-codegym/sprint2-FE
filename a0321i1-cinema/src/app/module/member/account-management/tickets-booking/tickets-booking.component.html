@@ -1,13 +1,18 @@
+<app-header></app-header>
 <div class="container-fluid m-0">
   <div class="row">
     <div class="container-fluid col-lg-3 bg-light"
          style="background-image: url('https://live.staticflickr.com/5224/5773057791_5c34be3d91_b.jpg')">
       <app-nav-bar-account-manager></app-nav-bar-account-manager>
     </div>
-    <div class="container-fluid col-lg-9 p-0">
+    <div class="container-fluid col-lg-9 p-5">
       <div class="card-title">VÉ ĐÃ ĐẶT</div>
-      <div class="card-body px-lg-5 pb-lg-0">
-        <form>
+      <div *ngIf="!ticketBooking.length; else row">
+        <h3 class="text-danger text-center">Vé đã đặt hiện tại không có.</h3>
+      </div>
+      <ng-template #row>
+        <div class="card-body p-lg-5">
+          <!--        <form>-->
           <table class="table table-hover table-striped table-bordered">
             <thead>
             <tr>
@@ -19,58 +24,61 @@
             </thead>
             <tbody>
             <tr *ngFor="let ticket of ticketBooking">
-              <td width="40%">{{ticket.movieTicket.movie.movieName}}</td>
-              <td width="20%">{{ticket.createTime | date:'dd/MM/yyyy'}}</td>
-              <td width="20%" class="text-right">{{ticket.movieTicket.ticketPrice | currency: 'VND':true:'1.0-3'}}</td>
-              <td width="20%">{{ticket.ticketStatus.ticketStatusName}}</td>
+              <td width="55%">{{ticket.movieTicket.movie.movieName}}</td>
+              <td width="15%">{{ticket.createTime | date:'dd/MM/yyyy'}}</td>
+              <td width="15%" class="text-right">{{ticket.movieTicket.ticketPrice | currency: 'VND':true:'1.0-3'}}</td>
+              <td width="15%">{{ticket.ticketStatus.ticketStatusName}}</td>
             </tr>
             </tbody>
           </table>
-        </form>
-      </div>
-    </div>
-  </div>
-
-  <!--  Pagination-->
-  <div class="row">
-    <div class="col col-12 px-lg-5 pb-lg-0">
-      <nav aria-label="Page navigation example" class="float-right">
-        <ul class="pagination">
-          <div *ngIf="pageClicked==0; else show1"></div>
-          <ng-template #show1>
-            <li class="page-item" (click)="onFirst()" [ngClass]="pageClicked==0?'disabled':''">
-              <a class="page-link">Đầu</a>
-            </li>
-            <li class="page-item" (click)="onPrevious()" [ngClass]="pageClicked==0?'disabled':''">
-              <a class="page-link"><<</a>
-            </li>
-          </ng-template>
-          <li *ngIf="pageClicked != 0" class="page-item" (click)="onSubmit(pages[pageClicked-1])">
-            <a class="page-link">{{pageClicked}}</a>
-          </li>
-          <li [ngClass]="(pageClicked == pages[pageClicked]) ? 'active' : ''" class="page-item"
-              (click)="onSubmit(pages[pageClicked])">
-            <a class="page-link">{{pageClicked + 1}}</a>
-          </li>
-          <li *ngIf="pageClicked < pages.length -1" class="page-item" (click)="onSubmit(pages[pageClicked+1])">
-            <a class="page-link">{{pageClicked + 2}}</a>
-          </li>
-          <!--        <li *ngIf="pageClicked < pages.length -2" class="page-item">-->
-          <!--          <a class="page-link">...</a>-->
-          <!--        </li>-->
-          <li *ngIf="pageClicked < pages.length-2" class="page-item" (click)="onLast()">
-            <a class="page-link">{{pages[pages.length - 1] + 1}}</a>
-          </li>
-          <div *ngIf="pageClicked===totalPage-1; else show2"></div>
-          <ng-template #show2>
-            <li class="page-item" (click)="onNext()" [ngClass]="pageClicked==totalPage-1?'disabled':''">
-              <a class="page-link">>></a>
-            </li>
-            <li class="page-item" (click)="onLast()" [ngClass]="pageClicked==totalPage-1?'disabled':''"><a
-              class="page-link">Cuối</a></li>
-          </ng-template>
-        </ul>
-      </nav>
+          <!--        </form>-->
+          <!--  Pagination-->
+          <div class="row">
+            <div class="col col-12">
+              <nav aria-label="Page navigation example" class="float-right">
+                <ul class="pagination">
+                  <div *ngIf="pageClicked==0; else show1"></div>
+                  <ng-template #show1>
+                    <li class="page-item" (click)="onFirst()" [ngClass]="pageClicked==0?'disabled':''">
+                      <a class="page-link"><<</a>
+                    </li>
+                    <li class="page-item" (click)="onPrevious()" [ngClass]="pageClicked==0?'disabled':''">
+                      <a class="page-link"><</a>
+                    </li>
+                  </ng-template>
+                  <li *ngIf="pageClicked != 0" class="page-item" (click)="onSubmit(pages[pageClicked-1])">
+                    <a class="page-link">{{pageClicked}}</a>
+                  </li>
+                  <li [ngClass]="(pageClicked == pages[pageClicked]) ? 'active' : ''" class="page-item"
+                      (click)="onSubmit(pages[pageClicked])">
+                    <a class="page-link">{{pageClicked + 1}}</a>
+                  </li>
+                  <li *ngIf="pageClicked < pages.length -1" class="page-item" (click)="onSubmit(pages[pageClicked+1])">
+                    <a class="page-link">{{pageClicked + 2}}</a>
+                  </li>
+                  <!--        <li *ngIf="pageClicked < pages.length -2" class="page-item">-->
+                  <!--          <a class="page-link">...</a>-->
+                  <!--        </li>-->
+                  <li *ngIf="pageClicked < pages.length-2" class="page-item" (click)="onLast()">
+                    <a class="page-link">{{pages[pages.length - 1] + 1}}</a>
+                  </li>
+                  <div *ngIf="pageClicked===totalPage-1; else show2"></div>
+                  <ng-template #show2>
+                    <li class="page-item" (click)="onNext()" [ngClass]="pageClicked==totalPage-1?'disabled':''">
+                      <a class="page-link">></a>
+                    </li>
+                    <li class="page-item" (click)="onLast()" [ngClass]="pageClicked==totalPage-1?'disabled':''"><a
+                      class="page-link">>></a></li>
+                  </ng-template>
+                </ul>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </ng-template>
     </div>
   </div>
 </div>
+
+<app-footer></app-footer>
+
