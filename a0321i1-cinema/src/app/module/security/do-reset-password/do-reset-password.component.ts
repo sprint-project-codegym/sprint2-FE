@@ -69,7 +69,7 @@ export class DoResetPasswordComponent implements OnInit {
       );
     } else {
       console.log(this.resetPasswordForm.value.password.length);
-      if(this.resetPasswordForm.value.password.length != 6)
+      if(this.resetPasswordForm.value.password.length < 6)
         this.toastrService.error("Mật khẩu tối thiểu 6 ký tự", "Lỗi", {progressBar: true});
       else
         this.toastrService.error("Mật khẩu không khớp", "Lỗi", {progressBar: true});
