@@ -13,6 +13,9 @@ import {HomePageModule} from './module/home-page/home-page.module';
 import {MemberModule} from './module/member/member.module';
 import {SecurityModule} from './module/security/security.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {AngularFireModule} from "@angular/fire";
+import {environment} from "../environments/environment";
+import {ToastrModule} from "ngx-toastr";
 
 @NgModule({
   declarations: [
@@ -29,7 +32,15 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     EmployeeModule,
     MemberModule,
     SecurityModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(
+      {
+        timeOut: 2000,
+        progressBar: true,
+        progressAnimation: "increasing"
+      }
+    ),
+    AngularFireModule.initializeApp(environment.firebaseConfig)
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent]

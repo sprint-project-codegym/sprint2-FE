@@ -4,10 +4,10 @@ import {AdminPageComponent} from './admin-page/admin-page.component';
 
 
 const routes: Routes = [
-  {
-    path: '',
-    component: AdminPageComponent,
-    children: [
+  // {
+  //   path: '',
+  //   component: AdminPageComponent,
+  //   children: [
       {
         path: 'movie',
         loadChildren: () => import('./admin-movie-management/admin-movie-management.module').then(module => module.AdminMovieManagementModule)
@@ -18,8 +18,8 @@ const routes: Routes = [
       },
       {path: '', redirectTo: '', pathMatch: 'full'},
       {path: '**', redirectTo: '', pathMatch: 'full'}
-    ]
-  }
+  //   ]
+  // }
 ];
 
 @NgModule({

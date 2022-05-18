@@ -1,1 +1,185 @@
-<p>edit-movie works!</p>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+      <h3 class="text-center mb-3 mt-3 p-4" style="background-color: #05386B; color: white ">Thêm mới
+        phim</h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <form [formGroup]="formEditMovie" class="form-horizontal mt-4 mb-5 px-3">
+        <div class="row">
+          <div class="col-md-3 col-sm-12">
+            <!--              <div class="row">-->
+            <!--                <div class="form-group">-->
+            <!--                  <label class="control-label">Chọn hình ảnh banner<span-->
+            <!--                    class="text-danger">(*)</span>:</label><br>-->
+            <!--                  <label for="image-picker1">-->
+            <!--                    <img class="img-fluid rounded" id="image-preview1" [src]="filePath"/>-->
+            <!--                  </label>-->
+            <!--                  <input id="image-picker1" (change)="selectImage($event)" type="file"-->
+            <!--                         accept=".jpg,.jpeg,.png"/>-->
+            <!--                </div>-->
+            <!--              </div>-->
+            <div class="form-row">
+              <div class="form-group">
+                <label class="control-label">Chọn hình ảnh poster<span
+                  class="text-danger">(*)</span>:</label><br>
+                <div class="form-inline">
+                  <input (change)="showImage($event)" name="posterMovie" id="file" class="form-control"
+                         formControlName="posterMovie" style="display:none" type="file">
+                  <label *ngIf="imagePoster === null" id="input-image" for="file" class="label"><i
+                    class="fas fa-images"
+                    style="padding-right:15px"></i>Chọn
+                    ảnh
+                  </label>
+                  <div *ngIf="imagePoster !== null">
+                    <img [src]="imagePoster" class="border border-dark" style="width: 174px; height: 110px">
+                    <div class="icon-hide">
+                      <i (click)="removeImage()" class="fa fa-times-circle"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-9 col-sm-12">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="exampleFormControlInput1">Tên phim<span
+                  class="text-danger">(*)</span>:</label>
+                <input type="text" class="form-control" id="exampleFormControlInput1" formControlName="movieName"
+                       maxlength="100">
+                <div *ngIf="formEditMovie.controls.movieName.errors?.required && formEditMovie.controls.movieName.touched"
+                     class="alert alert-danger">
+                  <i class="fa fa-exclamation-circle"></i><i>Tên phim không được để trống</i>
+                </div>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="exampleFormControlInput1">Ngày bắt đầu thuê<span
+                  class="text-danger">*</span></label>
+                <input type="date" class="form-control" formControlName="startDate">
+                <div
+                  *ngIf="formEditMovie.controls.startDate.errors?.required && formEditMovie.controls.startDate.touched"
+                  class="alert alert-danger">
+                  <i class="fa fa-exclamation-circle"></i><i>Ngày bắt đầu không được để trống</i>
+                </div>
+              </div>
+              <div class="form-group col-md-6">
+                <label for="exampleFormControlInput1">Ngày kết thúc thuê<span
+                  class="text-danger">*</span></label>
+                <br>
+                <input type="date" class="form-control" formControlName="endDate">
+                <div *ngIf="formEditMovie.controls.endDate.errors?.required && formEditMovie.controls.endDate.touched"
+                     class="alert alert-danger">
+                  <i class="fa fa-exclamation-circle"></i><i>Ngày kết thúc không được để trống</i>
+                </div>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="exampleFormControlInput2">Danh sách diễn viên<span
+                  class="text-danger">(*)</span>:</label>
+                <input type="text" class="form-control" id="exampleFormControlInput2" formControlName="actor"
+                       maxlength="100">
+                <div *ngIf="formEditMovie.controls.actor.errors?.required && formEditMovie.controls.actor.touched"
+                     class="alert alert-danger">
+                  <i class="fa fa-exclamation-circle"></i><i>Diễn viên không được để trống</i>
+                </div>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-4">
+                <label for="exampleFormControlInput3">Hãng phim<span
+                  class="text-danger">(*)</span>:</label>
+                <input type="text" class="form-control" id="exampleFormControlInput3" formControlName="movieStudio"
+                       maxlength="100">
+                <div
+                  *ngIf="formEditMovie.controls.movieStudio.errors?.required && formEditMovie.controls.movieStudio.touched"
+                  class="alert alert-danger">
+                  <i class="fa fa-exclamation-circle"></i><i>Hãng phim không được để trống</i>
+                </div>
+              </div>
+              <div class="form-group col-md-4">
+                <label for="exampleFormControlInput4">Đạo diễn<span
+                  class="text-danger">(*)</span>:</label>
+                <input type="text" class="form-control" id="exampleFormControlInput4" formControlName="director"
+                       maxlength="100">
+                <div
+                  *ngIf="formEditMovie.controls.director.errors?.required && formEditMovie.controls.director.touched"
+                  class="alert alert-danger">
+                  <i class="fa fa-exclamation-circle"></i><i>Đạo diễn không được để trống</i>
+                </div>
+              </div>
+              <div class="form-group col-md-4">
+                <label for="exampleFormControlInput5">Thời lượng (phút)<span
+                  class="text-danger">(*)</span>:</label>
+                <input type="text" class="form-control" id="exampleFormControlInput5" formControlName="movieLength"
+                       maxlength="5">
+                <div
+                  *ngIf="formEditMovie.controls.movieLength.errors?.required && formEditMovie.controls.movieLength.touched"
+                  class="alert alert-danger">
+                  <i class="fa fa-exclamation-circle"></i><i>Độ dài không được để trống</i>
+                </div>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="exampleFormControlInput3">Trailer<span
+                  class="text-danger">(*)</span>:</label>
+                <input type="text" class="form-control" id="exampleFormControlInput6"
+                       formControlName="trailer">
+                <div *ngIf="formEditMovie.controls.trailer.errors?.required && formEditMovie.controls.trailer.touched"
+                     class="alert alert-danger">
+                  <i class="fa fa-exclamation-circle"></i><i>Link trailer không được để trống</i>
+                </div>
+              </div>
+            </div>
+            <div class="form-group row">
+              <div class="col-sm-2">Thể loại<span
+                class="text-danger">(*)</span>:
+              </div>
+              <table>
+                <tr>
+                  <td *ngFor="let category of listCategory|slice: 0: 7"><input
+                    (click)="selectCategory(category.categoryId)" class="ml-2"
+                    type="checkbox"/> {{category.categoryName}}
+                  </td>
+                </tr>
+                <tr>
+                  <td *ngFor="let category of listCategory|slice: 8: 14"><input
+                    (click)="selectCategory(category.categoryId)" class="ml-2"
+                    type="checkbox"/> {{category.categoryName}}
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="exampleFormControlTextarea1">Nội dung:</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
+                          formControlName="description"></textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="form-group col-12 d-flex justify-content-center">
+            <button class="btn btn-success text-white mr-3" routerLink="/ground/list" type="button"><i
+              class="fas fa-chevron-left"></i> Trở về
+            </button>
+            <button class="btn btn-success text-white mr-3" type="button" (click)="resetForm()"><i
+              class="fas fa-sync"></i> Làm mới
+            </button>
+            <button class="btn btn-primary" type="submit" (click)="submit(formEditMovie)"><i
+              class="fas fa-save"></i> Lưu
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
