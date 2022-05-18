@@ -30,6 +30,10 @@ import {ToastrModule} from 'ngx-toastr';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {AngularFireModule} from "@angular/fire";
 import {environment} from "../environments/environment";
+<<<<<<< HEAD
+import {ToastrModule} from "ngx-toastr";
+=======
+>>>>>>> origin/dev
 
 @NgModule({
   declarations: [
@@ -52,18 +56,28 @@ import {environment} from "../environments/environment";
     EmployeeModule,
     MemberModule,
     SecurityModule,
+<<<<<<< HEAD
+    BrowserAnimationsModule,
+=======
     ReactiveFormsModule,
 
     CommonModule,
     FormsModule,
+>>>>>>> origin/dev
     ToastrModule.forRoot(
       {
         timeOut: 2000,
         progressBar: true,
+<<<<<<< HEAD
+        progressAnimation: "increasing"
+      }
+    ),
+=======
         progressAnimation: 'increasing'
       }
     ),
     NgxSpinnerModule,
+>>>>>>> origin/dev
     AngularFireModule.initializeApp(environment.firebaseConfig)
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

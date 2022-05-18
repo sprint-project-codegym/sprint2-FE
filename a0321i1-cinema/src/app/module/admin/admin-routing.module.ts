@@ -4,6 +4,24 @@ import {AdminPageComponent} from './admin-page/admin-page.component';
 
 
 const routes: Routes = [
+<<<<<<< HEAD
+  // {
+  //   path: '',
+  //   component: AdminPageComponent,
+  //   children: [
+      {
+        path: 'movie',
+        loadChildren: () => import('./admin-movie-management/admin-movie-management.module').then(module => module.AdminMovieManagementModule)
+      },
+      {
+        path: 'statistical',
+        loadChildren: () => import('./admin-statistical-management/admin-statistical-management.module').then(module => module.AdminStatisticalManagementModule)
+      },
+      {path: '', redirectTo: '', pathMatch: 'full'},
+      {path: '**', redirectTo: '', pathMatch: 'full'}
+  //   ]
+  // }
+=======
   {
 
     path: 'movie',
@@ -18,6 +36,7 @@ const routes: Routes = [
   {path: '', redirectTo: '', pathMatch: 'full'},
   {path: '**', redirectTo: '', pathMatch: 'full'}
 
+>>>>>>> origin/dev
 ];
 
 @NgModule({

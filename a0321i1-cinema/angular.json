@@ -25,6 +25,10 @@
             ],
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+<<<<<<< HEAD
+              "src/styles.css",
+=======
+>>>>>>> origin/dev
               "node_modules/ngx-toastr/toastr.css"
             ],
             "scripts": []
@@ -125,9 +129,14 @@
       }
     }
   },
+<<<<<<< HEAD
+  "defaultProject": "a0321i1-cinema"
+}
+=======
   "defaultProject": "a0321i1-cinema",
   "cli": {
     "analytics": "cdacb717-862a-47ab-bd09-d3366133fd7e"
   }
 }
 
+>>>>>>> origin/dev
