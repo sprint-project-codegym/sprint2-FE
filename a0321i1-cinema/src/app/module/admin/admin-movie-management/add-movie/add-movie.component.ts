@@ -28,7 +28,7 @@ export class AddMovieComponent implements OnInit {
   public startDateCompare = '';
   public formAddMovie: FormGroup;
   public listCategory: Category[];
-  public categoryList: number[] = [];
+  public categoryList = [];
   public listMovieDTO: MovieDTO[] = [];
   private messageImageError: string;
 
@@ -42,7 +42,6 @@ export class AddMovieComponent implements OnInit {
 
   ngOnInit(): void {
     this.formAddMovie = new FormGroup({
-      movieId: new FormControl(null),
       movieName: new FormControl('', [Validators.required]),
       posterMovie: new FormControl('', [Validators.required]),
       startDate: new FormControl('', [Validators.required]),
@@ -62,6 +61,10 @@ export class AddMovieComponent implements OnInit {
   }
 
   submit(formAddMovie) {
+    let movieCreate = this.formAddMovie.value;
+    movieCreate["movieCategoryList"] = this.categoryList;
+    console.log(movieCreate);
+    console.log(this.formAddMovie.value);
     this.endDateCompare = this.formAddMovie.value.endDate;
     this.startDateCompare = this.formAddMovie.value.startDate;
     if (this.endDateCompare < this.startDateCompare) {
@@ -123,10 +126,16 @@ export class AddMovieComponent implements OnInit {
   }
 
   selectCategory(categoryId: number) {
-    if (this.categoryList.includes(categoryId)) {
-      this.categoryList.splice(this.categoryList.indexOf(categoryId), 1);
+    let index = this.categoryList.findIndex((element) => {
+      return element.categoryId == categoryId;
+    });
+    if (index!=-1) {
+      this.categoryList.splice(index, 1);
     } else {
-      this.categoryList.push(categoryId);
+      this.categoryList.push(
+      {
+        "categoryId": categoryId
+      });
     }
   }
 

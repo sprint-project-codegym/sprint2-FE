@@ -1,23 +1,16 @@
-<<<<<<< HEAD
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Movie} from "../../dto/Movie";
 import {MovieDTO} from "../../entity/dto/movieDTO";
-=======
-import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {Observable} from 'rxjs';
->>>>>>> origin/dev
 
 @Injectable({
   providedIn: 'root'
 })
 export class MovieManagementService {
   httpOptions: any;
-  public baseUrl = 'http://localhost:8080/api';
-
-<<<<<<< HEAD
+  public baseUrl = 'http://localhost:8080/api/movie';
+  public categoryUrl = 'http://localhost:8080/api';
   constructor(private http: HttpClient) {
     this.httpOptions = {
       headers: new HttpHeaders({}),
@@ -30,16 +23,16 @@ export class MovieManagementService {
   }
 
   public formAddMovie(listMovieDTO: MovieDTO[]): Observable<Movie>{
-    return this.http.post<any>(this.baseUrl + '/add_movie', listMovieDTO);
+    return this.http.post<any>(this.baseUrl + '/create', listMovieDTO);
   }
 
   public getCategory(): Observable<any>{
-    return this.http.get<any>(this.baseUrl + '/category');
+    return this.http.get<any>(this.categoryUrl + '/category');
   }
 
-  public getAllMovie(page: number): Observable<any>{
-    return this.http.get<any>(this.baseUrl + '/movie_ava?page=' + page);
-  }
+  // public getAllMovie(page: number): Observable<any>{
+  //   return this.http.get<any>(this.baseUrl + '/movie_ava?page=' + page);
+  // }
 
   public deleteMovie(id: number): Observable<any>{
     return this.http.put(this.baseUrl + '/set_status/' + id, this.httpOptions);
@@ -55,21 +48,7 @@ export class MovieManagementService {
   // public getCategory(): Observable<any>{
   //   return this.httpClient.get<any>(this.baseUrl + '/category');
   // }
-=======
   public MOVIE_API = 'http://localhost:8080/api/movie/manage';
-
-  constructor(
-    public http: HttpClient
-  ) {
-  }
-
-  httpOptions = {
-    headers: new HttpHeaders({
-      'Content-Type': 'application/json'
-    }),
-    'Access-Control-Allow-Origin': 'http://localhost:4200',
-    'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS'
-  };
 
   getAllMovie(page: number, size: number): Observable<any> {
     return this.http.get(this.MOVIE_API + '/list' + '?page=' + page + '&size=' + size);
@@ -83,5 +62,4 @@ export class MovieManagementService {
   deleteMovieById(deleteId: string) {
     return this.http.delete(this.MOVIE_API + '/delete/' + deleteId);
   }
->>>>>>> origin/dev
 }
