@@ -171,11 +171,12 @@ export class EmployeeEditMemberComponent implements OnInit {
   }
 
   changeProvince(value: any) {
-    const districtId = value.value;
-    if (districtId) {
-      this.memberService.getDistrict(districtId).subscribe(data => {
+    const provinceId = value.value;
+    if (provinceId) {
+      this.memberService.getDistrict(provinceId).subscribe(data => {
         this.districts = data;
         this.wards = null;
+        this.formEditUser.controls['ward'].setValue("");
       });
     } else {
       this.districts = null;
@@ -188,6 +189,7 @@ export class EmployeeEditMemberComponent implements OnInit {
     if (districtId) {
       this.memberService.getWard(districtId).subscribe(data => {
         this.wards = data;
+        this.formEditUser.controls['ward'].setValue("");
       });
     } else {
       this.wards = null;
