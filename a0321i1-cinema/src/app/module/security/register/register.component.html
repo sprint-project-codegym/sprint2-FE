@@ -189,10 +189,16 @@
           <label for="image-picker">
             <img class="img-fluid rounded" id="image-preview" [src]="filePath"/>
           </label>
-          <div>
-          <input *ngIf="uploading !== true" id="image-picker" (change)="selectImage($event)" type="file"
-                 accept=".jpg,.jpeg,.png"/>
-        </div>
+<!--          <div>-->
+<!--            <input *ngIf="uploading !== true" id="image-picker" (change)="selectImage($event)" type="file"-->
+<!--                   accept=".jpg,.jpeg,.png"/>-->
+            <input  id="image-picker" (change)="selectImage($event)" type="file"
+                   accept=".jpg,.jpeg,.png"/><br>
+          <label for="image-picker" *ngIf="uploading !== true" class="label">
+            <i class="fas fa-images"
+               style="padding-right:15px"></i>Chọn
+            ảnh
+          </label>
 
           <div *ngIf="uploading === true">
             <div class="icon-hide">
