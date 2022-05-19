@@ -26,10 +26,10 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 // @ts-ignore
 import {NgxPaginationModule} from 'ngx-pagination';
 import {NgxSpinnerModule} from 'ngx-spinner';
-import {ToastrModule} from 'ngx-toastr';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {AngularFireModule} from "@angular/fire";
 import {environment} from "../environments/environment";
+import {ToastrModule} from "ngx-toastr";
 
 @NgModule({
   declarations: [
@@ -52,15 +52,15 @@ import {environment} from "../environments/environment";
     EmployeeModule,
     MemberModule,
     SecurityModule,
+    BrowserAnimationsModule,
     ReactiveFormsModule,
-
     CommonModule,
     FormsModule,
     ToastrModule.forRoot(
       {
         timeOut: 2000,
         progressBar: true,
-        progressAnimation: 'increasing'
+        progressAnimation: "increasing"
       }
     ),
     NgxSpinnerModule,
