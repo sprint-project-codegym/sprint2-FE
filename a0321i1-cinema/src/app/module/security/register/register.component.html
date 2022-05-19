@@ -27,7 +27,7 @@
                   *ngIf="form.controls.username.touched && form.controls.username.errors?.minlength">Tên tài khoản phải ít nhất 6 kí tự.</span>
             <span class="text-danger"
                   *ngIf="form.controls.username.touched && form.controls.username.errors?.maxlength">Tên tài khoản quá dài.</span>
-            <span class="text-danger"*ngIf="listError.existAccount">{{listError.existAccount}}</span>
+            <span class="text-danger" *ngIf="listError.existAccount">{{listError.existAccount}}</span>
           </div>
         </div>
 
@@ -189,38 +189,16 @@
           <label for="image-picker">
             <img class="img-fluid rounded" id="image-preview" [src]="filePath"/>
           </label>
-          <input id="image-picker" (change)="selectImage($event)" type="file"
+          <div>
+          <input *ngIf="uploading !== true" id="image-picker" (change)="selectImage($event)" type="file"
                  accept=".jpg,.jpeg,.png"/>
+        </div>
 
-<!--          <div *ngIf="uploading == true">-->
-<!--&lt;!&ndash;            <img [src]="filePath" class="img-fluid rounded" id="image-preview1" >&ndash;&gt;-->
-<!--            <div class="icon-hide">-->
-<!--              <i (click)="removeImage()" class="fa fa-times-circle"></i>-->
-<!--            </div>-->
-<!--          </div>-->
-
-<!--          <div class="form-group">-->
-<!--            <label class="control-label">Hình ảnh:</label><br>-->
-<!--            <label for="file">-->
-<!--                          <img class="img-fluid rounded" id="image-preview" [src]="filePath"/>-->
-<!--                        </label>-->
-<!--            <div class="form-inline">-->
-<!--              <input (change)="showImage($event)" name="posterMovie" id="file" class="form-control"-->
-<!--                     formControlName="posterMovie" style="display:none" type="file">-->
-<!--&lt;!&ndash;                        <input id="image-picker" (change)="selectImage($event)" type="file"&ndash;&gt;-->
-<!--&lt;!&ndash;                               accept=".jpg,.jpeg,.png"/>&ndash;&gt;-->
-<!--              <label *ngIf="imagePoster === null" id="input-image" for="file" class="label"><i-->
-<!--                class="fas fa-images"-->
-<!--                style="padding-right:15px"></i>Chọn ảnh-->
-<!--              </label>-->
-<!--              <div *ngIf="imagePoster !== null">-->
-<!--                <img [src]="imagePoster" class="border border-dark" style="width: 174px; height: 110px">-->
-<!--                <div class="icon-hide">-->
-<!--                  <i (click)="removeImage()" class="fa fa-times-circle"></i>-->
-<!--                </div>-->
-<!--              </div>-->
-<!--            </div>-->
-<!--          </div>-->
+          <div *ngIf="uploading === true">
+            <div class="icon-hide">
+              <i (click)="removeImage()" class="fa fa-times-circle"></i>
+            </div>
+          </div>
         </div>
 
 
@@ -228,7 +206,7 @@
       <div class="row my-2">
         <div class="col-12">
           <div>
-            <button type="submit" class="btn btn-confirm" [disabled] ="form.invalid">
+            <button type="submit" class="btn btn-confirm" [disabled]="form.invalid">
               <span #buttonRegister>Đăng ký</span>
             </button>
           </div>

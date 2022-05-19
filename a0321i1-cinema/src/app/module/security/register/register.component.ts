@@ -204,9 +204,9 @@ export class RegisterComponent implements OnInit {
   //   }
   // }
   //
-  // removeImage() {
-  //   this.filePath = 'https://firebasestorage.googleapis.com/v0/b/a0321cinema.appspot.com/o/14-05-2022061301PMavatar.png?alt=media&token=590abb58-573c-4263-91d3-010eb0f0417b';
-  //
-  //   // this.selectedImage = null;
-  // }
+  removeImage() {
+    this.filePath = 'https://firebasestorage.googleapis.com/v0/b/a0321cinema.appspot.com/o/14-05-2022061301PMavatar.png?alt=media&token=590abb58-573c-4263-91d3-010eb0f0417b';
+    this.uploading = false;
+    // this.selectedImage = null;
+  }
 }

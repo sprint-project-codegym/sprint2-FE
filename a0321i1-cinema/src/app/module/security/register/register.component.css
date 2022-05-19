@@ -117,17 +117,6 @@ input:focus, input:active, select:focus, select:active {
   font-weight: bold;
 }
 
-#image-preview1 {
-  width: 100px;
-  height: 100px;
-  border: 2px solid #dddddd;
-  margin-top: 15px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: bold;
-}
 
 .image-preview__image {
   display: none;
