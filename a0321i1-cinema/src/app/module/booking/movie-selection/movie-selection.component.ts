@@ -38,6 +38,7 @@ export class MovieSelectionComponent implements OnInit {
   ngOnInit(): void {
     this.bookTicketsService.getAllMovie().subscribe(data => {
       this.listMovie = data;
+      console.log(data);
     }, error => {
       console.log('get ' + error + ' at getAllMovie() on MovieSelectionComponent');
     });
@@ -57,9 +58,10 @@ export class MovieSelectionComponent implements OnInit {
       this.endDate = new Date(this.movie.endDate);
 
       if (this.endDate > this.startDate) {
-        this.diff = this.endDate.getDate() - this.startDate.getDate();
+        this.diff = Math.floor((this.endDate.getTime() - this.startDate.getTime()) / 1000 / 3600 / 24);
+        console.log(this.diff);
         for (let i = 0; i <= this.diff; i++) {
-          this.listDateTime.push(this.startDate.toISOString().slice(0, 10));
+          this.listDateTime.push(this.startDate.toLocaleDateString("af-NA").split('T')[0]);
           this.startDate.setDate(this.startDate.getDate() + 1);
         }
       }
