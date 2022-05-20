@@ -31,10 +31,6 @@ export class HeaderComponent implements OnInit {
       console.log(this.name);
       this.securityService.isLoggedIn = true;
       console.log(this.securityService.isLoggedIn);
-      // this.securityService.isLoggedIn = true;
-      // this.role = user.roles[0].authority;
-      // this.username = user.username;
-      // this.getAvatarUrl(this.username);
     }
     if (this.tokenStore.getToken()) {
       console.log(this.tokenStore.getUser().user.name);

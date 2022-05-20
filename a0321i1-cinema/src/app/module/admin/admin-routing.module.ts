@@ -1,6 +1,7 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 import {AdminPageComponent} from './admin-page/admin-page.component';
+import {AuthGuard} from '../../auth.guard';
 
 
 const routes: Routes = [
@@ -27,7 +28,6 @@ const routes: Routes = [
   },
   {path: '', redirectTo: '', pathMatch: 'full'},
   {path: '**', redirectTo: '', pathMatch: 'full'}
-
 ];
 
 @NgModule({

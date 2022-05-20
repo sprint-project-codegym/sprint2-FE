@@ -13,9 +13,9 @@ import { RequestResetPasswordComponent } from './request-reset-password/request-
 import { ConfirmVerificationCodeComponent } from './confirm-verification-code/confirm-verification-code.component';
 import { DoResetPasswordComponent } from './do-reset-password/do-reset-password.component';
 import {RouterModule} from '@angular/router';
-
+import { TestComponent } from './test/test.component';
 @NgModule({
-  declarations: [ConfirmEmailComponent, LoginGoogleComponent, LoginComponent, LogoutComponent, RegisterComponent, RequestResetPasswordComponent, ConfirmVerificationCodeComponent, DoResetPasswordComponent],
+  declarations: [ConfirmEmailComponent, LoginGoogleComponent, LoginComponent, LogoutComponent, RegisterComponent, RequestResetPasswordComponent, ConfirmVerificationCodeComponent, DoResetPasswordComponent, TestComponent],
   imports: [
     CommonModule,
     HttpClientModule,

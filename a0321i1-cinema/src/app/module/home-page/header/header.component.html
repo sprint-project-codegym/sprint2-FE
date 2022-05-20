@@ -1,5 +1,3 @@
-<!--<p style="color: red">Hello bạn {{user.name}}</p>-->
-<button class="button button-warning" (click)="logout()">Đăng xuất</button>
 <div class="container-fluid">
   <div class="row" id="header" style="height: 50px">
     <div class="col-4" style="width: 100%; text-align: end; margin-top: 2px;padding-right: 130px">
@@ -20,12 +18,18 @@
         </div>
         <div class="col-4">
           <div class="row sign" style="vertical-align: center">
-            <div class="col-7" style="text-align: end; top: 7px"><a href="#" style="font-size: 1rem; color: #05386B; font-weight: bold">Đăng
-              nhập</a>
+            <div *ngIf="user.name; else login" class="col-7" style="text-align: end; top: 7px"><a style="font-size: 1rem; color: #05386B; font-weight: bold">
+              {{user.name}}
+            </a>
             </div>
-            <div class="col-5" style="text-align: start; top: 7px"><a href="#" style="font-size: 1rem; color: #05386B; font-weight: bold">Đăng
+            <ng-template #login class="col-7" style="text-align: end; top: 7px"><span style="font-size: 1rem; color: #05386B; font-weight: bold">Đăng
+              nhập</span>
+            </ng-template>
+            <div *ngIf="!user.name; else register" class="col-5" style="text-align: start; top: 7px"><a routerLink="/register" style="font-size: 1rem; color: #05386B; font-weight: bold">Đăng
               ký</a>
             </div>
+            <ng-template #register class="col-5 mt-1" style="text-align: start; top: 7px"><a (click)="logout()" routerLink="/register" style="font-size: 1rem; color: #05386B; font-weight: bold">Đăng xuất</a>
+            </ng-template>
           </div>
         </div>
         <div class="col-2" style="top: 35px; text-align: start">

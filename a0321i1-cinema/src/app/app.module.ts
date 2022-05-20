@@ -21,21 +21,24 @@ import {EmployeeModule} from './module/employee/employee.module';
 import {HomePageModule} from './module/home-page/home-page.module';
 import {MemberModule} from './module/member/member.module';
 import {SecurityModule} from './module/security/security.module';
-import {BottomSheetNotifyComponent} from './util/bottom-sheet-notify/bottom-sheet-notify.component';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { BottomSheetNotifyComponent } from './util/bottom-sheet-notify/bottom-sheet-notify.component';
+import { PageNotFoundComponent } from './module/page-not-found/page-not-found.component';
+import { PageNotAllowAccessComponent } from './module/page-not-allow-access/page-not-allow-access.component';
+import {AngularFireModule} from '@angular/fire';
+import {environment} from '../environments/environment';import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 // @ts-ignore
 import {NgxPaginationModule} from 'ngx-pagination';
 import {NgxSpinnerModule} from 'ngx-spinner';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {AngularFireModule} from "@angular/fire";
-import {environment} from "../environments/environment";
 import {ToastrModule} from "ngx-toastr";
 
 @NgModule({
   declarations: [
     AppComponent,
     LoadingComponent,
-    BottomSheetNotifyComponent
+    BottomSheetNotifyComponent,
+    PageNotFoundComponent,
+    PageNotAllowAccessComponent,
   ],
   imports: [
     BrowserModule,

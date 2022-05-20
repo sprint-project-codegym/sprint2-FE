@@ -1,4 +1,6 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import {TokenStorageService} from "../../../../service/security/token-storage.service";
+import {Router} from "@angular/router";
 import {User} from '../../../../entity/User';
 import {AccountManagementService} from '../../../../service/member/account-management.service';
 import {Account} from '../../../../entity/Account';
@@ -11,15 +13,13 @@ import {UserService} from '../../../../service/security/user.service';
 })
 export class NavBarAccountManagerComponent implements OnInit {
 
+  constructor(private tokenStore: TokenStorageService,
+              private router: Router,
+              private accountService: AccountManagementService,
+              private userService: UserService) { }
   username: string;
   account: Account;
   user: User;
-
-  constructor(
-    private accountService: AccountManagementService,
-    private userService: UserService
-  ) {
-  }
 
   ngOnInit(): void {
     this.getAccount();
@@ -32,10 +32,14 @@ export class NavBarAccountManagerComponent implements OnInit {
     });
   }
 
+  logout() {
+    this.tokenStore.signOut();
+    this.router.navigateByUrl("/login");
+  }
   getUser() {
     this.userService.getUserByUsername('luan123').subscribe(data => {
       this.user = data;
-    });
+    })
   }
 }
 

@@ -35,7 +35,6 @@ export class SeatSelectionComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.listTicket = [];
     // tslint:disable-next-line:radix
     this.movieTicketId = parseInt(this.activatedRoute.snapshot.queryParamMap.get('movieTicketId'));
     this.bookTicketsService.getMovieTicketById(this.movieTicketId).subscribe(data => {
@@ -101,8 +100,7 @@ export class SeatSelectionComponent implements OnInit {
   continue() {
     this.listChoseSeat.forEach((element) => {
       this.listTicket.push({
-        email: "phuocrider25@gmail.com",
-        // email: this.tokenStore.getUser().user.email,
+        email: this.tokenStore.getUser().user.email,
         movieName: this.movieTicket.movie.movieName,
         posterMovie: this.movieTicket.movie.posterMovie,
         projectionName: this.movieTicket.projectionType.projectionName,
@@ -113,10 +111,9 @@ export class SeatSelectionComponent implements OnInit {
         showTime: this.movieTicket.showTime.showTime,
         ticketPrice: this.movieTicket.ticketPrice,
         tiketId: Math.floor(100000 + Math.random() * 900000)+"",
-        username: "nguyenvana",
-        // username: this.tokenStore.getUser().user.account.username
+        username: this.tokenStore.getUser().user.account.username
       });
-    })
+    });
 
     if (this.listTicket.length !== 0 ){
       this.bookTicketsService.listTiket = this.listTicket;
