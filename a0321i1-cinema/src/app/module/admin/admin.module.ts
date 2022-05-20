@@ -4,11 +4,8 @@ import {CommonModule} from '@angular/common';
 import {AdminRoutingModule} from './admin-routing.module';
 import {AdminPageComponent} from './admin-page/admin-page.component';
 import {HttpClientModule} from '@angular/common/http';
+import {RouterModule} from '@angular/router';
 import {HomePageModule} from "../home-page/home-page.module";
-import {MatDialogModule} from "@angular/material/dialog";
-import {ToastrModule} from "ngx-toastr";
-import {MatDatepickerModule} from "@angular/material/datepicker";
-import {MatNativeDateModule} from "@angular/material/core";
 
 
 @NgModule({
@@ -17,12 +14,8 @@ import {MatNativeDateModule} from "@angular/material/core";
     CommonModule,
     AdminRoutingModule,
     HttpClientModule,
+    RouterModule,
     HomePageModule,
-    MatDialogModule,
-    ToastrModule,
-    MatDatepickerModule,
-    MatNativeDateModule
   ]
 })
-export class AdminModule {
-}
+export class AdminModule { }

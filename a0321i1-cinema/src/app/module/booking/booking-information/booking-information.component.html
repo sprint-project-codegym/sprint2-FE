@@ -1,5 +1,20 @@
-<div class="container">
-  <div class="row">
+<div class="container" id="fluid">
+  <div id="follow-div" class="row p-0">
+    <div class="follow col-lg-3 col-md-3">
+      <p class="follow-title">Chọn phim</p>
+    </div>
+    <div class="follow col-lg-3 col-md-3">
+      <p class="follow-title" >Chọn ghế</p>
+    </div>
+    <div class="follow col-lg-3 col-md-3">
+      <p class="follow-title">Xác nhận đặt vé</p>
+    </div>
+    <div class="follow col-lg-3 col-md-3">
+      <p class="follow-title" id="active">Thông tin đặt vé</p>
+    </div>
+  </div>
+
+  <div class="row mt-5">
 
     <div class="col-9">
       <div class="ticket-wrapper">
@@ -13,7 +28,7 @@
                 <form class="pay-wrapper">
                   <div class="row">
                     <div class="col-3">
-                      <label class="control-label">Họ và tên</label>
+                      <label class="control-label">Username</label>
                     </div>
                     <div class="col-5">
                       <input type="text" class="login input-booking" [value]="infTickets[0].username">
@@ -50,7 +65,7 @@
                     <div class="col-5">
                       <div class="row">
                         <div class="col-6">
-                          <a class="btn primary input pay-bt">Quay lại</a>
+                          <a routerLink="/booking/movie" class="btn primary input pay-bt">Quay lại</a>
                         </div>
                         <div class="col-6">
                           <a class="btn primary input pay-bt" (click)="onSubmit()">Thanh toán</a>
