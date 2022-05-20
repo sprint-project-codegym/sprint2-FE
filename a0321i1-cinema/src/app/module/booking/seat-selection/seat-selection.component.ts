@@ -20,6 +20,7 @@ export class SeatSelectionComponent implements OnInit {
   movieTicket: MovieTicket;
   movieTicketId: number;
   totalMoney = 0;
+  id;
 
   constructor(private bookTicketsService: BookTicketsService,
               private router: Router,
@@ -48,6 +49,7 @@ export class SeatSelectionComponent implements OnInit {
   }
 
   chooseSeat(roomSeat: RoomSeat) {
+    console.log(roomSeat);
     if (roomSeat.seatStatus.seatStatusId === 1) {
       const seatStyle = document.getElementById(roomSeat.seat.row.rowName + roomSeat.seat.column.columnName);
       if (!this.listChoseSeat.includes(roomSeat)) {
@@ -55,8 +57,7 @@ export class SeatSelectionComponent implements OnInit {
           seatStyle.style.backgroundColor = 'green';
           seatStyle.style.color = 'white';
           this.listChoseSeat.push(roomSeat);
-          this.getTotalMoney();
-          // console.log(this.totalMoney);
+          this.calculateTotalMoney(true,roomSeat);
         } else {
           this.toastrService.error('Bạn chỉ có thể chọn tối đa 8 vé!', 'Thông báo!');
         }
@@ -68,30 +69,35 @@ export class SeatSelectionComponent implements OnInit {
         }
         seatStyle.style.color = 'black';
         this.listChoseSeat.splice(this.listChoseSeat.indexOf(roomSeat), 1);
-        this.getTotalMoney();
+        this.calculateTotalMoney(false, roomSeat);
       }
     } else {
       this.toastrService.warning('Ghế này đã có người đặt rồi!', 'Thông báo!');
     }
   }
-  getTotalMoney(){
-    for (const roomSeat of this.listChoseSeat) {
+  calculateTotalMoney(check: boolean,roomSeat: RoomSeat){
+    if(check) {
       if (roomSeat.seat.seatType.seatTypeId === 1) {
         this.totalMoney += this.movieTicket.ticketPrice;
-        console.log(this.totalMoney);
       } else {
         this.totalMoney += (this.movieTicket.ticketPrice * (4 / 3));
+      }
+    } else {
+      if (roomSeat.seat.seatType.seatTypeId === 1) {
+        this.totalMoney -= this.movieTicket.ticketPrice;
+      } else {
+        this.totalMoney -= (this.movieTicket.ticketPrice * (4 / 3));
       }
     }
   }
 
   continue() {
+
     if (this.listChoseSeat.length !== 0 ){
       this.bookTicketsService.listChoseSeat = this.listChoseSeat;
-      console.log(this.bookTicketsService.listChoseSeat);
-      this.router.navigateByUrl('booking/confirm');
+      this.router.navigateByUrl("booking/confirm");
     } else {
-      this.toastrService.error('Bạn chưa chọn vé!', 'Lỗi!');
+      this.toastrService.error("Bạn chưa chọn vé!", "Lỗi!")
     }
   }
 

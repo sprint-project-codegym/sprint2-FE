@@ -6,7 +6,7 @@ import {EmployeeListMemberComponent} from './employee-list-member/employee-list-
 
 const routes: Routes = [
   {
-    path: '' , component : EmployeeListMemberComponent
+    path: 'list' , component : EmployeeListMemberComponent
   },
   {
     path: 'edit/:id' , component : EmployeeEditMemberComponent

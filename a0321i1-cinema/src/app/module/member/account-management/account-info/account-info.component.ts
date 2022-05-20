@@ -90,8 +90,8 @@ export class AccountInfoComponent implements OnInit {
   initFormPassword() {
     this.rfPasswordForm = this.fb.group({
       oldPassword: ['', [Validators.required]],
-      newPassword: ['', [Validators.required]],
-      confirmNewPassword: ['', [Validators.required, this.comparePassword]]
+      newPassword: ['', [Validators.required, Validators.minLength(6)]],
+      confirmNewPassword: ['', [Validators.required, this.comparePassword, Validators.minLength(6)]]
     }, {validators: this.comparePassword});
   }
 
@@ -101,7 +101,9 @@ export class AccountInfoComponent implements OnInit {
   }
 
   onSubmitPass() {
-    if (this.rfPasswordForm.valid) {
+    if (this.rfPasswordForm.value.newPassword !== this.rfPasswordForm.value.confirmNewPassword) {
+      this.toastr.error('Mật khẩu và xác nhận mật khẩu không khớp!', 'Thông báo!');
+    } else {
       this.accountDTO = new AccountDTO(this.tokenStorageService.getUser().user.account.username, this.rfPasswordForm.value.oldPassword, this.rfPasswordForm.value.newPassword);
       console.log(this.accountDTO);
       this.accountService.setNewPassword(this.accountDTO).subscribe(data => {
@@ -109,8 +111,6 @@ export class AccountInfoComponent implements OnInit {
       }, error => {
         this.toastr.error('Mật khẩu cũ không khớp!', 'Thông báo!');
       });
-    } else {
-      console.log('invalid form');
     }
   }
 }
