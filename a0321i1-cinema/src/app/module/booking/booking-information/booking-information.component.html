@@ -16,7 +16,7 @@
                       <label class="control-label">Họ và tên</label>
                     </div>
                     <div class="col-5">
-                      <input type="text" class="login input-booking" [value]="infMovieTicket.ticketSet[0].user.name">
+                      <input type="text" class="login input-booking" [value]="infTickets[0].username">
                     </div>
                   </div>
                   <div class="row">
@@ -24,17 +24,17 @@
                       <label class="control-label">Email</label>
                     </div>
                     <div class="col-5">
-                      <input type="email" class="login input-booking" [value]="infMovieTicket.ticketSet[0].user.email">
+                      <input type="email" class="login input-booking" [value]="infTickets[0].email">
                     </div>
                   </div>
-                  <div class="row">
-                    <div class="col-3">
-                      <label class="control-label">Số điện thoại</label>
-                    </div>
-                    <div class="col-5">
-                      <input type="text" class="login input-booking" [value]="infMovieTicket.ticketSet[0].user.phone">
-                    </div>
-                  </div>
+<!--                  <div class="row">-->
+<!--                    <div class="col-3">-->
+<!--                      <label class="control-label">Số điện thoại</label>-->
+<!--                    </div>-->
+<!--                    <div class="col-5">-->
+<!--                      <input type="text" class="login input-booking" [value]="infTickets[0].">-->
+<!--                    </div>-->
+<!--                  </div>-->
                   <div class="row notice-infopayment">
                     <div class="col-3"></div>
                     <div class="col-5">
@@ -72,35 +72,35 @@
     <div class="col-3">
       <div class="ticket-header" style="top: 0px;">
         <section class="ticket-feature">
-          <div class="row">
+          <div class="row" *ngFor="let infTicket of infTickets">
             <div class="col-12" style="text-align: center">
-              <img [src]="infMovieTicket.movie.posterMovie" width="80%">
+              <img [src]="infTicket.posterMovie" width="80%">
             </div>
             <div class="col-12">
               <div class="ticket-detail">
-                <h2 class="ticket-title upper-text">{{infMovieTicket.movie.movieName}}</h2>
+                <h2 class="ticket-title upper-text">{{infTicket.movieName}}</h2>
                 <div class="ticket-info">
                   <p>
                     <b>Rạp: &nbsp;</b>
-                    A032I1&nbsp; | PHÒNG CHIẾU: {{infMovieTicket.room.roomName}}&nbsp;
+                    A032I1&nbsp; | PHÒNG CHIẾU: {{infTicket.roomName}}&nbsp;
                   </p>
                   <p>
                     <b>Suất chiếu: &nbsp;</b>
-                    {{infMovieTicket.showTime.showTime}} | {{infMovieTicket.showDate | date:"dd/MM/yyyy"}}
+                    {{infTicket.showTime}} | {{infTicket.showDate | date:"dd/MM/yyyy"}}
                   </p>
                   <p>
                     <b>Loại chiếu: &nbsp;</b>
-                    {{infMovieTicket.projectionType}}
+                    {{infTicket.projectionName}}
                   </p>
                   <p>
                     <b>Ghế: &nbsp;</b>
-                    {{infMovieTicket.ticketSet[0].seat.row.rowName}}{{infMovieTicket.ticketSet[0].seat.column.columnName}}
+                    {{infTicket.seatRow}}{{infTicket.seatColumn}}
                   </p>
                 </div>
                 <div>
                   <p>
-                    <b style="size: 30px">Tổng: &nbsp;</b>
-                    <span style="size: 30px; color: red">{{infMovieTicket.ticketPrice | currency:'VND':true:'1.0-3'}} VND</span>
+                    <b style="size: 30px">Giá vé: &nbsp;</b>
+                    <span style="size: 30px; color: red">{{infTicket.ticketPrice | currency:'VND':true:'1.0-3'}} VND</span>
                   </p>
                 </div>
               </div>
@@ -108,37 +108,11 @@
           </div>
         </section>
       </div>
-    </div>
-  </div>
-</div>
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-body text-center">
-        <i class="fas fa-exclamation fa-4x" style="color: #f26b38"></i>
-        <p style="font-size: 20px; font-weight: 700">Bạn có chắc muốn thanh toán {{infMovieTicket.ticketPrice}} VND?</p>
-        <p>Hành động này không thể hoàn tác</p>
-      </div>
-      <div class="modal-footer justify-content-center">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
-        <button type="button" class="btn btn-primary" data-dismiss="modal" data-toggle="modal" data-target="#exampleModal1">Đồng ý</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-body text-center">
-        <i class="fas fa-check fa-4x" style="color: #1e7e34"></i>
-        <p style="font-size: 20px; font-weight: 700">Thanh toán thành công</p>
-        <p>Giao dịch hoàn tất</p>
-      </div>
-      <div class="modal-footer justify-content-center">
-        <button type="button" data-dismiss="modal" class="btn btn-primary">OK</button>
+      <div>
+        <p>
+          <b style="size: 30px"> Tổng giá vé: &nbsp;</b>
+          <span style="size: 30px; color: red">{{price | currency:'VND':true:'1.0-3'}} VND</span>
+        </p>
       </div>
     </div>
   </div>

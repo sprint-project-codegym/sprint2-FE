@@ -9,6 +9,7 @@ import {Ticket} from "../../entity/Ticket";
 import {Movie} from "../../entity/Movie";
 import {ShowTime} from "../../entity/ShowTime";
 import {UserNoAccountDTO} from "../../entity/userNoAccountDTO";
+import {MovieTicketToSendMailDto} from "../../dto/MovieTicketToSendMailDto";
 
 const API_TICKET: string = 'http://localhost:8080/api/ticket';
 const API_SEAT: string = 'http://localhost:8080/api/roomSeat'
@@ -18,7 +19,7 @@ const API_USER: string = 'http://localhost:8080/api/user';
   providedIn: 'root'
 })
 export class BookTicketsService {
-  private API_INF = 'http://localhost:8080/api/movie_ticket';
+  private API_INF = 'http://localhost:8080/api/ticket';
   private API_PAY = 'http://localhost:8080/api/payment';
   httpOptions: any;
 
@@ -50,8 +51,7 @@ export class BookTicketsService {
 
   movieTicket: MovieTicket;
   listChoseSeat: RoomSeat[] = [];
-
-
+  listTiket: MovieTicketToSendMailDto[];
 
 
   findAll(username: string, page: number): Observable<any> {
