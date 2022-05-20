@@ -1,14 +1,14 @@
 export class MovieTicketToSendMailDto {
-  movieTicketId: string;
+  tiketId: string;
   email: string;
   username: string;
   roomName: string;
-  projectionType: string;
+  projectionName: string;
   posterMovie: string;
   movieName: string;
   showDate: string;
   showTime: string;
   seatRow: string;
   seatColumn: string;
-  ticketPrice: string;
+  ticketPrice: number;
 }

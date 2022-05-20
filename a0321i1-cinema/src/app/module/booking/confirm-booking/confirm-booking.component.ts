@@ -37,16 +37,8 @@ export class ConfirmBookingComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if (this.bookTicketsService.listChoseSeat.length != 0) {
-      this.listChoseSeat = this.bookTicketsService.listChoseSeat;
-      console.log(this.listChoseSeat);
-      this.movieTicket = this.bookTicketsService.movieTicket;
-      console.log(this.movieTicket);
-      // this.totalMoney = this.getTotalMoney(this.listChoseSeat);
-      this.ticketName = "";
-      for (let roomSeat of this.listChoseSeat) {
-        this.ticketName += (roomSeat.seat.row.rowName + roomSeat.seat.column.columnName) + " ";
-      }
+    if (this.bookTicketsService.listTiket.length != 0) {
+      console.log(this.bookTicketsService.listTiket);
     }
   }
 

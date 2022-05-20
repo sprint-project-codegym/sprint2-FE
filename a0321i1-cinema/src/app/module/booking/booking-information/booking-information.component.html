@@ -16,7 +16,7 @@
                       <label class="control-label">Họ và tên</label>
                     </div>
                     <div class="col-5">
-                      <input type="text" class="login input-booking" [value]="infTickets[0].user.name">
+                      <input type="text" class="login input-booking" [value]="infTickets[0].username">
                     </div>
                   </div>
                   <div class="row">
@@ -24,17 +24,17 @@
                       <label class="control-label">Email</label>
                     </div>
                     <div class="col-5">
-                      <input type="email" class="login input-booking" [value]="infTickets[0].user.email">
+                      <input type="email" class="login input-booking" [value]="infTickets[0].email">
                     </div>
                   </div>
-                  <div class="row">
-                    <div class="col-3">
-                      <label class="control-label">Số điện thoại</label>
-                    </div>
-                    <div class="col-5">
-                      <input type="text" class="login input-booking" [value]="infTickets[0].user.phone">
-                    </div>
-                  </div>
+<!--                  <div class="row">-->
+<!--                    <div class="col-3">-->
+<!--                      <label class="control-label">Số điện thoại</label>-->
+<!--                    </div>-->
+<!--                    <div class="col-5">-->
+<!--                      <input type="text" class="login input-booking" [value]="infTickets[0].">-->
+<!--                    </div>-->
+<!--                  </div>-->
                   <div class="row notice-infopayment">
                     <div class="col-3"></div>
                     <div class="col-5">
@@ -74,33 +74,33 @@
         <section class="ticket-feature">
           <div class="row" *ngFor="let infTicket of infTickets">
             <div class="col-12" style="text-align: center">
-              <img [src]="infTicket.movieTicket.movie.posterMovie" width="80%">
+              <img [src]="infTicket.posterMovie" width="80%">
             </div>
             <div class="col-12">
               <div class="ticket-detail">
-                <h2 class="ticket-title upper-text">{{infTicket.movieTicket.movie.movieName}}</h2>
+                <h2 class="ticket-title upper-text">{{infTicket.movieName}}</h2>
                 <div class="ticket-info">
                   <p>
                     <b>Rạp: &nbsp;</b>
-                    A032I1&nbsp; | PHÒNG CHIẾU: {{infTicket.movieTicket.room.roomName}}&nbsp;
+                    A032I1&nbsp; | PHÒNG CHIẾU: {{infTicket.roomName}}&nbsp;
                   </p>
                   <p>
                     <b>Suất chiếu: &nbsp;</b>
-                    {{infTicket.movieTicket.showTime.showTime}} | {{infTicket.movieTicket.showDate | date:"dd/MM/yyyy"}}
+                    {{infTicket.showTime}} | {{infTicket.showDate | date:"dd/MM/yyyy"}}
                   </p>
                   <p>
                     <b>Loại chiếu: &nbsp;</b>
-                    {{infTicket.movieTicket.projectionType.projectionName}}
+                    {{infTicket.projectionName}}
                   </p>
                   <p>
                     <b>Ghế: &nbsp;</b>
-                    {{infTicket.seat.row.rowName}}{{infTicket.seat.column.columnName}}
+                    {{infTicket.seatRow}}{{infTicket.seatColumn}}
                   </p>
                 </div>
                 <div>
                   <p>
                     <b style="size: 30px">Giá vé: &nbsp;</b>
-                    <span style="size: 30px; color: red">{{infTicket.movieTicket.ticketPrice | currency:'VND':true:'1.0-3'}} VND</span>
+                    <span style="size: 30px; color: red">{{infTicket.ticketPrice | currency:'VND':true:'1.0-3'}} VND</span>
                   </p>
                 </div>
               </div>

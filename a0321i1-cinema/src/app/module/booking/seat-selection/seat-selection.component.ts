@@ -5,6 +5,9 @@ import {MovieTicket} from '../../../entity/MovieTicket';
 import {BookTicketsService} from '../../../service/booking/book-tickets.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ToastrService} from 'ngx-toastr';
+import {MovieTicketToSendMailDto} from "../../../dto/MovieTicketToSendMailDto";
+import {TokenStorageService} from "../../../service/security/token-storage.service";
+import {SecurityService} from "../../../service/security/security.service";
 
 @Component({
   selector: 'app-seat-selection',
@@ -21,14 +24,18 @@ export class SeatSelectionComponent implements OnInit {
   movieTicketId: number;
   totalMoney = 0;
   id;
+  listTicket: MovieTicketToSendMailDto[] = [];
 
   constructor(private bookTicketsService: BookTicketsService,
               private router: Router,
               private activatedRoute: ActivatedRoute,
-              private toastrService: ToastrService) {
+              private toastrService: ToastrService,
+              private tokenStore: TokenStorageService,
+              private securityService: SecurityService) {
   }
 
   ngOnInit(): void {
+    this.listTicket = [];
     // tslint:disable-next-line:radix
     this.movieTicketId = parseInt(this.activatedRoute.snapshot.queryParamMap.get('movieTicketId'));
     this.bookTicketsService.getMovieTicketById(this.movieTicketId).subscribe(data => {
@@ -92,10 +99,28 @@ export class SeatSelectionComponent implements OnInit {
   }
 
   continue() {
+    this.listChoseSeat.forEach((element) => {
+      this.listTicket.push({
+        email: "phuocrider25@gmail.com",
+        // email: this.tokenStore.getUser().user.email,
+        movieName: this.movieTicket.movie.movieName,
+        posterMovie: this.movieTicket.movie.posterMovie,
+        projectionName: this.movieTicket.projectionType.projectionName,
+        roomName: element.room.roomName,
+        seatColumn: element.seat.column.columnName,
+        seatRow: element.seat.row.rowName,
+        showDate: this.movieTicket.showDate,
+        showTime: this.movieTicket.showTime.showTime,
+        ticketPrice: this.movieTicket.ticketPrice,
+        tiketId: Math.floor(100000 + Math.random() * 900000)+"",
+        username: "nguyenvana",
+        // username: this.tokenStore.getUser().user.account.username
+      });
+    })
 
-    if (this.listChoseSeat.length !== 0 ){
-      this.bookTicketsService.listChoseSeat = this.listChoseSeat;
-      this.router.navigateByUrl("booking/confirm");
+    if (this.listTicket.length !== 0 ){
+      this.bookTicketsService.listTiket = this.listTicket;
+      this.router.navigateByUrl("booking/information");
     } else {
       this.toastrService.error("Bạn chưa chọn vé!", "Lỗi!")
     }
