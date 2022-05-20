@@ -13,7 +13,7 @@ const routes: Routes = [
         path: 'statistical',
         loadChildren: () => import('./admin-statistical-management/admin-statistical-management.module').then(module => module.AdminStatisticalManagementModule)
       },
-      {path: '', redirectTo: '', pathMatch: 'full'},
+      {path: '', component: AdminPageComponent},
       {path: '**', redirectTo: '', pathMatch: 'full'},
   {
 
