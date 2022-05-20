@@ -4,4 +4,5 @@ export interface TransactionHistory {
   status: number;
   description: string;
   account: Account;
+  pointChange: number;
 }

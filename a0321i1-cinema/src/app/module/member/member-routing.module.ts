@@ -1,6 +1,5 @@
 import {NgModule} from '@angular/core';
-import {Routes, RouterModule} from '@angular/router';
-import {MemberPageComponent} from './member-page/member-page.component';
+import {RouterModule, Routes} from '@angular/router';
 import {AccountInfoComponent} from './account-management/account-info/account-info.component';
 import {TransactionHistoryComponent} from './account-management/transaction-history/transaction-history.component';
 import {TicketsBookingComponent} from './account-management/tickets-booking/tickets-booking.component';

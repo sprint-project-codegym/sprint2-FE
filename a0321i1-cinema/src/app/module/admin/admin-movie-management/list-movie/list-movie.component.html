@@ -1,1 +1,222 @@
-<p>list-movie works!</p>
+<div class="layout">
+  <div class="container-fluid header_top">
+    <h3 class="text-center m-3 title-text">DANH SÁCH PHIM</h3>
+    <div class="row mb-3">
+      <div class="col-4">
+        <button routerLink="/movie/create" class="btn btn-primary">
+          <em class="fas fa-pencil-alt mr-1"></em>Thêm mới
+        </button>
+      </div>
+      <div class="col-8">
+        <div class="row">
+          <div class="col-12 d-flex justify-content-end">
+            <label>
+              <input
+                class="search form-control mr-3"
+                placeholder="Tìm theo tên phim"
+                #name
+              />
+            </label>
+            <label>
+              <input
+                class="search form-control mr-3"
+                placeholder="Tìm theo hãng phim"
+                #studio
+              />
+            </label>
+            <label>
+              <button
+                class="btn btn-light btn-outline-secondary"
+                type="submit"
+                (click)="search(0,name,studio)"
+              >
+                <em class="fas fa-search mr-1"></em>Tìm kiếm
+              </button>
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="text-align: center" *ngIf="!movies.length; else row">
+      <h3 class="text-danger text-center">Hiện tại chưa có phim nào trong hệ thống !</h3>
+    </div>
+    <ng-template #row>
+      <table class="table table-striped">
+        <caption>Danh sách phim trong hệ thống</caption>
+        <thead class="table-header">
+        <tr style="text-align: center">
+          <th scope="col" style="width: 6%">Poster</th>
+          <th scope="col" style="width: 14%">Tên phim</th>
+          <th scope="col" style="width: 8%">Ngày khởi chiếu</th>
+          <th scope="col" style="width: 8%">Ngày kết thúc</th>
+          <th scope="col" style="width: 8%">Hãng phim</th>
+          <th scope="col" style="width: 16%">Diễn viên</th>
+          <th scope="col" style="width: 9%">Thời lượng (phút)</th>
+          <th scope="col" style="width: 7%">Trailer</th>
+          <th scope="col" style="width: 11%"></th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let mov of movies">
+          <td style="text-align: center">
+            <button class = "btn btn-secondary"
+              data-toggle="modal" [attr.data-target]="'#myModal' + mov.movieId"
+            >Poster
+            </button
+            >
+            <div class="modal fade" [id]="'myModal' + mov.movieId" tabindex="-1" role="dialog" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">×</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <img class="img-responsive" [src]="mov.posterMovie" alt="" width="450" height="500">
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </td>
+          <td>{{mov.movieName}}</td>
+          <td style="text-align: center">{{mov.startDate  | date: 'dd/MM/yyyy'}}</td>
+          <td style="text-align: center">{{mov.endDate | date: 'dd/MM/yyyy' }}</td>
+          <td style="text-align: center">{{mov.movieStudio}}</td>
+          <td>{{mov.actor}}</td>
+          <td style="text-align: center">{{mov.movieLength}}</td>
+          <td style="text-align: center">
+            <button class = "btn btn-secondary"
+              data-toggle="modal" [attr.data-target]="'#myModal2' + mov.movieId"
+            >Trailer
+            </button
+            >
+            <div class="modal fade" [id]="'myModal2' + mov.movieId" tabindex="-1" role="dialog" aria-hidden="true">
+              <div class="modal-dialog modal-xl" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">×</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <iframe width="1100" height="520"
+                            [src]="mov.trailer | safe " >
+                    </iframe>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </td>
+          <td class="" style="text-align: center">
+            <button
+              routerLink="/movie/edit/{{mov.movieId}}"
+              class="btn primary mr-1"
+            >
+              <!--              <em class="fas fa-pencil-alt mr-1"></em>-->
+              Sửa
+            </button>
+            <button
+              class="btn primary text-danger"
+              data-toggle="modal"
+              data-target="#exampleModal"
+              (click)="deleteId = mov.movieId; deleteName = mov.movieName; deleteStartDate = mov.startDate">
+              <!--              <em class="fas fa-trash-alt mr-1"></em>-->
+              Xoá
+            </button>
+          </td>
+
+        </tr>
+        </tbody>
+      </table>
+      <!--  Pagination-->
+      <div class="col-12">
+        <nav aria-label="Page navigation example" class="float-right">
+          <ul class="pagination">
+            <div *ngIf="pageClicked==0; else show1"></div>
+            <ng-template #show1>
+              <li class="page-item" (click)="onFirst()">
+                <a class="page-link"><<</a>
+              </li>
+              <li class="page-item" (click)="onPrevious()">
+                <a class="page-link"><</a>
+              </li>
+            </ng-template>
+            <li *ngIf="pageClicked != 0" class="page-item" (click)="search(pages[pageClicked-1],name,studio)">
+              <a class="page-link">{{pageClicked}}</a>
+            </li>
+            <li [ngClass]="(pageClicked == pages[pageClicked]) ? 'active' : ''" class="page-item"
+                (click)="search(pages[pageClicked],name,studio)">
+              <a class="page-link">{{pageClicked + 1}}</a>
+            </li>
+            <li *ngIf="pageClicked < pages.length -1" class="page-item"
+                (click)="search(pages[pageClicked+1],name,studio)">
+              <a class="page-link">{{pageClicked + 2}}</a>
+            </li>
+            <li *ngIf="pageClicked < pages.length -2" class="page-item">
+              <a class="page-link">...</a>
+            </li>
+            <li *ngIf="pageClicked < pages.length-2" class="page-item" (click)="onLast()">
+              <a class="page-link">{{pages[pages.length - 1] + 1}}</a>
+            </li>
+            <div *ngIf="pageClicked===totalPages-1; else show2"></div>
+            <ng-template #show2>
+              <li class="page-item" (click)="onNext()">
+                <a class="page-link">></a>
+              </li>
+              <li class="page-item" (click)="onLast()"><a
+                class="page-link">>></a></li>
+            </ng-template>
+          </ul>
+        </nav>
+      </div>
+    </ng-template>
+  </div>
+  <div
+    class="modal fade"
+    id="exampleModal"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">
+            Xác nhận xóa
+          </h5>
+          <button
+            type="button"
+            class="close"
+            data-dismiss="modal"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <app-delete-movie [deleteId]="deleteId" [deleteName]="deleteName" [deleteStartDate]="deleteStartDate"
+                            (deleteComplete)="deleteSuccess()"></app-delete-movie>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  $(document).ready(function () {
+    $('[data-toggle="tooltip"]').tooltip();
+  });
+
+
+</script>

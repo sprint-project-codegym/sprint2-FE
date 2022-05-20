@@ -56,7 +56,7 @@ const routes: Routes = [
   {path: 'test', component: TestComponent},
   {path: '404', component: PageNotFoundComponent},
   {path: 'page-not-allow-access', component: PageNotAllowAccessComponent},
-  {path: '**', redirectTo: '404'},
+  // {path: '**', redirectTo: '404'},
 ];
 
 @NgModule({

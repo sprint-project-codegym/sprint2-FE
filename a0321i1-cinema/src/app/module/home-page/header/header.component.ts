@@ -39,6 +39,12 @@ export class HeaderComponent implements OnInit {
       this.role = this.tokenStore.getUser().authorities[0].authority;
     }
   }
+  search(keySearch: string) {
+    console.log(keySearch);
+    this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
+      this.router.navigate(["/search"], {queryParams: {q: keySearch}});
+    });
+  }
 
   logout() {
     this.tokenStore.signOut();

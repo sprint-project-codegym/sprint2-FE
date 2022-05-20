@@ -1,0 +1,50 @@
+<div class="rate">
+  <input type="radio" id="star5" name="rate" value="5"/>
+  <label for="star5" title="text">5 stars</label>
+  <input type="radio" id="star4" name="rate" value="4"/>
+  <label for="star4" title="text">4 stars</label>
+  <input type="radio" id="star3" name="rate" value="3"/>
+  <label for="star3" title="text">3 stars</label>
+  <input type="radio" id="star2" name="rate" value="2"/>
+  <label for="star2" title="text">2 stars</label>
+  <input type="radio" id="star1" name="rate" value="1"/>
+  <label for="star1" title="text">1 star</label>
+</div>
+<br>
+<br>
+<form style="width: 100%; margin-top: 10px">
+  <div class="container">
+    <div class="star-widget">
+      <input type="radio" name="rate" id="rate-5">
+      <label for="rate-5" class="fas fa-star"></label>
+      <input type="radio" name="rate" id="rate-4">
+      <label for="rate-4" class="fas fa-star"></label>
+      <input type="radio" name="rate" id="rate-3">
+      <label for="rate-3" class="fas fa-star"></label>
+      <input type="radio" name="rate" id="rate-2">
+      <label for="rate-2" class="fas fa-star"></label>
+      <input type="radio" name="rate" id="rate-1">
+      <label for="rate-1" class="fas fa-star"></label>
+    </div>
+  </div>
+
+
+  <div class="form-group">
+    <label for="comment" style="font-size: 18px; font-weight: 400;margin-bottom: 5px">Thêm nhận xét</label>
+    <textarea id="comment" rows="5" placeholder="Mời bạn chia sẻ thêm một số cảm nhận về phim ..."
+              style="margin: 0; padding: 15px; width: 100%"></textarea>
+  </div>
+  <div style="text-align: center">
+    <button type="submit" class="btn btn-primary px-2 py-1">Gửi đánh giá ngay</button>
+  </div>
+</form>
+
+<script>
+  $(document).ready(function () {
+    $('.kv-ltr-theme-fas-star').rating({
+      hoverOnClear: false,
+      theme: 'krajee-fas',
+      containerClass: 'is-star'
+    });
+  });
+</script>

@@ -1,1 +1,128 @@
-<p>employee-list-member works!</p>
+<div class="container-fluid">
+  <h3 class="text-center mb-3 mt-3 p-4" style="background-color: #05386B; color: white ">Quản Lý thành viên</h3>
+  <div class="row mb-3">
+    <div class="col-12">
+      <div class="row ">
+        <div class="col-12 d-flex justify-content-end">
+          <select class="custom-select col-2 mr-3" (change)="selectOption($event.target.value)">
+            <option value="1">Tìm kiếm theo tên thành viên</option>
+            <option value="2">Tìm kiếm theo Số CMND</option>
+            <option value="3">Tìm kiếm theo số điện thoại</option>
+          </select>
+          <input class="search form-control mr-3"
+                 placeholder="Tìm kiếm..." (keyup.enter)="onSearch(value.value)" #value>
+          <button class="btn btn-light btn-outline-secondary" type="button" (click)="onSearch(value.value)"><i
+            class="fas fa-search mr-1"></i>Tìm kiếm
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="text-align: center" *ngIf="!users.length; else row">
+    <h3 class="text-danger text-center">Không có dữ liệu trả về.</h3>
+  </div>
+  <ng-template #row>
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th scope="col">Mã Thành Viên</th>
+        <th scope="col">Tên Thành viên</th>
+        <th scope="col">Ngày sinh</th>
+        <th scope="col">Giới tính</th>
+        <th scope="col">Số CMND</th>
+        <th scope="col">Email</th>
+        <th scope="col">Số điện thoại</th>
+        <th scope="col">Địa chỉ</th>
+        <th scope="col"></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let user of users">
+        <td align="center">{{user.userId}}</td>
+        <td scope="col">{{user.name}}</td>
+        <td scope="col">{{user.birthday}}</td>
+        <td scope="col" [hidden]="user.gender !== 1">
+          Nam
+        </td>
+        <td scope="col" [hidden]="user.gender !== 2">
+          Nữ
+        </td>
+        <td scope="col" [hidden]="user.gender !== 3">
+          Khác
+        </td>
+        <td scope="col">{{user.idCard}}</td>
+        <td scope="col">{{user.email}}</td>
+        <td scope="col" align="center">{{user.phone}}</td>
+        <td
+          scope="col">{{user.ward.district.province.provinceName + "," + user.ward.district.districtName + "," + user.ward.wardName }}
+        </td>
+        <td>
+          <a class="btn primary" routerLink="/employee/member/management/edit/{{user.userId}}">Sửa</a>
+          <a data-toggle="modal" data-target="#exampleModal" class="btn primary text-danger">Xóa</a>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+    <!--    pagination-->
+    <div class="col-12">
+      <nav aria-label="Page navigation example" class="float-right">
+        <ul class="pagination">
+          <div *ngIf="pageClicked==0; else show1"></div>
+          <ng-template #show1>
+            <li class="page-item" (click)="onFirst()">
+              <a class="page-link">Đầu</a>
+            </li>
+            <li class="page-item" (click)="onPrevious()">
+              <a class="page-link"><</a>
+            </li>
+          </ng-template>
+          <li *ngIf="pageClicked != 0" class="page-item" (click)="search(pages[pageClicked-1],name,idCard, phone)">
+            <a class="page-link">{{pageClicked}}</a>
+          </li>
+          <li [ngClass]="(pageClicked == pages[pageClicked]) ? 'active' : ''" class="page-item"
+              (click)="search(pages[pageClicked-1],name,idCard, phone)">
+            <a class="page-link">{{pageClicked + 1}}</a>
+          </li>
+          <li *ngIf="pageClicked < pages.length -1" class="page-item"
+              (click)="search(pages[pageClicked+1],name,idCard, phone)">
+            <a class="page-link">{{pageClicked + 2}}</a>
+          </li>
+          <li *ngIf="pageClicked < pages.length -2" class="page-item">
+            <a class="page-link">...</a>
+          </li>
+          <li *ngIf="pageClicked < pages.length-2" class="page-item" (click)="onLast()">
+            <a class="page-link">{{pages[pages.length - 1] + 1}}</a>
+          </li>
+          <div *ngIf="pageClicked===totalPages-1; else show2"></div>
+          <ng-template #show2>
+            <li class="page-item" (click)="onNext()">
+              <a class="page-link">></a>
+            </li>
+            <li class="page-item" (click)="onLast()"><a
+              class="page-link">Cuối</a></li>
+          </ng-template>
+        </ul>
+      </nav>
+    </div>
+  </ng-template>
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Xác nhận xóa</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          Bạn có muốn xóa thành viên không?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+          <button type="button" class="btn btn-danger">Xóa</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

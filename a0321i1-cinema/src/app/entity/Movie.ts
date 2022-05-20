@@ -18,4 +18,6 @@ export interface Movie {
   movieCategorySet: MovieCategory[];
   categories: string;
   movieType: string;
+
+
 }

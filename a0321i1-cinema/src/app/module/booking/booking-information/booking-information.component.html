@@ -1,1 +1,119 @@
-<p>booking-information works!</p>
+<div class="container">
+  <div class="row">
+
+    <div class="col-9">
+      <div class="ticket-wrapper">
+        <div class="booking-bg">
+          <div class="row">
+            <div class="col-md-12">
+              <section class="booking-ticket">
+                <h2 class="booking-title">
+                  Vui lòng thanh toán Paypal
+                </h2>
+                <form class="pay-wrapper">
+                  <div class="row">
+                    <div class="col-3">
+                      <label class="control-label">Họ và tên</label>
+                    </div>
+                    <div class="col-5">
+                      <input type="text" class="login input-booking" [value]="infTickets[0].username">
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-3">
+                      <label class="control-label">Email</label>
+                    </div>
+                    <div class="col-5">
+                      <input type="email" class="login input-booking" [value]="infTickets[0].email">
+                    </div>
+                  </div>
+<!--                  <div class="row">-->
+<!--                    <div class="col-3">-->
+<!--                      <label class="control-label">Số điện thoại</label>-->
+<!--                    </div>-->
+<!--                    <div class="col-5">-->
+<!--                      <input type="text" class="login input-booking" [value]="infTickets[0].">-->
+<!--                    </div>-->
+<!--                  </div>-->
+                  <div class="row notice-infopayment">
+                    <div class="col-3"></div>
+                    <div class="col-5">
+                      <span>(*) Bằng việc click/chạm vào THANH TOÁN, bạn đã xác nhận hiểu rõ các&nbsp;</span>
+                      <span>Quy định giao dịch trực tiếp</span>
+                      <span>&nbsp;của A0321I1</span>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-3">
+                      <label class="control-label"></label>
+                    </div>
+                    <div class="col-5">
+                      <div class="row">
+                        <div class="col-6">
+                          <a class="btn primary input pay-bt">Quay lại</a>
+                        </div>
+                        <div class="col-6">
+                          <a class="btn primary input pay-bt" (click)="onSubmit()">Thanh toán</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="pay-notice content-text"></div>
+                  </div>
+                </form>
+              </section>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-3">
+      <div class="ticket-header" style="top: 0px;">
+        <section class="ticket-feature">
+          <div class="row" *ngFor="let infTicket of infTickets">
+            <div class="col-12" style="text-align: center">
+              <img [src]="infTicket.posterMovie" width="80%">
+            </div>
+            <div class="col-12">
+              <div class="ticket-detail">
+                <h2 class="ticket-title upper-text">{{infTicket.movieName}}</h2>
+                <div class="ticket-info">
+                  <p>
+                    <b>Rạp: &nbsp;</b>
+                    A032I1&nbsp; | PHÒNG CHIẾU: {{infTicket.roomName}}&nbsp;
+                  </p>
+                  <p>
+                    <b>Suất chiếu: &nbsp;</b>
+                    {{infTicket.showTime}} | {{infTicket.showDate | date:"dd/MM/yyyy"}}
+                  </p>
+                  <p>
+                    <b>Loại chiếu: &nbsp;</b>
+                    {{infTicket.projectionName}}
+                  </p>
+                  <p>
+                    <b>Ghế: &nbsp;</b>
+                    {{infTicket.seatRow}}{{infTicket.seatColumn}}
+                  </p>
+                </div>
+                <div>
+                  <p>
+                    <b style="size: 30px">Giá vé: &nbsp;</b>
+                    <span style="size: 30px; color: red">{{infTicket.ticketPrice | currency:'VND':true:'1.0-3'}} VND</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+      <div>
+        <p>
+          <b style="size: 30px"> Tổng giá vé: &nbsp;</b>
+          <span style="size: 30px; color: red">{{price | currency:'VND':true:'1.0-3'}} VND</span>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
