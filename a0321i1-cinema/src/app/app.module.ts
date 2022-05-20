@@ -1,8 +1,18 @@
 import {BrowserModule} from '@angular/platform-browser';
-import {NgModule} from '@angular/core';
-import {FacebookLoginProvider, GoogleLoginProvider, SocialAuthServiceConfig, SocialLoginModule} from 'angularx-social-login';
+// @ts-ignore
+import {
+  FacebookLoginProvider,
+  GoogleLoginProvider,
+  SocialAuthServiceConfig,
+  SocialLoginModule
+} from 'angularx-social-login';
+import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
+
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
+
+import {CommonModule, DatePipe} from '@angular/common';
+
 import {LoadingComponent} from './module/loading/loading.component';
 import {HttpClientModule} from '@angular/common/http';
 import {AdminModule} from './module/admin/admin.module';
@@ -13,11 +23,13 @@ import {MemberModule} from './module/member/member.module';
 import {SecurityModule} from './module/security/security.module';
 import {BottomSheetNotifyComponent} from './util/bottom-sheet-notify/bottom-sheet-notify.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+// @ts-ignore
 import {NgxPaginationModule} from 'ngx-pagination';
 import {NgxSpinnerModule} from 'ngx-spinner';
-import {ToastrModule} from 'ngx-toastr';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-
+import {AngularFireModule} from "@angular/fire";
+import {environment} from "../environments/environment";
+import {ToastrModule} from "ngx-toastr";
 
 @NgModule({
   declarations: [
@@ -40,9 +52,21 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     EmployeeModule,
     MemberModule,
     SecurityModule,
+    BrowserAnimationsModule,
     ReactiveFormsModule,
-    FormsModule
+    CommonModule,
+    FormsModule,
+    ToastrModule.forRoot(
+      {
+        timeOut: 2000,
+        progressBar: true,
+        progressAnimation: "increasing"
+      }
+    ),
+    NgxSpinnerModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig)
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [{
     provide: 'SocialAuthServiceConfig',
     useValue: {

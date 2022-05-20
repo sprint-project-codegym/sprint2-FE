@@ -91,6 +91,8 @@
             ],
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+              "src/styles.scss",
+              "node_modules/ngx-toastr/toastr.css",
               "src/styles.css"
             ],
             "scripts": []
@@ -126,6 +128,6 @@
   },
   "defaultProject": "a0321i1-cinema",
   "cli": {
-    "analytics": false
+    "analytics": "cdacb717-862a-47ab-bd09-d3366133fd7e"
   }
 }
