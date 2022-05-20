@@ -3,6 +3,7 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Movie} from "../../dto/Movie";
 import {MovieDTO} from "../../entity/dto/movieDTO";
+import {MovieCreateDTO} from '../../dto/MovieCreateDTO';
 
 @Injectable({
   providedIn: 'root'
@@ -22,8 +23,8 @@ export class MovieManagementService {
     return this.http.put<any>(this.baseUrl + '/edit_movie', listMovieDTO);
   }
 
-  public formAddMovie(listMovieDTO: MovieDTO[]): Observable<Movie>{
-    return this.http.post<any>(this.baseUrl + '/create', listMovieDTO);
+  public formAddMovie(movieCreateDTO: any): Observable<Movie>{
+    return this.http.post<any>(this.baseUrl + '/create', movieCreateDTO);
   }
 
   public getCategory(): Observable<any>{
@@ -39,7 +40,7 @@ export class MovieManagementService {
   }
 
   public getMovieById(movieId: number): Observable<any>{
-    return this.http.get(this.baseUrl + '/movie_id/' + movieId)
+    return this.http.get(this.baseUrl + '/detail/' + movieId)
   }
 
   // createMovie(movie: Movie): Observable<Movie> {

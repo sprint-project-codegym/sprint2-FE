@@ -13,6 +13,7 @@ import {finalize} from "rxjs/operators";
 import {ToastrService} from "ngx-toastr";
 import {Category} from "../../../../entity/Category";
 import {MovieDTO} from "../../../../entity/dto/movieDTO";
+import {MovieCreateDTO} from '../../../../dto/MovieCreateDTO';
 
 
 @Component({
@@ -29,7 +30,7 @@ export class AddMovieComponent implements OnInit {
   public formAddMovie: FormGroup;
   public listCategory: Category[];
   public categoryList = [];
-  public listMovieDTO: MovieDTO[] = [];
+  public createDTO: MovieCreateDTO;
   private messageImageError: string;
 
   constructor(private movieService: MovieManagementService,
@@ -84,15 +85,8 @@ export class AddMovieComponent implements OnInit {
                 this.formAddMovie.value.posterMovie = url;
                 if (this.categoryList.length > 0) {
                   // tslint:disable-next-line:prefer-for-of
-                  for (let i = 0; i < this.categoryList.length; i++) {
-                    const movieDTO: MovieDTO = {
-                      movie: this.formAddMovie.value,
-                      categoryId: this.categoryList[i]
-                    };
-                    this.listMovieDTO.push(movieDTO);
-                  }
-                  console.log(this.listMovieDTO);
-                  this.movieService.formAddMovie(this.listMovieDTO).subscribe(data => {
+                  console.log(this.createDTO);
+                  this.movieService.formAddMovie(movieCreate).subscribe(data => {
                     this.toast.success('Thêm mới thành công!');
                     this.router.navigate(['/admin/movie/movie-list']);
                   });
