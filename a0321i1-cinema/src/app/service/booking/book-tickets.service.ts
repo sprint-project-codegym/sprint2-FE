@@ -18,7 +18,7 @@ const API_USER: string = 'http://localhost:8080/api/user';
   providedIn: 'root'
 })
 export class BookTicketsService {
-  private API_INF = 'http://localhost:8080/api/movie_ticket';
+  private API_INF = 'http://localhost:8080/api/ticket';
   private API_PAY = 'http://localhost:8080/api/payment';
   httpOptions: any;
 
