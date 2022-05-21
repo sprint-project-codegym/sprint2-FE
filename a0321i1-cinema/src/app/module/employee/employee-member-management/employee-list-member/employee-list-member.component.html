@@ -70,7 +70,7 @@
           <div *ngIf="pageClicked==0; else show1"></div>
           <ng-template #show1>
             <li class="page-item" (click)="onFirst()">
-              <a class="page-link">Đầu</a>
+              <a class="page-link"><<</a>
             </li>
             <li class="page-item" (click)="onPrevious()">
               <a class="page-link"><</a>
@@ -80,7 +80,7 @@
             <a class="page-link">{{pageClicked}}</a>
           </li>
           <li [ngClass]="(pageClicked == pages[pageClicked]) ? 'active' : ''" class="page-item"
-              (click)="search(pages[pageClicked-1],name,idCard, phone)">
+              (click)="search(pages[pageClicked],name,idCard, phone)">
             <a class="page-link">{{pageClicked + 1}}</a>
           </li>
           <li *ngIf="pageClicked < pages.length -1" class="page-item"
@@ -99,7 +99,7 @@
               <a class="page-link">></a>
             </li>
             <li class="page-item" (click)="onLast()"><a
-              class="page-link">Cuối</a></li>
+              class="page-link">>></a></li>
           </ng-template>
         </ul>
       </nav>

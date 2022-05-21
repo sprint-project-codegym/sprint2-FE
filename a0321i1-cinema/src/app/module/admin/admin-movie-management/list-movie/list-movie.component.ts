@@ -12,7 +12,7 @@ import {MovieManagementService} from '../../../../service/admin/movie-management
 })
 export class ListMovieComponent implements OnInit {
   movies: Movie[] = [];
-  size = 10;
+  size = 5;
   pageClicked = 0;
   totalPages = 1;
   pages = [];

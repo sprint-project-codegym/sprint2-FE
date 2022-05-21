@@ -1,3 +1,8 @@
+#active {
+  background-color: var(--color);
+  color: white;
+}
+
 .ticket-wrapper {
   width: 100%;
 }
@@ -197,3 +202,10 @@ span.notice {
   background-color: var(--color) !important;
   color: white;
 }
+
+#fluid {
+  margin-top: 3rem;
+  font-family: var(--font);
+  font-size: 0.9rem;
+}
+

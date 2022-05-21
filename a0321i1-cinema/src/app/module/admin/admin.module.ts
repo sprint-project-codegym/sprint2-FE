@@ -26,6 +26,6 @@ import {MatNativeDateModule} from "@angular/material/core";
         MatDatepickerModule,
         MatNativeDateModule
     ]
+
 })
-export class AdminModule {
-}
+export class AdminModule { }

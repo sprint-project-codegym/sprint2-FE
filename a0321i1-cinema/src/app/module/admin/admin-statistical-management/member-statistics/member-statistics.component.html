@@ -1,1 +1,20 @@
-<p>member-statistics works!</p>
+<div>
+  <div class="form-group row">
+    <div class="col- ml-4 mt-3">
+      <select class="form-control" [(ngModel)]="memberTop" (change)="onMemberTop()">
+        <option [ngValue]="5">Top 5</option>
+        <option [ngValue]="10">Top 10</option>
+        <option [ngValue]="15">Top 15</option>
+      </select>
+    </div>
+  </div>
+  <div class="card p-3 m-2">
+    <h5>Top {{memberTop}} thành viên tích cực</h5>
+    <p-chart type="bar" [data]="multiAxisData" [options]="multiAxisOptions" *ngIf="chartHide == false; else nodata">
+    </p-chart>
+    <ng-template #nodata>
+      <div class="small text-danger text-center">Không có dữ liệu thống kê</div>
+    </ng-template>
+  </div>
+
+</div>
