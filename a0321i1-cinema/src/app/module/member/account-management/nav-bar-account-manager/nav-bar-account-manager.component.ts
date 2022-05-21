@@ -27,7 +27,7 @@ export class NavBarAccountManagerComponent implements OnInit {
   }
 
   getAccount() {
-    this.accountService.getAccountByUsername('luan123').subscribe(data => {
+    this.accountService.getAccountByUsername(this.tokenStore.getUser().user.account.username).subscribe(data => {
       this.account = data;
     });
   }
@@ -37,7 +37,7 @@ export class NavBarAccountManagerComponent implements OnInit {
     this.router.navigateByUrl("/login");
   }
   getUser() {
-    this.userService.getUserByUsername('luan123').subscribe(data => {
+    this.userService.getUserByUsername(this.tokenStore.getUser().user.account.username).subscribe(data => {
       this.user = data;
     })
   }

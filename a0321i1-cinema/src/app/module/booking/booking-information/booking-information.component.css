@@ -171,3 +171,29 @@ span.notice {
   color: #43464b;
 }
 
+#follow-div {
+  font-size: 1.2rem;
+}
+
+.follow {
+  width: fit-content;
+}
+
+
+.follow-title:hover {
+  cursor: pointer;
+}
+
+.follow-title {
+  padding-top: 0.375rem;
+  margin-bottom: 0;
+  height: 2.3rem;
+  text-transform: uppercase;
+  text-align: center;
+  border-bottom: 2px solid var(--color);
+}
+
+.follow-title.active {
+  background-color: var(--color) !important;
+  color: white;
+}

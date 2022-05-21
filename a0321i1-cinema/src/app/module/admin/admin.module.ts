@@ -12,17 +12,20 @@ import {MatNativeDateModule} from "@angular/material/core";
 
 
 @NgModule({
-  declarations: [AdminPageComponent],
-  imports: [
-    CommonModule,
-    AdminRoutingModule,
-    HttpClientModule,
-    HomePageModule,
-    MatDialogModule,
-    ToastrModule,
-    MatDatepickerModule,
-    MatNativeDateModule
-  ]
+    declarations: [AdminPageComponent],
+    exports: [
+        AdminPageComponent
+    ],
+    imports: [
+        CommonModule,
+        AdminRoutingModule,
+        HttpClientModule,
+        HomePageModule,
+        MatDialogModule,
+        ToastrModule,
+        MatDatepickerModule,
+        MatNativeDateModule
+    ]
 })
 export class AdminModule {
 }

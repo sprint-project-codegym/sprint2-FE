@@ -18,6 +18,9 @@ export class DetailMovieComponent implements OnInit {
   public id: number;
   categoryList: Category[];
 
+  displayTrailer: boolean = false;
+  trailer: string = "";
+
   constructor(public dialog: MatDialog,
               public detailMovieService: DetailMovieService,
               public router: Router,
@@ -44,5 +47,14 @@ export class DetailMovieComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
     });
+  }
+
+  openTrailer(trailer: string) {
+    this.trailer = trailer;
+    this.displayTrailer = true;
+  }
+
+  closeTrailer() {
+    this.displayTrailer = false;
   }
 }

@@ -1,7 +1,7 @@
 <div class="container-fluid">
   <div class="row" id="header" style="height: 50px">
     <div class="col-4" style="width: 100%; text-align: end; margin-top: 2px;padding-right: 130px">
-      <img src="assets/picture/LogoPage.png" width="150" height="45" routerLink="#">
+      <img src="assets/picture/LogoPage.png" class="chuot" width="150" height="45" routerLink="/">
     </div>
     <div class="col-8" style="margin: 0; padding: 4px 0 0 0">
       <div class="row search">
@@ -18,13 +18,16 @@
         </div>
         <div class="col-4">
           <div class="row sign" style="vertical-align: center">
-            <div *ngIf="user.name; else login" class="col-7" style="text-align: end; top: 7px"><a style="font-size: 1rem; color: #05386B; font-weight: bold">
-              {{user.name}}
-            </a>
+            <div class="col-7" style="text-align: end; top: 7px">
+              <div class="dropdown">
+                <button class="nut_dropdown" style="font-size: 1rem; color: #05386B; font-weight: bold">ABC</button>
+                <div class="noidung_dropdown">
+                  <a href="#">Đường Dẫn 1</a>
+                  <a href="#">Đường Dẫn 2</a>
+                  <a href="#">Đường Dẫn 3</a>
+                </div>
+              </div>
             </div>
-            <ng-template #login class="col-7" style="text-align: end; top: 7px"><span style="font-size: 1rem; color: #05386B; font-weight: bold">Đăng
-              nhập</span>
-            </ng-template>
             <div *ngIf="!user.name; else register" class="col-5" style="text-align: start; top: 7px"><a routerLink="/register" style="font-size: 1rem; color: #05386B; font-weight: bold">Đăng
               ký</a>
             </div>
@@ -43,12 +46,12 @@
     <div class="col-3" style="background-color: #05386B"></div>
     <div class="col-6" style="background-color: #05386B">
       <nav class="links" style="--items: 6; width: 100%; top: 10px;">
-        <a routerLink="/booking/movie">MUA VÉ</a>
-        <a href="#">RẠP/GIÁ VÉ</a>
-        <a href="#">GÓC ĐIỆN ẢNH</a>
-        <a href="#">SỰ KIỆN</a>
-        <a href="#">HƯỚNG DẪN</a>
-        <a href="#">CHÍNH SÁCH</a>
+        <a routerLink="/booking/movie" class="chuot">MUA VÉ</a>
+        <a routerLink="/booking/movie" class="chuot">RẠP/GIÁ VÉ</a>
+        <a routerLink="/booking/movie" class="chuot">GÓC ĐIỆN ẢNH</a>
+        <a routerLink="/booking/movie" class="chuot">SỰ KIỆN</a>
+        <a routerLink="/booking/movie" class="chuot">HƯỚNG DẪN</a>
+        <a routerLink="/booking/movie" class="chuot">CHÍNH SÁCH</a>
         <span class="line"></span>
       </nav>
     </div>

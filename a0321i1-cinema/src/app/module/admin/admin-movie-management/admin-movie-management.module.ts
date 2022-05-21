@@ -10,6 +10,8 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {ToastrModule} from "ngx-toastr";
 import { DeleteMovieComponent } from './delete-movie/delete-movie.component';
 import { SafePipe } from './safe.pipe';
+import {HomePageModule} from "../../home-page/home-page.module";
+import {AdminModule} from "../admin.module";
 
 @NgModule({
   declarations: [AddMovieComponent, EditMovieComponent, ListMovieComponent, DeleteMovieComponent, SafePipe],
@@ -24,7 +26,9 @@ import { SafePipe } from './safe.pipe';
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    HomePageModule,
+    AdminModule
   ]
 })
 export class AdminMovieManagementModule {
