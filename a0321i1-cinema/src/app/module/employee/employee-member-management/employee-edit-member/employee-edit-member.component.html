@@ -96,13 +96,13 @@
                   </select>
                 </div>
                 <div class="col-4">
-                  <select [compareWith]="compareWard" class="form-control form-control-custom"
+                  <select [compareWith]="compareWard" class="form-control"
                           formControlName="ward">
                     <option value="" selected>Chọn xã/phường</option>
                     <option *ngFor="let ward of wards" [ngValue]="ward">{{ward.wardName}}</option>
                   </select>
                 </div>
-                <span class="text-danger" *ngIf="formEditUser.controls.ward.touched && formEditUser.controls.ward.errors?.required">Địa chỉ không được để trống. Vui lòng chọn!</span>
+                <span class="text-danger" *ngIf="formEditUser.controls.ward.errors?.required">Địa chỉ không được để trống. Vui lòng chọn!</span>
               </div>
             </div>
           </div>
