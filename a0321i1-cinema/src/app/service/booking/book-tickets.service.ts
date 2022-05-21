@@ -10,6 +10,7 @@ import {Movie} from "../../entity/Movie";
 import {ShowTime} from "../../entity/ShowTime";
 import {UserNoAccountDTO} from "../../entity/userNoAccountDTO";
 import {MovieTicketToSendMailDto} from "../../dto/MovieTicketToSendMailDto";
+import {TicketDTO} from "../../dto/TicketDTO";
 
 const API_TICKET: string = 'http://localhost:8080/api/ticket';
 const API_SEAT: string = 'http://localhost:8080/api/roomSeat';
@@ -103,10 +104,14 @@ export class BookTicketsService {
     return this.httpClient.get<MovieTicket>(API_TICKET + '/getMovieTicket/' + movieTicketId);
   }
 
-  createTicketDTO(movieTicketId: number, userId: number, seatId: number): Observable<any> {
-    return this.httpClient.post(API_TICKET + '/createTicketDTO/' + movieTicketId + '/' + userId + '/' + seatId, this.httpOptions);
+  createTicketDTO(ticketDTO: any): Observable<any> {
+    console.log("goi api");
+    console.log(ticketDTO);
+    return this.httpClient.post( 'http://localhost:8080/api/ticket/createTicketDTO/', ticketDTO, this.httpOptions);
   }
   createUserNoAccount(userNoAccountDTO: UserNoAccountDTO): Observable<any> {
     return this.httpClient.post(API_USER + "/createUserNoAccount", userNoAccountDTO);
   }
+
+  /*PhuocDD*/
 }

@@ -6,6 +6,10 @@ import {InformationTicketDTO} from "../../../dto/InformationTicketDTO";
 import {Ticket} from "../../../entity/Ticket";
 import {TokenStorageService} from "../../../service/security/token-storage.service";
 import {element} from "protractor";
+import {TicketDTO} from "../../../dto/TicketDTO";
+import {SecurityService} from "../../../service/security/security.service";
+import {RoomSeat} from "../../../entity/RoomSeat";
+import {MovieTicket} from "../../../entity/MovieTicket";
 @Component({
   selector: 'app-booking-information',
   templateUrl: './booking-information.component.html',
@@ -15,40 +19,56 @@ export class BookingInformationComponent implements OnInit{
   public infTickets: MovieTicketToSendMailDto[];
   public id: number;
   public price = 0;
+  public listTicketDTO = [];
+  public movieTicket: MovieTicket;
+  public listChooseSeat: RoomSeat[] = [];
 
   constructor(
     public detailBookTicketsService: BookTicketsService,
     public router: Router,
     public activeRoute: ActivatedRoute,
     public tokenStorageService: TokenStorageService,
-    private bookTicketsService: BookTicketsService
+    private bookTicketsService: BookTicketsService,
+    private tokenStore: TokenStorageService,
+    private securityService: SecurityService
   ) { }
 
   ngOnInit(): void {
+
+    this.listChooseSeat = this.bookTicketsService.listChoseSeat;
+    this.movieTicket = this.bookTicketsService.movieTicket;
+
     if (this.bookTicketsService.listTiket.length != 0) {
       this.infTickets = this.bookTicketsService.listTiket
     }
     console.log(this.infTickets);
     this.infTickets.forEach((element)=>{
       this.price += element.ticketPrice;
-    })
+    });
     console.log(this.price);
 
-    // this.activeRoute.paramMap.subscribe((param: ParamMap) => {
-    //   const id = param.get('id');
-    //   this.detailBookTicketsService.getDetailMovie(id).subscribe(data => {
-    //     console.log(data)
-    //     this.infTicket = data;
-    //     this.price = data.ticketPrice;
-    //     console.log(this.price);
-    //   });
-    // });
+    console.log(this.movieTicket.movieTicketId);
+    console.log(this.listTicketDTO);
+
   }
 
   onSubmit() {
     console.log(this.infTickets);
     this.detailBookTicketsService.payViaPaypal(this.price).subscribe(
       (data)=> {
+
+        let length = this.listChooseSeat.length;
+        console.log(length);
+        for(let i=0; i<length; i++){
+          let ticketDTO: TicketDTO = {
+            movieTicketId: this.movieTicket.movieTicketId,
+            username: this.tokenStore.getUser().user.account.username,
+            seatId: this.listChooseSeat[i].seat.seatId
+          };
+          console.log(ticketDTO);
+          this.bookTicketsService.createTicketDTO(ticketDTO);
+        }
+
         let movieTicketToSendMail = [];
         for(let i=0; i<this.infTickets.length; i++){
           movieTicketToSendMail.push({
@@ -72,7 +92,7 @@ export class BookingInformationComponent implements OnInit{
           (error)=> console.log(error)
         );
         console.log(data);
-        window.location.href = data.linkName;
+        // window.location.href = data.linkName;
       },
       error => console.log(error)
     )

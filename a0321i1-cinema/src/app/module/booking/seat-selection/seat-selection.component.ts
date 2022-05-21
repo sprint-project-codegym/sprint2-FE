@@ -98,6 +98,10 @@ export class SeatSelectionComponent implements OnInit {
   }
 
   continue() {
+    console.log(this.listChoseSeat);
+    this.bookTicketsService.listChoseSeat = this.listChoseSeat;
+    this.bookTicketsService.movieTicket = this.movieTicket;
+    console.log(this.movieTicket);
     this.listChoseSeat.forEach((element) => {
       this.listTicket.push({
         email: this.tokenStore.getUser().user.email,

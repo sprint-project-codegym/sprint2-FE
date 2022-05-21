@@ -71,6 +71,7 @@ export class RegisterComponent implements OnInit {
 
   saveUser(){
     this.securityService.createUserConfirmMail(this.form.value).subscribe(data => {
+      this.spinner.hide();
         // this.buttonRegister.nativeElement.classList.remove('spinner-border');
         // this.buttonRegister.nativeElement.textContent= 'Đăng ký';
         this.router.navigateByUrl('/login');
@@ -100,12 +101,8 @@ export class RegisterComponent implements OnInit {
   }
 
   submitForm() {
+    this.spinner.show();
     if (this.form.valid) {
-      this.spinner.show();
-      setTimeout(() => {
-        /** spinner ends after 3 seconds */
-        this.spinner.hide();
-      }, 5000);
       // this.buttonRegister.nativeElement.classList.add('spinner-border');
       // this.buttonRegister.nativeElement.textContent= '';
       if(this.uploading) {
@@ -130,6 +127,9 @@ export class RegisterComponent implements OnInit {
         this.saveUser();
       }
 
+    }
+    else {
+      this.spinner.hide();
     }
   }
 
