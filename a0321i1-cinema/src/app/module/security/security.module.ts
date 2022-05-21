@@ -14,18 +14,20 @@ import { ConfirmVerificationCodeComponent } from './confirm-verification-code/co
 import { DoResetPasswordComponent } from './do-reset-password/do-reset-password.component';
 import {RouterModule} from '@angular/router';
 import { TestComponent } from './test/test.component';
+import {NgxSpinnerModule} from "ngx-spinner";
 @NgModule({
   declarations: [ConfirmEmailComponent, LoginGoogleComponent, LoginComponent, LogoutComponent, RegisterComponent, RequestResetPasswordComponent, ConfirmVerificationCodeComponent, DoResetPasswordComponent, TestComponent],
-  imports: [
-    CommonModule,
-    HttpClientModule,
-    ReactiveFormsModule,
-    BrowserAnimationsModule,
-    ToastrModule.forRoot(),
-    BrowserAnimationsModule,
-    RouterModule,
+    imports: [
+        CommonModule,
+        HttpClientModule,
+        ReactiveFormsModule,
+        BrowserAnimationsModule,
+        ToastrModule.forRoot(),
+        BrowserAnimationsModule,
+        RouterModule,
+        NgxSpinnerModule,
 
-  ]
+    ]
 })
 export class SecurityModule {
 }

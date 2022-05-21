@@ -7,6 +7,7 @@ import {EmployeeEditMemberComponent} from './employee-edit-member/employee-edit-
 import {ToastrModule} from "ngx-toastr";
 import {NgxSpinnerModule} from "ngx-spinner";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {AdminModule} from "../../admin/admin.module";
 
 
 @NgModule({
@@ -17,6 +18,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
         NgxSpinnerModule,
         ReactiveFormsModule,
         FormsModule,
+        AdminModule,
     ]
 })
 export class EmployeeMemberManagementModule {

@@ -11,6 +11,7 @@ import {UserDTO} from '../../../dto/UserDTO';
 import {formatDate, getLocaleDateFormat} from '@angular/common';
 import {AngularFireStorage} from '@angular/fire/storage';
 import {finalize} from 'rxjs/operators';
+import {NgxSpinnerService} from "ngx-spinner";
 
 @Component({
   selector: 'app-register',
@@ -27,9 +28,9 @@ export class RegisterComponent implements OnInit {
   userDto: UserDTO;
   inputImage: any;
   filePath = 'https://firebasestorage.googleapis.com/v0/b/a0321cinema.appspot.com/o/14-05-2022061301PMavatar.png?alt=media&token=590abb58-573c-4263-91d3-010eb0f0417b';
-   uploading: boolean;
+  uploading: boolean;
   private username: any;
-  @ViewChild('buttonRegister',{read: ElementRef}) buttonRegister: ElementRef;
+  // @ViewChild('buttonRegister',{read: ElementRef}) buttonRegister: ElementRef;
   // public imagePoster = null;
   // public selectedImage: any = null;
   // private messageImageError: string;
@@ -39,6 +40,7 @@ export class RegisterComponent implements OnInit {
     private securityService: SecurityService,
     private router: Router,
     private toastr: ToastrService,
+    private spinner: NgxSpinnerService,
     @Inject(AngularFireStorage) private storage: AngularFireStorage
   ) {
   }
@@ -69,8 +71,8 @@ export class RegisterComponent implements OnInit {
 
   saveUser(){
     this.securityService.createUserConfirmMail(this.form.value).subscribe(data => {
-        this.buttonRegister.nativeElement.classList.remove('spinner-border');
-        this.buttonRegister.nativeElement.textContent= 'Đăng ký';
+        // this.buttonRegister.nativeElement.classList.remove('spinner-border');
+        // this.buttonRegister.nativeElement.textContent= 'Đăng ký';
         this.router.navigateByUrl('/login');
         this.toastr.success(
           'Xác nhận email để kích hoạt tài khoản.',
@@ -79,8 +81,8 @@ export class RegisterComponent implements OnInit {
         );
       },
       error => {
-        this.buttonRegister.nativeElement.classList.remove('spinner-border');
-        this.buttonRegister.nativeElement.textContent= 'Đăng ký';
+        // this.buttonRegister.nativeElement.classList.remove('spinner-border');
+        // this.buttonRegister.nativeElement.textContent= 'Đăng ký';
         const errorsMessage = [];
         if (error.error.existAccount){errorsMessage.push(error.error.existAccount)}
         if (error.error.existIdCard){errorsMessage.push(error.error.existIdCard)}
@@ -99,8 +101,13 @@ export class RegisterComponent implements OnInit {
 
   submitForm() {
     if (this.form.valid) {
-      this.buttonRegister.nativeElement.classList.add('spinner-border');
-      this.buttonRegister.nativeElement.textContent= '';
+      this.spinner.show();
+      setTimeout(() => {
+        /** spinner ends after 3 seconds */
+        this.spinner.hide();
+      }, 5000);
+      // this.buttonRegister.nativeElement.classList.add('spinner-border');
+      // this.buttonRegister.nativeElement.textContent= '';
       if(this.uploading) {
         const imageName = this.getCurrentDateTime() + this.inputImage.name;
         const fileRef = this.storage.ref(imageName);
@@ -124,9 +131,6 @@ export class RegisterComponent implements OnInit {
       }
 
     }
-    // else {
-    //   console.log('err');
-    // }
   }
 
   getCurrentDateTime(): string {
@@ -182,28 +186,7 @@ export class RegisterComponent implements OnInit {
     this.uploading=true;
   }
 
-  //
-  // showImage(image) {
-  //   if (image.target.files && image.target.files[0]) {
-  //     const file = image.target.files[0].name;
-  //     const path = file.substring(file.length - 3).toLowerCase();
-  //     if (path === 'png' || path === 'jpg') {
-  //       const reader = new FileReader();
-  //       reader.onload = (e: any) => this.imagePoster = e.target.result;
-  //       reader.readAsDataURL(image.target.files[0]);
-  //       this.selectedImage = image.target.files[0];
-  //       this.messageImageError = '';
-  //     } else {
-  //       this.imagePoster = null;
-  //       this.messageImageError = '*Tệp ảnh bạn chọn không hợp lệ!';
-  //       this.selectedImage = null;
-  //     }
-  //   } else {
-  //     this.selectedImage = null;
-  //     this.messageImageError = '*Không được bỏ trống ảnh';
-  //   }
-  // }
-  //
+
   removeImage() {
     this.filePath = 'https://firebasestorage.googleapis.com/v0/b/a0321cinema.appspot.com/o/14-05-2022061301PMavatar.png?alt=media&token=590abb58-573c-4263-91d3-010eb0f0417b';
     this.uploading = false;
