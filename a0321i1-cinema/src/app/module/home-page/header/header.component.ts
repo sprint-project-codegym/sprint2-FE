@@ -12,6 +12,7 @@ import {User} from '../../../entity/User';
 export class HeaderComponent implements OnInit {
 
   username: string = '';
+  functionList: any = [];
   role: string = '';
   user: User;
   avatarUrl: string = "";
@@ -25,18 +26,39 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.tokenStore.getToken()) {
-      const user = this.tokenStore.getUser();
-      console.log(user.user.name);
-      this.name = user.user.name;
-      console.log(this.name);
-      this.securityService.isLoggedIn = true;
-      console.log(this.securityService.isLoggedIn);
-    }
-    if (this.tokenStore.getToken()) {
-      console.log(this.tokenStore.getUser().user.name);
       this.user = this.tokenStore.getUser().user;
-      console.log(this.user);
       this.role = this.tokenStore.getUser().authorities[0].authority;
+
+      if(this.role=='ROLE_ADMIN'){
+        this.functionList = [
+          {
+            name: 'Quản lý đặt vé',
+            link: '/booking/movie'
+          },
+          {
+            name: 'Quản lý phim',
+            link: '/admin/movie/list-movie'
+          },
+          {
+            name: 'Thống kê phim',
+            link: '/admin/statistical/movie'
+          },
+          {
+            name: 'Thống kê thành viên',
+            link: '/admin/statistical/member'
+          },
+          {
+            name: 'Đăng xuất',
+            link: '/login'
+          }
+        ]
+      }
+
+      if(this.role=='ROLE_USER'){
+        this.functionList = ['Đặt vé','Lịch sữ đặt vé','Thông tin cá nhân', 'Đăng xuất'];
+      }
+
+      console.log(this.functionList)
     }
   }
   search(keySearch: string) {
