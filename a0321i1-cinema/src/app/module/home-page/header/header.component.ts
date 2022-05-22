@@ -3,6 +3,7 @@ import {Router} from '@angular/router';
 import {TokenStorageService} from '../../../service/security/token-storage.service';
 import {SecurityService} from '../../../service/security/security.service';
 import {User} from '../../../entity/User';
+import {ShareService} from "../../../service/security/share.service";
 
 @Component({
   selector: 'app-header',
@@ -22,19 +23,20 @@ export class HeaderComponent implements OnInit {
 
   constructor(private router: Router,
               private tokenStore: TokenStorageService,
-              private securityService: SecurityService) { }
+              private securityService: SecurityService,
+              private shareService: ShareService) {
+    this.shareService.getClickEvent().subscribe(() => {
+      this.loadHeader();
+    });
+  }
 
-  ngOnInit(): void {
+  loadHeader(){
     if (this.tokenStore.getToken()) {
       this.user = this.tokenStore.getUser().user;
       this.role = this.tokenStore.getUser().authorities[0].authority;
 
       if(this.role=='ROLE_ADMIN'){
         this.functionList = [
-          {
-            name: 'Quản lý đặt vé',
-            link: '/booking/movie'
-          },
           {
             name: 'Quản lý phim',
             link: '/admin/movie/list-movie'
@@ -49,17 +51,51 @@ export class HeaderComponent implements OnInit {
           },
           {
             name: 'Đăng xuất',
-            link: '/login'
+            link: '/logout'
           }
         ]
       }
 
-      if(this.role=='ROLE_USER'){
-        this.functionList = ['Đặt vé','Lịch sữ đặt vé','Thông tin cá nhân', 'Đăng xuất'];
+      if(this.role=='ROLE_MEMBER'){
+        this.functionList = [
+          {
+            name: 'Đặt vé',
+            link: '/booking/movie'
+          },
+          {
+            name: 'Thông tin cá nhân',
+            link: '/member/info'
+          },
+          {
+            name: 'Thông tin đặt vé',
+            link: '/member/booking'
+          },
+          {
+            name: 'Đăng xuất',
+            link: '/logout'
+          }
+        ]
+      }
+
+      if(this.role=='ROLE_EMPLOYEE'){
+        this.functionList = [
+          {
+            name: 'Quản lý đặt vé',
+            link: '/employee/book/tickets/book-ticket-list'
+          },
+          {
+            name: 'Đăng xuất',
+            link: '/logout'
+          }
+        ]
       }
 
       console.log(this.functionList)
     }
+  }
+
+  ngOnInit(): void {
+    this.loadHeader();
   }
   search(keySearch: string) {
     console.log(keySearch);

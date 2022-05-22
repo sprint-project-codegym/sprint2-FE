@@ -49,6 +49,7 @@ const routes: Routes = [
       ),
   },
   {path: 'login', component: LoginComponent},
+  {path: 'logout', component: LogoutComponent},
   {path: 'request-to-reset-password', component: RequestResetPasswordComponent},
   {path: 'reset-password', component: DoResetPasswordComponent},
   {path: 'register', component: RegisterComponent},
