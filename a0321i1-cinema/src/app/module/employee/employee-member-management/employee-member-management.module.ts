@@ -8,6 +8,7 @@ import {ToastrModule} from "ngx-toastr";
 import {NgxSpinnerModule} from "ngx-spinner";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {AdminModule} from "../../admin/admin.module";
+import {HomePageModule} from "../../home-page/home-page.module";
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import {AdminModule} from "../../admin/admin.module";
         ReactiveFormsModule,
         FormsModule,
         AdminModule,
+        HomePageModule,
     ]
 })
 export class EmployeeMemberManagementModule {

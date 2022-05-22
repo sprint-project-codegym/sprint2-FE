@@ -7,6 +7,7 @@ import {MovieStatisticsComponent} from './movie-statistics/movie-statistics.comp
 import {RouterModule} from '@angular/router';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ChartModule} from 'primeng/chart';
+import {HomePageModule} from "../../home-page/home-page.module";
 
 
 @NgModule({
@@ -15,14 +16,15 @@ import {ChartModule} from 'primeng/chart';
     MovieStatisticsComponent,
     MemberStatisticsComponent
   ],
-  imports: [
-    CommonModule,
-    AdminStatisticalManagementRoutingModule,
-    RouterModule,
-    ChartModule,
-    ReactiveFormsModule,
-    FormsModule,
-  ]
+    imports: [
+        CommonModule,
+        AdminStatisticalManagementRoutingModule,
+        RouterModule,
+        ChartModule,
+        ReactiveFormsModule,
+        FormsModule,
+        HomePageModule,
+    ]
 })
 export class AdminStatisticalManagementModule {
 
