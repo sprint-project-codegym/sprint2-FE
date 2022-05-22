@@ -83,3 +83,12 @@ div {
   background: none !important;
   color: transparent !important;
 }
+
+.btdv{
+  background-color: #f26b38;
+  border: #f26b38;
+  border-radius: 3px;
+  padding: 10px 20px;
+  font-size: 18px;
+  font-weight: 500;
+}

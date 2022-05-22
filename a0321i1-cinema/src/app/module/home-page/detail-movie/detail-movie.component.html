@@ -1,8 +1,8 @@
 <div class="container-fluid" >
-  <div class="row" style="width: 100%; margin-top: 100px">
+  <div class="row" style="width: 100%; margin: 50px 0">
     <div class="col-3">
     </div>
-    <div class="col-6" style="border: 3px solid #f26b38; padding: 30px">
+    <div class="col-6" style="border: 3px solid #f26b38; padding: 30px;">
       <div class="row">
         <div class="col-4">
           <img src="{{movie?.posterMovie}}" width="200" height="300" alt="poster">
@@ -27,7 +27,9 @@
         <p style="font-size: 15px; text-align: justify">
           {{movie?.description}}</p>
       </div>
-
+      <div style="text-align: center">
+        <button class="btn btn-info btdv" routerLink="/booking/movie">Đặt vé ngay</button>
+      </div>
     </div>
     <div class="col-3" style="text-align: end; margin: 0; padding: 0">
     </div>
