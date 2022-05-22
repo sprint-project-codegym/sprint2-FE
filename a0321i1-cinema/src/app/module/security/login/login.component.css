@@ -1,3 +1,6 @@
+#app-header {
+  display: none!important;
+}
 .login {
   /* margin-top: 80px; */
   /* margin-bottom: 80px; */
@@ -14,7 +17,6 @@
   bottom: 0;
   background: url("../../../../assets/img/bg-movie.png") center no-repeat;
   background-size: cover;
-  filter: blur(5px);
   z-index: -999;
 }
 *.form-input {
@@ -225,4 +227,8 @@ a, a:hover {
   -ms-transition: all .3s ease;
   -o-transition: all .3s ease;
   transition: all .3s ease;
+}
+
+.pointer {
+  cursor: pointer;
 }

@@ -30,7 +30,6 @@ export class LoginComponent implements OnInit {
   id: any;
   constructor(
     // private dialogRef: MatDialogRef<LoginComponent>,
-    private authService: AuthService,
     private tokenStorageService: TokenStorageService,
     private socialAuthService: SocialAuthService,
     private toastrService: ToastrService,
@@ -42,7 +41,6 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    console.log("load login component");
     this.userForm = this.fb.group({
       username: [],
       password: [],
@@ -50,7 +48,7 @@ export class LoginComponent implements OnInit {
     });
 
     if(this.tokenStorageService.getUser()){
-      this.authService.isLoggedIn = true;
+      this.securityService.isLoggedIn = true;
       this.role = this.tokenStorageService.getUser().roles;
       this.username = this.tokenStorageService.getUser().username;
     }
@@ -69,18 +67,13 @@ export class LoginComponent implements OnInit {
         console.log(data);
         this.socialUser = data;
         console.log(this.socialUser.idToken);
-        this.authService.google(this.socialUser.idToken).subscribe(
+        this.securityService.google(this.socialUser.idToken).subscribe(
           res => {
             console.log(res);
 
             this.tokenStorageService.saveTokenSession(res.jwtToken);
             this.tokenStorageService.saveUserLocal(res);
-
-            console.log('username: ' + this.tokenStorageService.getUser().user.account.name);
-            console.log('role: ' + this.tokenStorageService.getUser().roles);
-            console.log('token:' + this.tokenStorageService.getToken());
-            this.authService.isLoggedIn = true;
-            // this.dialogRef.close();
+            this.securityService.isLoggedIn = true;
             this.router.navigateByUrl("/home-page");
             this.shareService.sendClickEvent();
 
@@ -102,16 +95,13 @@ export class LoginComponent implements OnInit {
       data => {
         this.socialUser = data;
         console.log(this.socialUser);
-        this.authService.facebook(this.socialUser.authToken).subscribe(
+        this.securityService.facebook(this.socialUser.authToken).subscribe(
           res => {
-            this.tokenStorageService.saveUserSession(res);
+            console.log(res);
             this.tokenStorageService.saveTokenSession(res.jwtToken);
-
-            console.log('username: ' + this.tokenStorageService.getUser().username);
-            console.log('role: ' + this.tokenStorageService.getUser().roles);
-            console.log('token:' + this.tokenStorageService.getToken());
-            this.authService.isLoggedIn = true;
-            this.router.navigate(['/customer/edit']);
+            this.tokenStorageService.saveUserLocal(res);
+            this.securityService.isLoggedIn = true;
+            this.router.navigateByUrl("/home-page");
             this.shareService.sendClickEvent();
 
           },
@@ -163,16 +153,11 @@ export class LoginComponent implements OnInit {
           this.tokenStorageService.saveUserLocal(data);
         }
 
-        if(!data.user.account.isEnable){
-          console.log("Account not verify or blocked");
-          this.clearStorage();
-        }
-
       },
       error => {
         this.toastrService.error(
-          'Đăng nhập thất bại!',
-          'Thông báo!',
+          'Tài khoản không tồn tại hoặc chưa được kích hoạt!',
+          'Lỗi!',
           {timeOut: 3000, extendedTimeOut: 1500}
         );
       }
@@ -189,7 +174,7 @@ export class LoginComponent implements OnInit {
     this.socialAuthService.signOut().then(
       data => {
         this.tokenStorageService.signOut();
-        this.authService.isLoggedIn = false;
+        this.securityService.isLoggedIn = false;
       }
     );
   }

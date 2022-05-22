@@ -37,3 +37,17 @@ th {
 .btn.primary:hover {
   background-color: rgba(5, 56, 107, 0.88);
 }
+
+.pagination {
+  cursor:pointer;
+}
+.page-item.active .page-link{
+  background-color: #05386B;
+  border-color: #05386B;
+}
+.page-link{
+  color: #05386B;
+}
+.title-text{
+  color: #05386B;
+}

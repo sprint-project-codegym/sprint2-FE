@@ -1,26 +1,40 @@
+import { Injectable } from '@angular/core';
+import {MovieTicket} from '../../entity/MovieTicket';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {Observable} from 'rxjs';
 import {PaypalDTO} from '../../dto/PaypalDTO';
 import {tick} from "@angular/core/testing";
-import {Injectable} from '@angular/core';
-import {MovieTicket} from "../../entity/MovieTicket";
 import {RoomSeat} from "../../entity/RoomSeat";
-import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {Observable} from "rxjs";
 import {Ticket} from "../../entity/Ticket";
 import {Movie} from "../../entity/Movie";
 import {ShowTime} from "../../entity/ShowTime";
 import {UserNoAccountDTO} from "../../entity/userNoAccountDTO";
+import {MovieTicketToSendMailDto} from "../../dto/MovieTicketToSendMailDto";
+import {TicketDTO} from "../../dto/TicketDTO";
 
 const API_TICKET: string = 'http://localhost:8080/api/ticket';
-const API_SEAT: string = 'http://localhost:8080/api/roomSeat'
+const API_SEAT: string = 'http://localhost:8080/api/roomSeat';
 const API_USER: string = 'http://localhost:8080/api/user';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BookTicketsService {
-  private API_INF = 'http://localhost:8080/api/movie_ticket';
+  private API_URL_TICKET_BOOKED = 'http://localhost:8080/api/ticket/booked';
+  private API_INF = 'http://localhost:8080/api/ticket';
   private API_PAY = 'http://localhost:8080/api/payment';
-  httpOptions: any;
+  API_URL_TICKET: string = 'http://localhost:8080/api/ticket';
+  listChoseSeat: RoomSeat[] = [];
+  listTiket: MovieTicketToSendMailDto[];
+  movieTicket: MovieTicket;
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json'
+    }),
+    'Access-Control-Allow-Origin': 'http://localhost:4200',
+    'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
+    'Access-Control-Allow-Credentials': 'true'
+  };
 
   constructor(private httpClient: HttpClient) {
     this.httpOptions = {
@@ -31,6 +45,13 @@ export class BookTicketsService {
       'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
       'Access-Control-Allow-Credentials': 'true'
     };
+  }
+
+  // NgaLT get booked ticket list
+  findAllBookedTicket(username: string, page: number): Observable<any> {
+    console.log(username);
+    console.log(this.API_URL_TICKET_BOOKED + '?page=' + page + '&&username=' + username);
+    return this.httpClient.get<any>(this.API_URL_TICKET_BOOKED + '/' + username + '/?page=' + page);
   }
 
   getDetailMovie(id: string): Observable<any> {
@@ -44,15 +65,6 @@ export class BookTicketsService {
   sendMailSuccessful(ticketInfo: any) {
     return this.httpClient.post(this.API_PAY + '/successful', ticketInfo, this.httpOptions);
   }
-
-  API_URL_TICKET: string = 'http://localhost:8080/api/ticket';
-
-
-  movieTicket: MovieTicket;
-  listChoseSeat: RoomSeat[] = [];
-
-
-
 
   findAll(username: string, page: number): Observable<any> {
     console.log(username);
@@ -92,10 +104,14 @@ export class BookTicketsService {
     return this.httpClient.get<MovieTicket>(API_TICKET + '/getMovieTicket/' + movieTicketId);
   }
 
-  createTicketDTO(movieTicketId: number, userId: number, seatId: number): Observable<any> {
-    return this.httpClient.post(API_TICKET + '/createTicketDTO/' + movieTicketId + '/' + userId + '/' + seatId, this.httpOptions);
+  createTicketDTO(ticketDTO: any): Observable<any> {
+    console.log("goi api");
+    console.log(ticketDTO);
+    return this.httpClient.post( 'http://localhost:8080/api/ticket/createTicketDTO/', ticketDTO, this.httpOptions);
   }
   createUserNoAccount(userNoAccountDTO: UserNoAccountDTO): Observable<any> {
     return this.httpClient.post(API_USER + "/createUserNoAccount", userNoAccountDTO);
   }
+
+  /*PhuocDD*/
 }

@@ -5,15 +5,27 @@ import {AdminStatisticalManagementRoutingModule} from './admin-statistical-manag
 import {MemberStatisticsComponent} from './member-statistics/member-statistics.component';
 import {MovieStatisticsComponent} from './movie-statistics/movie-statistics.component';
 import {RouterModule} from '@angular/router';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {ChartModule} from 'primeng/chart';
+import {HomePageModule} from "../../home-page/home-page.module";
 
 
 @NgModule({
   declarations: [MemberStatisticsComponent, MovieStatisticsComponent],
-  imports: [
-    CommonModule,
-    AdminStatisticalManagementRoutingModule,
-    RouterModule
-  ]
+  exports: [
+    MovieStatisticsComponent,
+    MemberStatisticsComponent
+  ],
+    imports: [
+        CommonModule,
+        AdminStatisticalManagementRoutingModule,
+        RouterModule,
+        ChartModule,
+        ReactiveFormsModule,
+        FormsModule,
+        HomePageModule,
+    ]
 })
 export class AdminStatisticalManagementModule {
+
 }
