@@ -66,7 +66,7 @@ export class BookingInformationComponent implements OnInit{
             seatId: this.listChooseSeat[i].seat.seatId
           };
           console.log(ticketDTO);
-          this.bookTicketsService.createTicketDTO(ticketDTO);
+          this.bookTicketsService.createTicketDTO(ticketDTO).subscribe();
         }
 
         let movieTicketToSendMail = [];
@@ -92,7 +92,7 @@ export class BookingInformationComponent implements OnInit{
           (error)=> console.log(error)
         );
         console.log(data);
-        // window.location.href = data.linkName;
+        window.location.href = data.linkName;
       },
       error => console.log(error)
     )
