@@ -8,6 +8,7 @@ import {RouterModule} from '@angular/router';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ChartModule} from 'primeng/chart';
 import {HomePageModule} from "../../home-page/home-page.module";
+import {AdminModule} from "../admin.module";
 
 
 @NgModule({
@@ -24,6 +25,7 @@ import {HomePageModule} from "../../home-page/home-page.module";
         ReactiveFormsModule,
         FormsModule,
         HomePageModule,
+        AdminModule,
     ]
 })
 export class AdminStatisticalManagementModule {

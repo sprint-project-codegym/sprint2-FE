@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, ParamMap} from "@angular/router";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-root',
@@ -10,14 +11,21 @@ export class AppComponent implements OnInit{
   title = 'a0321i1-cinema';
 
   constructor(
-    public activeRoute: ActivatedRoute
+    public activeRoute: ActivatedRoute,
+    public toastrService: ToastrService
   ) {
   }
 
 
   ngOnInit(): void {
     this.activeRoute.queryParams.subscribe((param) => {
-      console.log(param.paymentId)
+      if(param.paymentId){
+        this.toastrService.success(
+          'Thanh toán thành công, vui lòng kiểm tra email !',
+          'Thông báo!',
+          {timeOut: 3000, extendedTimeOut: 1500}
+        );
+      }
     })
   }
 }

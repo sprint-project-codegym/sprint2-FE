@@ -96,9 +96,9 @@ export class RegisterComponent implements OnInit {
             {timeOut: 5000, extendedTimeOut: 1500}
           )
         );
+        this.spinner.hide();
       }
     );
-    this.spinner.hide();
   }
 
   submitForm() {
