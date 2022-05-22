@@ -1,10 +1,7 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 import {LoginComponent} from './module/security/login/login.component';
-import {LogoutComponent} from './module/security/logout/logout.component';
 import {RegisterComponent} from './module/security/register/register.component';
-import {ConfirmEmailComponent} from './module/security/confirm-email/confirm-email.component';
-import {LoginGoogleComponent} from './module/security/login-google/login-google.component';
 import {RequestResetPasswordComponent} from './module/security/request-reset-password/request-reset-password.component';
 import {DoResetPasswordComponent} from './module/security/do-reset-password/do-reset-password.component';
 import {TestComponent} from './module/security/test/test.component';
@@ -49,7 +46,6 @@ const routes: Routes = [
       ),
   },
   {path: 'login', component: LoginComponent},
-  {path: 'logout', component: LogoutComponent},
   {path: 'request-to-reset-password', component: RequestResetPasswordComponent},
   {path: 'reset-password', component: DoResetPasswordComponent},
   {path: 'register', component: RegisterComponent},
