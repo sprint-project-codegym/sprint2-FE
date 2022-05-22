@@ -9,7 +9,6 @@ import {HeaderComponent} from './header/header.component';
 import {ContentPageComponent} from './content-page/content-page.component';
 import {SearchComponent} from './search/search.component';
 import {TrailerComponent} from './trailer/trailer.component';
-import {CommentComponent} from './comment/comment.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import {RouterModule} from '@angular/router';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -23,8 +22,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     HeaderComponent,
     ContentPageComponent,
     SearchComponent,
-    TrailerComponent,
-    CommentComponent
+    TrailerComponent
   ],
   exports: [
     HeaderComponent,
@@ -39,9 +37,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     RouterModule,
     FormsModule,
     ReactiveFormsModule
-  ],
-  entryComponents: [CommentComponent]
-
+  ]
 })
 export class HomePageModule {
 }
