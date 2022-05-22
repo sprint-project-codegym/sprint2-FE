@@ -98,6 +98,7 @@ export class RegisterComponent implements OnInit {
         );
       }
     );
+    this.spinner.hide();
   }
 
   submitForm() {
