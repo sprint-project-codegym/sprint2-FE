@@ -64,7 +64,7 @@ export class HeaderComponent implements OnInit {
             link: '/member/info'
           },
           {
-            name: 'Lịch sữ đặt vé',
+            name: 'Lịch sử đặt vé',
             link: '/member/booking'
           },
           {
