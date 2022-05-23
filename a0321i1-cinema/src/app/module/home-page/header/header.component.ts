@@ -17,6 +17,9 @@ export class HeaderComponent implements OnInit {
   role: string = '';
   user: User;
   avatarUrl: string = "";
+  name: string = "123";
+
+  name1: string = "123";
 
   constructor(private router: Router,
               private tokenStore: TokenStorageService,
@@ -64,7 +67,7 @@ export class HeaderComponent implements OnInit {
             link: '/member/info'
           },
           {
-            name: 'Lịch sử đặt vé',
+            name: 'Thông tin đặt vé',
             link: '/member/booking'
           },
           {

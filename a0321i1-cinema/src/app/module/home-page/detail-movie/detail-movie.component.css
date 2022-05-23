@@ -83,3 +83,45 @@ div {
   background: none !important;
   color: transparent !important;
 }
+
+.btdv {
+  background-color: #f26b38;
+  border: #f26b38;
+  border-radius: 3px;
+  padding: 10px 20px;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.image {
+  opacity: 1;
+  display: block;
+  width: 90%;
+  height: 100%;
+  transition: .5s ease;
+  backface-visibility: hidden;
+}
+
+.middle {
+  transition: .5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 90%;
+  height: 100%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.col-3:hover .image {
+  opacity: 0.3;
+}
+
+.col-3:hover .middle {
+  opacity: 1;
+  background-color: #05386B;
+  vertical-align: center;
+  color: white;
+}

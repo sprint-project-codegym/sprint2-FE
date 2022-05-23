@@ -16,7 +16,10 @@ import {NgxSpinnerModule} from 'ngx-spinner';
 
 
 @NgModule({
-  declarations: [MemberPageComponent, AccountInfoComponent, NavBarAccountManagerComponent, TicketCancelComponent, TicketsBookingComponent, TransactionHistoryComponent],
+    declarations: [MemberPageComponent, AccountInfoComponent, NavBarAccountManagerComponent, TicketCancelComponent, TicketsBookingComponent, TransactionHistoryComponent],
+    exports: [
+        AccountInfoComponent
+    ],
     imports: [
         CommonModule,
         MemberRoutingModule,

@@ -1,6 +1,6 @@
 <div class="container-fluid">
   <div class="row" id="header" style="height: 50px">
-    <div class="col col-3 pl-5">
+    <div class="col col-3" style="padding-left: 120px">
       <img src="assets/picture/LogoPage.png" class="chuot" width="150" height="45" routerLink="/">
     </div>
     <div class="col col-6 d-flex align-items-center justify-content-center">
@@ -8,7 +8,8 @@
         <div class="col col-6">
           <div class="input-group">
             <!--          Search-->
-            <input type="text" class="input-search form-control" style="height: 32px" placeholder="Nhập tên phim để tìm kiếm"
+            <input type="text" class="input-search form-control" style="height: 32px"
+                   placeholder="Nhập tên phim để tìm kiếm"
                    tabindex #keySearch id="header-search-input" (keyup.enter)="search(keySearch.value)">
             <div class="input-group-btn">
               <button class="btn btn-default" tabindex (click)="search(keySearch.value)"><i class="fas fa-search"></i>
@@ -20,11 +21,13 @@
     </div>
     <div *ngIf="user; else notLogin" class="col col-3 pr-5 d-flex justify-content-center align-items-center">
       <div class="dropdown">
-        <button class="btn btn-outline-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
+        <button class="btn btn-outline-primary dropdown-toggle" type="button" id="dropdownMenuButton"
+                data-toggle="dropdown" aria-expanded="false">
           {{user.name}}
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <a *ngFor="let function of functionList"  class="dropdown-item" [routerLink]="function.link">{{function.name}}</a>
+          <a *ngFor="let function of functionList" class="dropdown-item"
+             [routerLink]="function.link">{{function.name}}</a>
         </div>
       </div>
     </div>

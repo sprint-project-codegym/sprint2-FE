@@ -1,8 +1,17 @@
-<div class="container-fluid" >
-  <div class="row" style="width: 100%; margin-top: 100px">
-    <div class="col-3">
+<div class="container-fluid">
+  <div class="row" style="width: 100%; margin: 50px 0">
+    <div class="col-3" style="text-align: center; padding: 0">
+      <img class="img" src="https://cdn.galaxycine.vn/media/2022/5/13/xem-phim-chau-au-mien-phi-2_1652411717138.jpg" height="100%"
+           width="90%">
+      <div class="middle">
+        <div class="text" style="font-size: 20px; font-weight: bold; padding: 20% 10px">Nhận Miễn Phí Vé Liên Hoan Phim Châu Âu Tại Việt Nam 2022!</div>
+        <div class="text" style="padding-top: 20%">Nhận vé xem phim miễn phí từ 16.05 tại Galaxy Đà Nẵng!</div>
+        <div style="text-align: center; padding-top: 45%">
+          <button class="btn btn-info btdv" routerLink="/booking/movie">Đặt vé ngay</button>
+        </div>
+      </div>
     </div>
-    <div class="col-6" style="border: 3px solid #f26b38; padding: 30px">
+    <div class="col-6" style="border: 3px solid #f26b38; padding: 30px;">
       <div class="row">
         <div class="col-4">
           <img src="{{movie?.posterMovie}}" width="200" height="300" alt="poster">
@@ -13,23 +22,37 @@
           </div>
         </div>
         <div class="col-8 noi_dung_detail">
-          <h3 style="font-size: 22px; font-weight: 500">{{movie?.movieName}}</h3>
+          <h3 style="font-size: 22px; font-weight: 530">{{movie?.movieName}}</h3>
           <h3 style="color: #a0a3a7">{{movie.movieName}}</h3>
-          <div class="fa fa-clock" style="padding: 10px 0">{{movie?.movieLength}} <span>phút</span></div>
-          <div style="padding: 10px 0 5px 0" >Thể loại: <span *ngFor="let mv of movie?.movieCategorySet">{{mv.category.categoryName}}</span></div>
-          <div style="padding: 5px 0 5px 0">Đạo diễn: <span>{{movie?.director}}</span></div>
-          <div style="padding: 5px 0 5px 0">Nhà sản xuất: <span>{{movie?.movieStudio}}</span></div>
-          <div style="padding: 5px 0 5px 0">Diễn viên: <span>{{movie?.actor}}</span></div>
+          <div class="fa fa-clock" style="padding: 10px 0"> {{movie?.movieLength}} <span>phút</span></div>
+          <div style="padding: 10px 0 5px 0"><span class="font-weight-bold">Thể loại: </span><span
+            *ngFor="let mv of movie?.movieCategorySet">{{mv.category.categoryName}}</span></div>
+          <div style="padding: 5px 0 5px 0"><span
+            class="font-weight-bold">Đạo diễn: </span><span>{{movie?.director}}</span></div>
+          <div style="padding: 5px 0 5px 0"><span
+            class="font-weight-bold">Nhà sản xuất: </span><span>{{movie?.movieStudio}}</span></div>
+          <div style="padding: 5px 0 5px 0"><span
+            class="font-weight-bold">Diễn viên: </span><span>{{movie?.actor}}</span></div>
         </div>
       </div>
       <div class="noi_dung" style="padding-top: 40px">
-        <h3>Nội dung phim</h3>
-        <p style="font-size: 15px; text-align: justify">
+        <h3 style="font-weight: 600">Nội dung phim</h3>
+        <p style="font-size: 16px; text-align: justify">
           {{movie?.description}}</p>
       </div>
-
+      <div style="text-align: center">
+        <button class="btn btn-info btdv" routerLink="/booking/movie">Đặt vé ngay</button>
+      </div>
     </div>
-    <div class="col-3" style="text-align: end; margin: 0; padding: 0">
+    <div class="col-3" style="text-align: center; padding: 0">
+      <img class="img" src="https://cdn.galaxycine.vn/media/2022/5/17/300x450px_1652782311912.png" height="100%" width="90%">
+      <div class="middle">
+        <div class="text" style="font-size: 20px; font-weight: bold; padding: 20% 10px">Voucher Giảm 50K Dành Tặng Các Stars!</div>
+        <div class="text" style="padding-top: 20%">Loạt voucher giảm 50K dành tặng các Stars. Đặt vé ngay thôi!</div>
+        <div style="text-align: center; padding-top: 53%">
+          <button class="btn btn-info btdv" routerLink="/booking/movie">Đặt vé ngay</button>
+        </div>
+      </div>
     </div>
   </div>
   <div class="m-0 p-0" *ngIf="displayTrailer">
