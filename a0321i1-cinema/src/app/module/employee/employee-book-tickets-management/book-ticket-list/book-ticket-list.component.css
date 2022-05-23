@@ -1,0 +1,49 @@
+.title {
+  text-align: center;
+  font-size: 1.75rem;
+  margin:  5px;
+  color: #0D5DB6;
+  text-transform: uppercase;
+  padding: 10px;
+}
+
+tr {
+  vertical-align: center;
+  text-align: center
+}
+.table-striped td, .table-striped th {
+  border: 1px solid #dee2e6;
+  vertical-align: middle;
+  padding: 5px;
+}
+.table-striped th:last-child {
+  width: 170px;
+}
+.table-striped td:last-child {
+  display: flex;
+  justify-content: space-around;
+}
+th {
+  text-align: center;
+}
+.search {
+  width: 200px;
+  border: 1px solid lightgray;
+}
+.btn.primary {
+  display: inline-block;
+  font-size: 14px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #ffffff;
+  background-color: #05386b;
+  padding: 15px;
+  text-decoration: none;
+  line-height: 1;
+}
+.btn.primary:hover{
+  background-color: rgba(5, 56, 107, 0.88);
+}
+.table-header th {
+  background: #607D8B; color: white;
+}

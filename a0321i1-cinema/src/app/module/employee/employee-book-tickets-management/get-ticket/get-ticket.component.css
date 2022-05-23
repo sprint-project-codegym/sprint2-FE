@@ -1,0 +1,134 @@
+@media screen and (max-width: 768px){
+  #table-booking-infor {
+    margin-top: 1.5rem;
+  }
+  .pleasure {
+    left: 20%;
+    margin-left: 0;
+    padding-left: 0;
+  }
+}
+@media screen and (max-width: 576px){
+  #img-div {
+    width: 350px;
+    height: 500px;
+  }
+}
+#fluid {
+  padding-left: 2rem;
+  margin: 3rem 0;
+  font-family: 'Roboto Light', sans-serif;
+  font-size: 1rem;
+}
+
+#follow-div {
+  font-size: 1.2rem;
+}
+
+.follow {
+  width: fit-content;
+  border-bottom: 2px solid #05386b;
+}
+
+.follow-title {
+  text-transform: uppercase;
+  text-align: left;
+}
+
+hr {
+  margin-top: 0;
+}
+thead tr td {
+  border-top: none;
+  border-bottom: 2px solid #05386b;
+}
+tbody tr td {
+  text-align: left;
+}
+.movie-picked-title {
+  text-transform: uppercase;
+  font-size: 1.65rem;
+  color: black;
+  text-align: center;
+}
+#table-booking-infor {
+  text-align: left;
+}
+#table-booking-infor td:first-child {
+  padding-left: 2rem;
+}
+#table-booking-infor td:last-child {
+  padding-right: 4rem;
+}
+#table-personal-info td:first-child {
+  padding-left: 2rem;
+}
+#img-div {
+  width: 300px;
+  height: 450px;
+}
+img {
+  max-width: 100%;
+  max-height: 100%;
+}
+.ticket {
+  margin: 0 0.3rem;
+}
+.pleasure {
+  position: absolute;
+  font-size: 0.75rem;
+  color: #383838;
+  left: 30%;
+}
+
+
+.menu {
+  width: 100%;
+  height: 60px;
+  background: #05386b;
+}
+
+.menu-left-admin {
+  border-right: solid #095484 1px;
+  height: 700px;
+  margin: 26px;
+}
+
+.menu-left-admin ul li {
+  list-style: none;
+  transition: 0.5s;
+  border-bottom: white solid 2px;
+}
+
+.menu-left-admin .menu-var:hover {
+  border-bottom: #095484 solid 2px;
+  transition: 0.5s;
+}
+.btn.primary {
+  display: inline-block;
+  font-size: 14px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #ffffff;
+  background-color: #05386b;
+  padding: 15px;
+  text-decoration: none;
+  line-height: 1;
+}
+.btn.primary:hover{
+  background-color: rgba(5, 56, 107, 0.88);
+}
+.btn.secondary {
+  display: inline-block;
+  font-size: 14px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #ffffff;
+  background-color: #fcdd34;
+  padding: 15px;
+  text-decoration: none;
+  line-height: 1;
+}
+.btn.secondary:hover{
+  background-color: rgba(252, 228, 65, 0.87);
+}

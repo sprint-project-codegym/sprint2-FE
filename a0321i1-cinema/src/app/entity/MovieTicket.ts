@@ -1,6 +1,5 @@
 import {Movie} from './Movie';
 import {ShowTime} from './ShowTime';
-// @ts-ignore
 import {Room} from './Room';
 
 export interface MovieTicket {
