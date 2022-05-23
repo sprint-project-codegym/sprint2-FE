@@ -12,7 +12,7 @@ import {UserDto} from "../../../../dto/user-dto";
 })
 export class EmployeeListMemberComponent implements OnInit {
   users: User[];
-  size = 2;
+  size = 5;
   pageClicked = 0;
   totalPages = 1;
   pages = [];
