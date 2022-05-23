@@ -8,14 +8,18 @@ import { ConfirmTicketComponent } from './confirm-ticket/confirm-ticket.componen
 import { GetTicketComponent } from './get-ticket/get-ticket.component';
 import { PrintTicketComponent } from './print-ticket/print-ticket.component';
 import {HomePageModule} from "../../home-page/home-page.module";
+import {AdminModule} from "../../admin/admin.module";
+import {FormsModule} from "@angular/forms";
 
 
 @NgModule({
   declarations: [BookTicketListComponent, CancelTicketComponent, ConfirmTicketComponent, GetTicketComponent, PrintTicketComponent],
-    imports: [
-        CommonModule,
-        EmployeeBookTicketsManagementRoutingModule,
-        HomePageModule
-    ]
+  imports: [
+    CommonModule,
+    EmployeeBookTicketsManagementRoutingModule,
+    HomePageModule,
+    AdminModule,
+    FormsModule
+  ]
 })
 export class EmployeeBookTicketsManagementModule { }

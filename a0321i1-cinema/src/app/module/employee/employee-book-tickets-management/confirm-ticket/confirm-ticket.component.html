@@ -1,1 +1,5 @@
-<p>confirm-ticket works!</p>
+<h5 style="font-size: 17px">Bạn Có Chắc Muốn nhận vé <label style="color: red"> {{receivedId}}</label> Không ?</h5>
+<div class="row d-flex justify-content-end">
+  <button class="btn secondary" style="margin-right: 10px" data-dismiss="modal" id="closeModal" >Hủy</button>
+  <button class="btn primary mr-3"  (click)="onReceive()"  data-dismiss="modal">Nhận vé</button>
+</div>

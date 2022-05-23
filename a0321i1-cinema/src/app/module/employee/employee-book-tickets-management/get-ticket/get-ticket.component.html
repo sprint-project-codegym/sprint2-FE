@@ -1,1 +1,123 @@
-<p>get-ticket works!</p>
+<app-header></app-header>
+<div class="container-fluid pl-0">
+  <div class="row">
+    <div class="col-lg-3">
+      <app-admin-page></app-admin-page>
+    </div>
+    <div class="col col-lg-9">
+      <div id="follow-div">
+        <div class="follow">
+          <p class="follow-title" id="please-confirm">vui lòng xác nhận</p>
+          <p class="follow-title" id="confirm-infor" style="display: none">thông tin xác nhận</p>
+        </div>
+      </div>
+
+      <hr class="d-inline-block"
+          style="width: 99%; height: 1px; background-color: lightgray">
+
+      <div class="container-fluid row p-0 m-0">
+        <div class="col-lg-3 col-md-4" id="img-div">
+          <p class="movie-picked-title" style="font-size: 1.3rem">Thông tin đặt vé</p>
+          <img [src]="ticketDetail.movieTicket.movie.posterMovie" alt="">
+        </div>
+        <div class="col-lg-7 col-md-8 pl-3">
+          <table class="table table-hover" id="table-booking-infor">
+            <thead class="text-center">
+            <tr>
+              <td colspan="2" style="border-top: none">
+                <span class="movie-picked-title">{{ticketDetail.movieTicket.movie.movieName}}</span>
+              </td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <td>Rạp</td>
+              <td>
+                <p>{{ticketDetail.movieTicket.room.roomName}}</p>
+              </td>
+            </tr>
+            <tr>
+              <td>Ngày chiếu</td>
+              <td>{{ticketDetail.movieTicket.showDate | date: 'dd-MM-yyyy'}}</td>
+            </tr>
+            <tr>
+              <td>Giờ chiếu</td>
+              <td>{{ticketDetail.movieTicket.showTime.showTime}}</td>
+            </tr>
+            <tr>
+              <td>Ghế</td>
+              <td>{{ticketDetail.seat.row.rowName}}{{ticketDetail.seat.column.columnName}}</td>
+            </tr>
+            <tr>
+            <tr>
+              <td>Giá</td>
+              <td>
+                <p>
+                  {{ticketDetail.movieTicket.ticketPrice | number}} VNĐ
+                </p>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+
+          <table class="table table-hover" id="table-personal-info">
+            <thead>
+            <tr>
+              <td colspan="2" style="border-top: none">
+                <p class="movie-picked-title" style="font-size: 1.3rem">kiểm tra thông tin cá nhân</p>
+              </td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <td>Họ và tên</td>
+              <td>{{ticketDetail.user.name}}</td>
+            </tr>
+            <tr>
+              <td>Email</td>
+              <td>{{ticketDetail.user.email}}</td>
+            </tr>
+            <tr>
+              <td>CMND</td>
+              <td>{{ticketDetail.user.idCard}}</td>
+            </tr>
+            <tr>
+              <td>Số điện thoại</td>
+              <td>{{ticketDetail.user.phone}}</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="col-lg-2"></div>
+      </div>
+      <div class="row pb-3">
+        <div class="col-6" align="right">
+          <button routerLink = '/employee/book/tickets/book-ticket-list' class="btn secondary">Quay Lại</button>
+        </div>
+        <div class="col-6" align="left">
+          <button class="btn primary" (click)="receivedId=ticketDetail.ticketId" data-toggle="modal"
+                  data-target="#exampleModal">
+            Xác nhận đặt vé
+          </button>
+        </div>
+      </div>
+      <!--  modal-->
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Xác nhận nhận vé</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <app-confirm-ticket [receivedId]="receivedId" (confirmComplete)="confirmSuccess()"></app-confirm-ticket>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

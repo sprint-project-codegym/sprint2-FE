@@ -38,6 +38,14 @@ export class HeaderComponent implements OnInit {
       if(this.role=='ROLE_ADMIN'){
         this.functionList = [
           {
+            name: 'Quản lý đặt vé',
+            link: '/employee/book/tickets/book-ticket-list'
+          },
+          {
+            name: 'Quản lý thành viên',
+            link: '/employee/member/management/list'
+          },
+          {
             name: 'Quản lý phim',
             link: '/admin/movie/list-movie'
           },

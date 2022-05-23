@@ -1,3 +1,78 @@
 <app-header></app-header>
-<p>book-ticket-list works!</p>
+<div class="container-fluid pl-0">
+  <div class="row">
+    <div class="col-lg-3">
+      <app-admin-page></app-admin-page>
+    </div>
+    <div class="col-lg-9">
+      <div class="container-fluid">
+        <div>
+          <h3 class="text-center m-3">QUẢN LÝ ĐẶT VÉ</h3>
+          <div class="row mb-3">
+            <div class="col-12">
+              <div class="row ">
+                <div class="col-12 d-flex justify-content-end">
+                  <select class="custom-select col-2 mr-3" [(ngModel)]="optionSearch">
+                    <option value="1">Tìm kiếm theo mã đặt vé</option>
+                    <option value="2">Tìm kiếm theo mã tài khoản</option>
+                    <option value="3">Tìm kiếm theo CMND</option>
+                    <option value="4">Tìm kiếm theo số điện thoại</option>
+                  </select>
+                  <input class="search form-control mr-3"
+                         placeholder="Tìm kiếm..."
+                         [(ngModel)]="keySearch">
+                  <button class="btn btn-light btn-outline-secondary" type="button" (click)="search()"><i class="fas fa-search mr-1"></i>Tìm kiếm</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div *ngIf="bookedTicketList.length > 0; else nodata">
+              <table class="table table-striped">
+                <thead class="table-header">
+                <tr>
+                  <th scope="col">Mã đặt vé</th>
+                  <th scope="col">Mã thành viên</th>
+                  <th scope="col">Họ tên</th>
+                  <th scope="col">CMND</th>
+                  <th scope="col">Phim</th>
+                  <th scope="col">Xuất chiếu</th>
+                  <th scope="col">Thao tác</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                <tr *ngFor="let item of bookedTicketList">
+                  <td width="8%" align="center">{{item.ticketId}}</td>
+                  <td width="10%" align="center">{{item.user.userId}}</td>
+                  <td width="16%" align="center">{{item.user.name}}</td>
+                  <td width="16%" align="center">{{item.user.idCard}}</td>
+                  <td width="20%" align="center">{{item.movieTicket.movie.movieName}}</td>
+                  <td width="20%" align="center">{{item.movieTicket.showDate | date: 'dd-MM-yyyy'}} / {{item.movieTicket.showTime.showTime}}</td>
+                  <td>
+                    <button class="btn primary" [routerLink]="['get-ticket', item.ticketId]">
+                      Nhận Vé
+                    </button>
+                  </td>
+                </tr>
+                </tbody>
+              </table>
+              <ul class="pagination float-right">
+                <li *ngIf="indexPagination > 1" class="page-item"><a (click)="firstPage()" class="prev page-link"><i class="fa fa-chevron-left"></i> Đầu</a></li>
+                <li *ngIf="indexPagination > 1" class="page-item"><a (click)="previousPage()" class="page-link"><i class="fa fa-chevron-left"></i></a></li>
+                <li class="page-item"><a class="active page-link">{{indexPagination}}</a></li>
+                <li class="page-item"><a (click)="nextPage()" class="page-link"><i class="fa fa-chevron-right"></i></a></li>
+                <li class="page-item"><a (click)="lastPage()" class="next page-link">Cuối <i class="fa fa-chevron-right"></i></a></li>
+              </ul>
+
+            </div>
+            <ng-template #nodata>
+              <p style="color: red" class="text-center">----------Không có khách hàng đặt vé----------</p>
+            </ng-template>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 <app-footer></app-footer>
