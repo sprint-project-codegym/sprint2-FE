@@ -1,136 +1,129 @@
 <app-header></app-header>
 <div class="container-fluid">
   <div class="row">
-    <div class="col col-lg-3">
-      <app-admin-page></app-admin-page>
+    <div class="col-12">
+      <h3 class="text-center mb-3 mt-3 p-4" style="background-color: #05386B; color: white ">Chỉnh sửa thành viên</h3>
     </div>
-    <div class="col col-lg-9">
-      <div class="row">
-        <div class="col-12">
-          <h3 class="text-center mb-3 mt-3 p-4" style="background-color: #05386B; color: white ">Chỉnh sửa thành viên</h3>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-12">
-          <form [formGroup]="formEditUser" method="post" (ngSubmit)="onSubmit()">
-            <div class="row">
-              <div class="3">
-                <div class="form-group mb-0">
-                  <label class="control-label">Chọn hình ảnh<span class="text-danger">*</span></label><br>
-                  <label for="image-picker">
-                    <img class="img-fluid rounded" id="image-preview" [src]="filePath"/>
-                  </label><br>
-                  <input id="image-picker" (change)="selectImage($event)" type="file"
-                         accept="image/*"/>
-                </div>
-              </div>
-              <div class="col-md-9 col-sm-12">
-                <div class="form-group">
-                  <input hidden type="text" class="form-control" formControlName="userId">
-                </div>
-                <div class="form-group">
-                  <label for="exampleFormControlInput1">Tên thành viên<span
-                    class="text-danger">(*)</span>:</label>
-                  <input type="text" class="form-control" formControlName="name" id="exampleFormControlInput1">
-                  <p class="text-danger" *ngIf="formEditUser.controls.name.errors?.required &&
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <form [formGroup]="formEditUser" method="post" (ngSubmit)="onSubmit()">
+        <div class="row">
+          <div class="3">
+            <div class="form-group mb-0">
+              <label class="control-label">Chọn hình ảnh<span class="text-danger">*</span></label><br>
+              <label for="image-picker">
+                <img class="img-fluid rounded" id="image-preview" [src]="filePath"/>
+              </label><br>
+              <input id="image-picker" (change)="selectImage($event)" type="file"
+                     accept="image/*"/>
+            </div>
+          </div>
+          <div class="col-md-9 col-sm-12">
+            <div class="form-group">
+              <input hidden type="text" class="form-control" formControlName="userId">
+            </div>
+            <div class="form-group">
+              <label for="exampleFormControlInput1">Tên thành viên<span
+                class="text-danger">(*)</span>:</label>
+              <input type="text" class="form-control" formControlName="name" id="exampleFormControlInput1">
+              <p class="text-danger" *ngIf="formEditUser.controls.name.errors?.required &&
                                 formEditUser.controls.name.touched">Tên thành viên không được để trống!</p>
-                  <p class="text-danger" *ngIf="formEditUser.controls.name.errors?.minLength &&
+              <p class="text-danger" *ngIf="formEditUser.controls.name.errors?.minLength &&
                                 formEditUser.controls.name.touched">Tên phải có ít nhất 2 kí tự</p>
-                  <p class="text-danger" *ngIf="formEditUser.controls.name.errors?.minLength &&
+              <p class="text-danger" *ngIf="formEditUser.controls.name.errors?.minLength &&
                                 formEditUser.controls.name.touched">Tên không được quá dài</p>
-                </div>
-                <div class="form-group">
-                  <label>Giới tính<span
-                    class="text-danger">(*)</span>:</label>
-                  <select class="form-control" formControlName="gender">
-                    <option value="1">Nam</option>
-                    <option value="2">Nữ</option>
-                    <option value="3">Giới tính khác</option>
+            </div>
+            <div class="form-group">
+              <label>Giới tính<span
+                class="text-danger">(*)</span>:</label>
+              <select class="form-control" formControlName="gender">
+                <option value="1">Nam</option>
+                <option value="2">Nữ</option>
+                <option value="3">Giới tính khác</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="exampleFormControlInput2">Ngày sinh<span
+                class="text-danger">(*)</span>:</label>
+              <input type="date" class="form-control" formControlName="birthday" id="exampleFormControlInput2">
+              <p class="text-danger" *ngIf="formEditUser.controls.birthday.errors?.required &&
+                                formEditUser.controls.birthday.touched">Ngày sinh không được để trống!</p>
+            </div>
+            <div class="form-group">
+              <label for="exampleFormControlInput3">Số CMND<span
+                class="text-danger">(*)</span>:</label>
+              <input type="text" class="form-control" formControlName="idCard" id="exampleFormControlInput3">
+              <p class="text-danger" *ngIf="formEditUser.controls.idCard.errors?.required &&
+                                formEditUser.controls.idCard.touched">Số chứng minh không được để trống!</p>
+              <p class="text-danger" *ngIf="formEditUser.controls.idCard.errors?.pattern &&
+                                formEditUser.controls.idCard.touched">Số CMND phải là 9 hoặc 12 số!</p>
+            </div>
+            <div class="form-group">
+              <label for="exampleFormControlInput4">Email<span
+                class="text-danger">(*)</span>:</label>
+              <input type="email" class="form-control" formControlName="email" id="exampleFormControlInput4"
+                     value="manhhung@gmail.com">
+              <p class="text-danger" *ngIf="formEditUser.controls.email.errors?.required &&
+                                formEditUser.controls.email.touched">Email không được để trống!</p>
+              <p class="text-danger" *ngIf="formEditUser.controls.email.errors?.email &&
+                                formEditUser.controls.email.touched">Email sai định dạng!</p>
+            </div>
+            <div class="form-group">
+              <label for="exampleFormControlInput5">Số điện thoại<span
+                class="text-danger">(*)</span>:</label>
+              <input type="text" class="form-control" formControlName="phone" id="exampleFormControlInput5"
+                     value="0971463746">
+              <p class="text-danger" *ngIf="formEditUser.controls.phone.errors?.required &&
+                                formEditUser.controls.phone.touched">Số điện thoại không được để trống!</p>
+              <p class="text-danger" *ngIf="formEditUser.controls.phone.errors?.pattern &&
+                                formEditUser.controls.phone.touched">Số điện thoại không đúng định dạng!</p>
+            </div>
+            <div class="form-group">
+              <label>Địa chỉ<span
+                class="text-danger">(*)</span>:</label>
+              <div class="row">
+                <div class="col-4">
+                  <select class="form-control" (change)="changeProvince($event.target)">
+                    <option value="{{province.provinceId}}" *ngFor="let province of provinces"
+                            [selected]="provinceId == province.provinceId">{{province.provinceName}}</option>
                   </select>
                 </div>
-                <div class="form-group">
-                  <label for="exampleFormControlInput2">Ngày sinh<span
-                    class="text-danger">(*)</span>:</label>
-                  <input type="date" class="form-control" formControlName="birthday" id="exampleFormControlInput2">
-                  <p class="text-danger" *ngIf="formEditUser.controls.birthday.errors?.required &&
-                                formEditUser.controls.birthday.touched">Ngày sinh không được để trống!</p>
+                <div class="col-4">
+                  <select class="form-control" (change)="changeDistrict($event.target)">
+                    <option value="0" selected>Chọn quận/huyện</option>
+                    <option value="{{district.districtId}}" *ngFor="let district of districts"
+                            [selected]="districtId == district.districtId">{{district.districtName}}</option>
+                  </select>
                 </div>
-                <div class="form-group">
-                  <label for="exampleFormControlInput3">Số CMND<span
-                    class="text-danger">(*)</span>:</label>
-                  <input type="text" class="form-control" formControlName="idCard" id="exampleFormControlInput3">
-                  <p class="text-danger" *ngIf="formEditUser.controls.idCard.errors?.required &&
-                                formEditUser.controls.idCard.touched">Số chứng minh không được để trống!</p>
-                  <p class="text-danger" *ngIf="formEditUser.controls.idCard.errors?.pattern &&
-                                formEditUser.controls.idCard.touched">Số CMND phải là 9 hoặc 12 số!</p>
+                <div class="col-4">
+                  <select [compareWith]="compareWard" class="form-control"
+                          formControlName="ward">
+                    <option value="" selected>Chọn xã/phường</option>
+                    <option *ngFor="let ward of wards" [ngValue]="ward">{{ward.wardName}}</option>
+                  </select>
                 </div>
-                <div class="form-group">
-                  <label for="exampleFormControlInput4">Email<span
-                    class="text-danger">(*)</span>:</label>
-                  <input type="email" class="form-control" formControlName="email" id="exampleFormControlInput4"
-                         value="manhhung@gmail.com">
-                  <p class="text-danger" *ngIf="formEditUser.controls.email.errors?.required &&
-                                formEditUser.controls.email.touched">Email không được để trống!</p>
-                  <p class="text-danger" *ngIf="formEditUser.controls.email.errors?.email &&
-                                formEditUser.controls.email.touched">Email sai định dạng!</p>
-                </div>
-                <div class="form-group">
-                  <label for="exampleFormControlInput5">Số điện thoại<span
-                    class="text-danger">(*)</span>:</label>
-                  <input type="text" class="form-control" formControlName="phone" id="exampleFormControlInput5"
-                         value="0971463746">
-                  <p class="text-danger" *ngIf="formEditUser.controls.phone.errors?.required &&
-                                formEditUser.controls.phone.touched">Số điện thoại không được để trống!</p>
-                  <p class="text-danger" *ngIf="formEditUser.controls.phone.errors?.pattern &&
-                                formEditUser.controls.phone.touched">Số điện thoại không đúng định dạng!</p>
-                </div>
-                <div class="form-group">
-                  <label>Địa chỉ<span
-                    class="text-danger">(*)</span>:</label>
-                  <div class="row">
-                    <div class="col-4">
-                      <select class="form-control" (change)="changeProvince($event.target)">
-                        <option value="{{province.provinceId}}" *ngFor="let province of provinces"
-                                [selected]="provinceId == province.provinceId">{{province.provinceName}}</option>
-                      </select>
-                    </div>
-                    <div class="col-4">
-                      <select class="form-control" (change)="changeDistrict($event.target)">
-                        <option value="0" selected>Chọn quận/huyện</option>
-                        <option value="{{district.districtId}}" *ngFor="let district of districts"
-                                [selected]="districtId == district.districtId">{{district.districtName}}</option>
-                      </select>
-                    </div>
-                    <div class="col-4">
-                      <select [compareWith]="compareWard" class="form-control"
-                              formControlName="ward">
-                        <option value="" selected>Chọn xã/phường</option>
-                        <option *ngFor="let ward of wards" [ngValue]="ward">{{ward.wardName}}</option>
-                      </select>
-                    </div>
-                    <span class="text-danger" *ngIf="formEditUser.controls.ward.errors?.required">Địa chỉ không được để trống. Vui lòng chọn!</span>
-                  </div>
-                </div>
+                <span class="text-danger" *ngIf="formEditUser.controls.ward.errors?.required">Địa chỉ không được để trống. Vui lòng chọn!</span>
               </div>
             </div>
-            <div class="form-group row">
-              <div class="form-group col-12 d-flex justify-content-center">
-                <a [routerLink]="['/employee/member/management/list']" class="btn btn-secondary text-white mr-3"
-                   type="button"><i
-                  class="fas fa-chevron-left"></i> Trở về
-                </a>
-                <button (click)="refresh()" class="btn btn-success text-white mr-3" type="reset"><i
-                  class="fas fa-sync"></i> Làm mới
-                </button>
-                <button class="btn btn-primary" type="submit" [disabled]="formEditUser.invalid"><i
-                  class="fas fa-save"></i> Lưu
-                </button>
-              </div>
-            </div>
-          </form>
-          <ngx-spinner type="ball-scale-multiple"></ngx-spinner>
+          </div>
         </div>
-      </div>
+        <div class="form-group row">
+          <div class="form-group col-12 d-flex justify-content-center">
+            <a [routerLink]="['/employee/member/management/list']" class="btn btn-secondary text-white mr-3"
+               type="button"><i
+              class="fas fa-chevron-left"></i> Trở về
+            </a>
+            <button (click)="refresh()" class="btn btn-success text-white mr-3" type="reset"><i
+              class="fas fa-sync"></i> Làm mới
+            </button>
+            <button class="btn btn-primary" type="submit" [disabled]="formEditUser.invalid"><i
+              class="fas fa-save"></i> Lưu
+            </button>
+          </div>
+        </div>
+      </form>
+      <ngx-spinner type="ball-scale-multiple"></ngx-spinner>
     </div>
   </div>
 </div>
