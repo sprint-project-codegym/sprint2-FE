@@ -1,16 +1,15 @@
-<!--<p style="color: red">Hello bạn {{user.name}}</p>-->
-<button class="button button-warning" (click)="logout()">Đăng xuất</button>
 <div class="container-fluid">
   <div class="row" id="header" style="height: 50px">
-    <div class="col-4" style="width: 100%; text-align: end; margin-top: 2px;padding-right: 130px">
-      <img src="assets/picture/LogoPage.png" width="150" height="45" routerLink="#">
+    <div class="col col-3" style="padding-left: 120px">
+      <img src="assets/picture/LogoPage.png" class="chuot" width="150" height="45" routerLink="/">
     </div>
-    <div class="col-8" style="margin: 0; padding: 4px 0 0 0">
-      <div class="row search">
-        <div class="col-6" style="padding-left: 100px">
-          <div class="input-group" style="padding: 0 30px 0 0;">
+    <div class="col col-6 d-flex align-items-center justify-content-center">
+      <div class="row d-flex align-items-center justify-content-center">
+        <div class="col col-6">
+          <div class="input-group">
             <!--          Search-->
-            <input type="text" class="input-search form-control" style="height: 32px" placeholder="Nhập tên phim để tìm kiếm"
+            <input type="text" class="input-search form-control" style="height: 32px"
+                   placeholder="Nhập tên phim để tìm kiếm"
                    tabindex #keySearch id="header-search-input" (keyup.enter)="search(keySearch.value)">
             <div class="input-group-btn">
               <button class="btn btn-default" tabindex (click)="search(keySearch.value)"><i class="fas fa-search"></i>
@@ -18,20 +17,27 @@
             </div>
           </div>
         </div>
-        <div class="col-4">
-          <div class="row sign" style="vertical-align: center">
-            <div class="col-7" style="text-align: end; top: 7px"><a href="#" style="font-size: 1rem; color: #05386B; font-weight: bold">Đăng
-              nhập</a>
-            </div>
-            <div class="col-5" style="text-align: start; top: 7px"><a href="#" style="font-size: 1rem; color: #05386B; font-weight: bold">Đăng
-              ký</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-2" style="top: 35px; text-align: start">
+      </div>
+    </div>
+    <div *ngIf="user; else notLogin" class="col col-3 pr-5 d-flex justify-content-center align-items-center">
+      <div class="dropdown">
+        <button class="btn btn-outline-primary dropdown-toggle" type="button" id="dropdownMenuButton"
+                data-toggle="dropdown" aria-expanded="false">
+          {{user.name}}
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a *ngFor="let function of functionList" class="dropdown-item"
+             [routerLink]="function.link">{{function.name}}</a>
         </div>
       </div>
     </div>
+    <ng-template #notLogin>
+      <div class="col col-3 d-flex align-items-center justify-content-center">
+        <a routerLink="/login" class="d-block m-2 font-weight-bold text-danger text-decoration-none">Đăng nhập</a>
+        <a routerLink="/register" class="d-block m-2 font-weight-bold text-info text-decoration-none">Đăng ký</a>
+      </div>
+    </ng-template>
+
   </div>
 
   <!--  Thanh navbar-->
@@ -39,12 +45,12 @@
     <div class="col-3" style="background-color: #05386B"></div>
     <div class="col-6" style="background-color: #05386B">
       <nav class="links" style="--items: 6; width: 100%; top: 10px;">
-        <a routerLink="/booking/movie">MUA VÉ</a>
-        <a href="#">RẠP/GIÁ VÉ</a>
-        <a href="#">GÓC ĐIỆN ẢNH</a>
-        <a href="#">SỰ KIỆN</a>
-        <a href="#">HƯỚNG DẪN</a>
-        <a href="#">CHÍNH SÁCH</a>
+        <a routerLink="/booking/movie" class="chuot">MUA VÉ</a>
+        <a routerLink="/booking/movie" class="chuot">RẠP/GIÁ VÉ</a>
+        <a routerLink="/booking/movie" class="chuot">GÓC ĐIỆN ẢNH</a>
+        <a routerLink="/booking/movie" class="chuot">SỰ KIỆN</a>
+        <a routerLink="/booking/movie" class="chuot">HƯỚNG DẪN</a>
+        <a routerLink="/booking/movie" class="chuot">CHÍNH SÁCH</a>
         <span class="line"></span>
       </nav>
     </div>

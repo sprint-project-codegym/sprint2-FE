@@ -1,15 +1,16 @@
-<div class="container-fluid" id="fluid">
-  <div id="follow-div" class="row m-0 p-0">
-    <div class="follow col-lg-3 col-md-3">
+<app-header></app-header>
+<div class="container" id="fluid">
+  <div id="follow-div" class="row p-0">
+    <div class="follow col col-lg-3 col-md-3">
       <p class="follow-title" id="active">chọn phim</p>
     </div>
-    <div class="follow col-lg-3 col-md-3">
+    <div class="follow col col-lg-3 col-md-3">
       <p class="follow-title">chọn ghế</p>
     </div>
-    <div class="follow col-lg-3 col-md-3">
+    <div class="follow col col-lg-3 col-md-3">
       <p class="follow-title">xác nhận đặt vé</p>
     </div>
-    <div class="follow col-lg-3 col-md-3">
+    <div class="follow col col-lg-3 col-md-3">
       <p class="follow-title">thông tin đặt vé</p>
     </div>
   </div>
@@ -17,18 +18,19 @@
   <!--  <hr class="d-inline-block"-->
   <!--      style="width: 99%; height: 1px; background-color: lightgray">-->
 
-  <div id="pick-div" class="container-fluid p-0 row">
-    <div class="pick col-lg-4" style="padding-left: 0">
+  <div id="pick-div" class="row p-0">
+    <div class="pick col col-lg-4">
       <table class="table table-hover table-bordered" id="pick-movie">
         <thead class="tb-head">
         <tr>
-          <td colspan="2">Chọn phim</td>
+          <td colspan="2" class="m-0">Chọn phim</td>
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let movie of listMovie">
-          <td [class.chooseFilm]="movie.movieId == activeId"
-              (click)="getDateTimeList(movie.movieId)">
+        <tr class="disabled-hover" *ngFor="let movie of listMovie">
+          <td style="display: inline-flex; width: 100%" class="movie-list" (click)="getDateTimeList(movie.movieId)"
+              [class.chooseFilm]="activeId && activeId === movie.movieId"
+              [id]="movie.movieId">
             <img class="img" [src]="movie.posterMovie"
                  alt="img" width="80" height="60">
             <span class="movie-title">{{movie.movieName}}</span>
@@ -37,16 +39,16 @@
         </tbody>
       </table>
     </div>
-    <div class="pick col-lg-4">
+    <div class="pick col-lg-4 col-sm-6 pick-day">
       <table class="table table-hover table-bordered">
         <thead class="tb-head">
         <tr>
-          <td colspan="2">Chọn ngày chiếu</td>
+          <td class="pick-title m-0">Chọn ngày chiếu</td>
         </tr>
         </thead>
         <tbody *ngIf="!listDateTime">
         <tr class="disabled-hover">
-          <td>
+          <td class="m-0">
             <span class="datetime">Vui lòng chọn ngày chiếu</span>
           </td>
         </tr>
@@ -56,19 +58,19 @@
           <select class="form-control bg-white"
                   (change)="getShowTimeList($event.target.value)">
             <option value="" selected disabled>Vui lòng chọn ngày chiếu</option>
-            <option *ngFor="let date of listDateTime" [ngValue]="date">
-              <td>{{date}}</td>
+            <option [selected]="dateTime==this.date" *ngFor="let dateTime of listDateTime" [ngValue]="date">
+              <td>{{dateTime}}</td>
             </option>
           </select>
         </tr>
         </tbody>
       </table>
     </div>
-    <div class="pick col-lg-4">
+    <div class="pick col-lg-4 col-sm-6 pick-day">
       <table class="table table-hover table-bordered">
         <thead class="tb-head">
         <tr>
-          <td colspan="2">Chọn suất</td>
+          <td class="pick-title m-0" colspan="2">Chọn suất chiếu</td>
         </tr>
         </thead>
         <tbody *ngIf="!listShowtime">
@@ -93,11 +95,12 @@
   </div>
 
   <div id="btnContinue" class="text-center mb-4">
-    <button class="btn btn-outline-success rounded-pill" type="button" (click)="getMovieTicket()">
+    <button class="btn button-submit rounded-pill" type="button" (click)="getMovieTicket()">
         <span class="arrow">
           <i class="fas fa-2x fa-arrow-right"></i>
         </span>
     </button>
   </div>
 </div>
+<app-footer></app-footer>
 

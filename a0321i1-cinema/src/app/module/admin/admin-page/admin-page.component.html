@@ -1,49 +1,40 @@
-<app-header></app-header>
-<div class="container-fluid" style="margin-top: 30px">
+
+<div class="container-fluid" style="padding-top: 30px; height: 100%; background-color: #05386B">
   <div class="row m-0 p-0">
-    <div class="col-lg-2 col-md-1 float-left menu-left-admin wrap-menu">
+    <div class="col-lg-12 float-left menu-left-admin wrap-menu">
       <div class="row">
         <ul class="col-12">
           <li class=" pt-2 pb-2 menu-var">
-            <a class="text-decoration-none text-dark  pt-2 pb-2" [routerLink]="['/employee/book/tickets/book-ticket-list']" >
+            <a class="text-decoration-none text-white  pt-2 pb-2" routerLink="/employee/book/tickets/book-ticket-list" >
               <i class="fas fa-ticket-alt mr-2 col-1"></i>Quản Lý Đặt Vé
             </a>
           </li>
           <li class=" pt-2 pb-2 menu-var">
-            <a class="text-decoration-none text-dark  pt-2 pb-2" [routerLink]="['/employee/member/management']">
+            <a class="text-decoration-none text-white  pt-2 pb-2" routerLink="/employee/member/management/list">
               <i class="fas fa-users mr-2 col-1"></i>Quản Lý Thành Viên
             </a>
           </li>
           <li class=" pt-2 pb-2 menu-var">
-            <a class="text-decoration-none text-dark  pt-2 pb-2" [routerLink]="['/admin/movie/movie-list']">
+            <a class="text-decoration-none text-white  pt-2 pb-2" routerLink="/admin/movie/list-movie">
               <i class="fas fa-film mr-2 col-1"></i> Quản Lý Phim
             </a>
           </li>
-          <li class=" pt-2 pb-2 menu-var dropdown">
-            <a class="text-decoration-none text-dark  pt-2 pb-2" data-toggle="dropdown" role="button"
-               aria-haspopup="true" aria-expanded="false">
-              <i class="fas fa-chart-bar mr-2 col-1"></i>Thống Kê
+          <li class=" pt-2 pb-2 menu-var">
+            <a class="text-decoration-none text-white  pt-2 pb-2" routerLink="/admin/statistical/movie">
+              <i class="fas fa-chart-bar mr-2 col-1"></i> Thống kê phim
             </a>
-            <div class="dropdown-menu">
-              <a class="text-decoration-none text-dark  pt-2 pb-2 dropdown-item"
-                 [routerLink]="['/admin/statistical/movie']">
-                <i class="fas fa-film"></i>
-                Thống kê phim
-              </a>
-              <a class="text-decoration-none text-dark  pt-2 pb-2 dropdown-item"
-                 [routerLink]="['/admin/statistical/member']">
-                <i class="fas fa-user-friends"></i>
-                Thống kê thành viên
-              </a>
-            </div>
           </li>
-
+          <li class=" pt-2 pb-2 menu-var">
+            <a class="text-decoration-none text-white pt-2 pb-2" routerLink="/admin/statistical/member">
+              <i class="fas fa-chart-bar mr-2 col-1"></i> Thống kê thành viên
+            </a>
+          </li>
         </ul>
       </div>
     </div>
-    <div class="col-lg-10 col-md-11 col-sm-11 col-12">
+<!--    <div class="col-lg-10 col-md-11 col-sm-11 col-12">-->
       <router-outlet></router-outlet>
-    </div>
+<!--    </div>-->
   </div>
 </div>
-<app-footer></app-footer>
+

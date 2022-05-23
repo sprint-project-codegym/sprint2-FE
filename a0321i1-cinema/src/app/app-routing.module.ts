@@ -7,6 +7,10 @@ import {ConfirmEmailComponent} from './module/security/confirm-email/confirm-ema
 import {LoginGoogleComponent} from './module/security/login-google/login-google.component';
 import {RequestResetPasswordComponent} from './module/security/request-reset-password/request-reset-password.component';
 import {DoResetPasswordComponent} from './module/security/do-reset-password/do-reset-password.component';
+import {TestComponent} from './module/security/test/test.component';
+import {PageNotFoundComponent} from './module/page-not-found/page-not-found.component';
+import {PageNotAllowAccessComponent} from './module/page-not-allow-access/page-not-allow-access.component';
+import {ActiveAccountComponent} from './module/member/account-management/active-account/active-account.component';
 
 const routes: Routes = [
   {
@@ -47,10 +51,13 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'logout', component: LogoutComponent},
   {path: 'request-to-reset-password', component: RequestResetPasswordComponent},
+  {path: 'reset-password', component: DoResetPasswordComponent},
   {path: 'register', component: RegisterComponent},
-  {path: 'register/confirmEmail/:username/:email', component: ConfirmEmailComponent},
-  {path: 'loginGoogle', component: LoginGoogleComponent},
-  {path: 'home', redirectTo: '/'},
+  {path: 'verification', component: ActiveAccountComponent},{path: 'home', redirectTo: '/'},
+  {path: 'test', component: TestComponent},
+  {path: '404', component: PageNotFoundComponent},
+  {path: 'page-not-allow-access', component: PageNotAllowAccessComponent},
+  // {path: '**', redirectTo: '404'},
 ];
 
 @NgModule({

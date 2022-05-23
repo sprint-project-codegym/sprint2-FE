@@ -1,12 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {CommentComponent} from '../comment/comment.component';
 import {MatDialog} from '@angular/material/dialog';
 import {DetailMovieService} from '../../../service/home-page/detail-movie.service';
-import {ActivatedRoute, ParamMap, Router} from '@angular/router';
+import {ActivatedRoute, NavigationEnd, ParamMap, Router} from '@angular/router';
 import {Movie} from '../../../entity/Movie';
 import {Category} from '../../../entity/Category';
-import {Observable} from 'rxjs';
-import {MovieCategory} from '../../../entity/MovieCategory';
 
 @Component({
   selector: 'app-detail-movie',
@@ -18,11 +15,22 @@ export class DetailMovieComponent implements OnInit {
   public id: number;
   categoryList: Category[];
 
+  displayTrailer: boolean = false;
+  trailer: string = "";
+
   constructor(public dialog: MatDialog,
               public detailMovieService: DetailMovieService,
               public router: Router,
               public activeRoute: ActivatedRoute
   ) {
+    router.events.subscribe((val) => {
+      if (val instanceof NavigationEnd) {
+        window.scrollTo(0, 0);
+      }
+    });
+    if (this.router.navigated) {
+      window.scrollTo(0, 0);
+    }
   }
 
   ngOnInit(): void {
@@ -35,14 +43,12 @@ export class DetailMovieComponent implements OnInit {
     });
   }
 
-  openDialog(): void {
-    const dialogRef = this.dialog.open(CommentComponent, {
-      width: '1000px',
-      data: {detail: 'tun'},
-    });
+  openTrailer(trailer: string) {
+    this.trailer = trailer;
+    this.displayTrailer = true;
+  }
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-    });
+  closeTrailer() {
+    this.displayTrailer = false;
   }
 }

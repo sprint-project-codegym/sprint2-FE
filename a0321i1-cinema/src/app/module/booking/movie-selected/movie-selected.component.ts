@@ -5,6 +5,7 @@ import {BookTicketsService} from '../../../service/booking/book-tickets.service'
 import {ActivatedRoute, Router} from '@angular/router';
 import {MovieManagementService} from '../../../service/admin/movie-management.service';
 import {TokenStorageService} from '../../../service/security/token-storage.service';
+import {element} from "protractor";
 
 @Component({
   selector: 'app-movie-selected',
@@ -17,12 +18,14 @@ export class MovieSelectedComponent implements OnInit {
   listMovie: Movie[] = [];
   movie: Movie;
   activeId: number;
+  movieSelected: any;
 
   date = '';
   showTimeId: number;
   startDate: Date;
   endDate: Date;
   diff: number;
+
 
   constructor(private bookTicketsService: BookTicketsService,
               private activatedRoute: ActivatedRoute,
@@ -32,13 +35,28 @@ export class MovieSelectedComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.date = this.getCurrentDate();
+    console.log(this.date)
     this.activeId = this.activatedRoute.snapshot.params.id;
     console.log('ID : ' + this.activeId);
 
     this.bookTicketsService.getAllMovie().subscribe(data => {
       this.listMovie = data;
-      console.log(this.listMovie);
-      this.getDateTimeList(this.activeId);
+      console.log(this.listMovie)
+      let indexEqualZero = false;
+      let index = this.listMovie.findIndex((element,index) => {
+        if(element.movieId == this.activeId) {
+          this.movieSelected = element;
+          if(index == 0) indexEqualZero = true;
+          return index;
+        }
+      })
+      if(!indexEqualZero) {
+        this.listMovie.splice(index,1);
+        this.listMovie.unshift(this.movieSelected);
+      }
+      this.getDateTimeList(parseInt(String(this.activeId)));
+      this.getShowTimeList(this.date);
     }, error => {
       console.log('get ' + error + ' at getAllMovie() on MovieSelectionComponent');
     });
@@ -91,6 +109,15 @@ export class MovieSelectedComponent implements OnInit {
     }, error => {
       console.log('get ' + error + ' at getMovieTicket() on MovieSelectionComponent');
     });
+  }
+
+  private getCurrentDate() {
+    var today = new Date();
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    var yyyy = today.getFullYear();
+
+    return yyyy + '-' + mm + '-' + dd;
   }
 }
 
